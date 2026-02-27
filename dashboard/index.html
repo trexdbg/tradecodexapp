@@ -67,13 +67,12 @@
 
         <article class="panel">
           <div class="panel-head">
-            <h2>Signal Map</h2>
-            <p>Scores recents par actif</p>
+            <h2>Evolution Portefeuille</h2>
+            <p id="portfolioChartMeta">Agent selectionne</p>
           </div>
           <div class="chart-wrap">
-            <svg id="scoreChart" viewBox="0 0 1000 280" preserveAspectRatio="none"></svg>
+            <svg id="portfolioChart" viewBox="0 0 1000 280" preserveAspectRatio="none"></svg>
           </div>
-          <div id="chartLegend" class="legend"></div>
         </article>
       </section>
 
@@ -139,42 +138,22 @@
           </div>
         </div>
         <div class="table-wrap">
-          <table>
+          <table class="execution-table">
             <thead>
               <tr>
                 <th>Time</th>
                 <th>Agent</th>
                 <th>Asset</th>
                 <th>Side</th>
+                <th>Quantite</th>
                 <th>Notional</th>
                 <th>Price</th>
                 <th>Fee</th>
+                <th>Raison Trade</th>
+                <th>Contexte Signal</th>
               </tr>
             </thead>
             <tbody id="tradesBody"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-head">
-          <h2>Decision Log</h2>
-          <p id="decisionMeta">Dernieres decisions</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>Agent</th>
-                <th>Asset</th>
-                <th>Regime</th>
-                <th>Action</th>
-                <th>Score</th>
-                <th>Strategies</th>
-              </tr>
-            </thead>
-            <tbody id="decisionsBody"></tbody>
           </table>
         </div>
       </section>

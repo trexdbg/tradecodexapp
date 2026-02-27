@@ -1,12 +1,6 @@
 const DATA_URL = "./data/dashboard-data.json";
 const FALLBACK_URL = "./data/sample-dashboard-data.json";
-const SCORE_COLORS = {
-  BTC: "#4ecdc4",
-  ETH: "#f4d35e",
-  SOL: "#ff8a5b",
-  BNB: "#7aa2f7",
-  XRP: "#f07178",
-};
+const PORTFOLIO_COLOR = "#19b4d6";
 
 const currency = new Intl.NumberFormat("fr-FR", {
   style: "currency",
@@ -84,7 +78,7 @@ function renderDashboard() {
   renderMarketTiles();
   renderAgents();
   renderAgentDetail();
-  renderScoreChart();
+  renderPortfolioEvolutionChart();
   renderTables();
   renderEvents();
 }
@@ -208,6 +202,7 @@ function renderAgents() {
       state.selectedAgentId = agent.id;
       renderAgents();
       renderAgentDetail();
+      renderPortfolioEvolutionChart();
     });
     agentsGrid.appendChild(card);
   });
@@ -333,7 +328,6 @@ function renderHistoryTradesTable(closedTrades) {
 
 function renderTables() {
   renderTradesTable();
-  renderDecisionsTable();
 }
 
 function renderTradesTable() {
@@ -345,56 +339,27 @@ function renderTradesTable() {
 
   const trades = filterRows(state.data.recent_trades || []);
   if (!trades.length) {
-    body.innerHTML = `<tr><td colspan="7" class="no-data">Aucun trade pour ce filtre.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="10" class="no-data">Aucun trade pour ce filtre.</td></tr>`;
     return;
   }
 
-  trades.slice(0, 80).forEach((trade) => {
+  trades.slice(0, 30).forEach((trade) => {
     const tr = document.createElement("tr");
-    const sideClass = trade.side === "BUY" ? "positive" : "negative";
+    const side = String(trade.side || "").toUpperCase();
+    const sideClass = side === "BUY" ? "positive" : side === "SELL" ? "negative" : "";
+    const reasonLabel = formatTradeReason(trade.reason);
+    const decisionContext = formatDecisionContext(findDecisionContextForTrade(trade));
     tr.innerHTML = `
       <td>${formatDateTime(trade.created_at)}</td>
       <td>${escapeHtml(trade.agent_id)}</td>
       <td>${escapeHtml(trade.asset)}</td>
-      <td class="${sideClass}">${escapeHtml(trade.side)}</td>
+      <td class="${sideClass}">${escapeHtml(side || "-")}</td>
+      <td>${formatQuantity(trade.quantity)}</td>
       <td>${formatMoney(trade.notional_eur)}</td>
       <td>${formatMoney(trade.price)}</td>
       <td>${formatMoney(trade.fee_eur)}</td>
-    `;
-    body.appendChild(tr);
-  });
-}
-
-function renderDecisionsTable() {
-  const body = document.querySelector("#decisionsBody");
-  const meta = document.querySelector("#decisionMeta");
-  if (!body || !meta) {
-    return;
-  }
-  body.innerHTML = "";
-
-  const decisions = filterRows(state.data.recent_decisions || []);
-  meta.textContent = `${decisions.length} decisions filtrees`;
-  if (!decisions.length) {
-    body.innerHTML = `<tr><td colspan="7" class="no-data">Aucune decision pour ce filtre.</td></tr>`;
-    return;
-  }
-
-  decisions.slice(0, 100).forEach((decision) => {
-    const score = Number(decision.score || 0);
-    const strategies = Object.entries(decision.rationale?.strategy_scores || {})
-      .filter(([, value]) => Math.abs(Number(value || 0)) > 0.01)
-      .map(([name]) => name)
-      .join(", ");
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${formatDateTime(decision.created_at)}</td>
-      <td>${escapeHtml(decision.agent_id)}</td>
-      <td>${escapeHtml(decision.asset)}</td>
-      <td>${escapeHtml(decision.regime)}</td>
-      <td>${escapeHtml(decision.action)}</td>
-      <td><span class="score-pill ${score >= 0 ? "positive" : "negative"}">${score.toFixed(3)}</span></td>
-      <td>${escapeHtml(strategies || "-")}</td>
+      <td class="reason-cell">${escapeHtml(reasonLabel)}</td>
+      <td class="context-cell">${escapeHtml(decisionContext)}</td>
     `;
     body.appendChild(tr);
   });
@@ -424,27 +389,54 @@ function renderEvents() {
   });
 }
 
-function renderScoreChart() {
-  const chart = document.querySelector("#scoreChart");
-  const legend = document.querySelector("#chartLegend");
-  if (!chart || !legend) {
+function renderPortfolioEvolutionChart() {
+  const chart = document.querySelector("#portfolioChart");
+  const meta = document.querySelector("#portfolioChartMeta");
+  if (!chart || !meta) {
     return;
   }
 
   chart.innerHTML = "";
-  legend.innerHTML = "";
-  const width = 1000;
-  const height = 280;
-  const padding = 28;
-  const mid = height / 2;
-  const seriesByAsset = state.data.score_series || {};
-  const assets = state.data.system?.supported_assets || [];
-
-  const activeAssets = assets.filter((asset) => (seriesByAsset[asset] || []).length > 1);
-  if (!activeAssets.length) {
-    chart.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">Pas assez de signaux pour tracer une courbe</text>`;
+  const selectedAgent = (state.data.agents || []).find((agent) => agent.id === state.selectedAgentId);
+  if (!selectedAgent) {
+    meta.textContent = "Agent selectionne";
+    chart.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">Selectionne un agent pour voir sa courbe</text>`;
     return;
   }
+
+  const series = buildPortfolioEvolutionSeries(selectedAgent);
+  if (!series.length) {
+    meta.textContent = `${selectedAgent.name} (${selectedAgent.id})`;
+    chart.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">Pas assez de donnees pour tracer la courbe</text>`;
+    return;
+  }
+
+  const startValue = Number(series[0].equity || 0);
+  const endValue = Number(series[series.length - 1].equity || 0);
+  const delta = endValue - startValue;
+  const deltaPct = startValue !== 0 ? delta / startValue : 0;
+  meta.textContent = `${selectedAgent.name} (${selectedAgent.id}) | ${formatMoney(delta)} (${formatPercent(
+    deltaPct
+  )})`;
+
+  const width = 1000;
+  const height = 280;
+  const padding = 32;
+  const values = series.map((point) => Number(point.equity || 0));
+  let minValue = Math.min(...values);
+  let maxValue = Math.max(...values);
+  if (Math.abs(maxValue - minValue) < 1e-9) {
+    const offset = Math.max(Math.abs(maxValue) * 0.015, 0.5);
+    minValue -= offset;
+    maxValue += offset;
+  }
+  const verticalPad = Math.max((maxValue - minValue) * 0.18, 0.5);
+  const yMin = minValue - verticalPad;
+  const yMax = maxValue + verticalPad;
+  const toY = (value) => {
+    const ratio = (Number(value || 0) - yMin) / Math.max(1e-9, yMax - yMin);
+    return height - padding - ratio * (height - padding * 2);
+  };
 
   for (let i = 0; i < 5; i += 1) {
     const y = padding + ((height - padding * 2) / 4) * i;
@@ -453,32 +445,179 @@ function renderScoreChart() {
       `<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="rgba(85,160,194,0.2)" stroke-width="1" />`
     );
   }
+
+  const xStep = (width - padding * 2) / Math.max(1, series.length - 1);
+  const linePath = series
+    .map((point, index) => {
+      const x = padding + xStep * index;
+      const y = toY(point.equity);
+      return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+    })
+    .join(" ");
+  const areaPath = `${linePath} L ${(padding + xStep * (series.length - 1)).toFixed(2)} ${(
+    height - padding
+  ).toFixed(2)} L ${padding.toFixed(2)} ${(height - padding).toFixed(2)} Z`;
   chart.insertAdjacentHTML(
     "beforeend",
-    `<line x1="0" y1="${mid}" x2="${width}" y2="${mid}" stroke="rgba(25,180,214,0.45)" stroke-width="1.5" />`
+    `<path d="${areaPath}" fill="rgba(25,180,214,0.12)" stroke="none" />`
+  );
+  chart.insertAdjacentHTML(
+    "beforeend",
+    `<path d="${linePath}" fill="none" stroke="${PORTFOLIO_COLOR}" stroke-width="2.6" stroke-linecap="round" />`
   );
 
-  activeAssets.forEach((asset) => {
-    const points = seriesByAsset[asset];
-    const xStep = (width - padding * 2) / Math.max(1, points.length - 1);
-    const path = points
-      .map((point, index) => {
-        const x = padding + xStep * index;
-        const y = mid - Number(point.score || 0) * (mid - padding) * 0.92;
-        return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
-      })
-      .join(" ");
-    const color = SCORE_COLORS[asset] || "#19b4d6";
-    chart.insertAdjacentHTML(
-      "beforeend",
-      `<path d="${path}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round" />`
-    );
+  const endX = padding + xStep * (series.length - 1);
+  const endY = toY(endValue);
+  const startY = toY(startValue);
+  chart.insertAdjacentHTML(
+    "beforeend",
+    `<line x1="${padding}" y1="${startY.toFixed(2)}" x2="${width - padding}" y2="${startY.toFixed(
+      2
+    )}" stroke="rgba(25,180,214,0.25)" stroke-dasharray="4 4" />`
+  );
+  chart.insertAdjacentHTML(
+    "beforeend",
+    `<circle cx="${endX.toFixed(2)}" cy="${endY.toFixed(2)}" r="4.2" fill="${PORTFOLIO_COLOR}" />`
+  );
+  chart.insertAdjacentHTML(
+    "beforeend",
+    `<text x="${endX.toFixed(2)}" y="${(endY - 10).toFixed(2)}" fill="#cce8f3" font-size="12" text-anchor="end">${escapeHtml(
+      formatMoney(endValue)
+    )}</text>`
+  );
+}
 
-    const legendItem = document.createElement("span");
-    legendItem.className = "legend-item";
-    legendItem.innerHTML = `<span class="legend-swatch" style="background:${color}"></span>${escapeHtml(asset)}`;
-    legend.appendChild(legendItem);
+function buildPortfolioEvolutionSeries(agent) {
+  const trades = (state.data.recent_trades || [])
+    .filter((trade) => trade.agent_id === agent.id)
+    .sort((a, b) => toTimestamp(a.created_at) - toTimestamp(b.created_at));
+
+  const prices = new Map();
+  (state.data.market || []).forEach((item) => {
+    prices.set(String(item.asset || "").toUpperCase(), Number(item.last_price || 0));
   });
+
+  const quantities = new Map();
+  let cash = Number(agent.initial_balance || 0);
+  const points = [];
+  const addPoint = (time, equity) => {
+    if (!Number.isFinite(equity)) {
+      return;
+    }
+    points.push({ time, equity });
+  };
+  addPoint(trades[0]?.created_at || state.data.generated_at, cash);
+
+  trades.forEach((trade) => {
+    const side = String(trade.side || "").toUpperCase();
+    const asset = String(trade.asset || "").toUpperCase();
+    const quantity = Number(trade.quantity || 0);
+    const notional = Number(trade.notional_eur || 0);
+    const fee = Number(trade.fee_eur || 0);
+    const price = Number(trade.price || 0);
+
+    if (!asset || quantity <= 0 || price <= 0) {
+      return;
+    }
+
+    prices.set(asset, price);
+    const currentQty = Number(quantities.get(asset) || 0);
+    if (side === "BUY") {
+      cash -= notional + fee;
+      quantities.set(asset, currentQty + quantity);
+    } else if (side === "SELL") {
+      cash += notional - fee;
+      const newQty = currentQty - quantity;
+      if (Math.abs(newQty) <= 1e-10) {
+        quantities.delete(asset);
+      } else {
+        quantities.set(asset, newQty);
+      }
+    }
+
+    let positionsValue = 0;
+    quantities.forEach((qty, heldAsset) => {
+      positionsValue += Number(qty || 0) * Number(prices.get(heldAsset) || 0);
+    });
+    addPoint(trade.created_at, cash + positionsValue);
+  });
+
+  addPoint(state.data.generated_at, Number(agent.equity || cash));
+  if (points.length === 1) {
+    addPoint(state.data.generated_at, Number(agent.equity || points[0].equity));
+  }
+  return points;
+}
+
+function formatTradeReason(reason) {
+  const raw = String(reason || "").trim();
+  if (!raw) {
+    return "-";
+  }
+
+  const mapped = raw
+    .split("|")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const [key, ...rest] = part.split("=");
+      if (!rest.length) {
+        return part.replace(/_/g, " ");
+      }
+      const keyLabel = key.replace(/_/g, " ");
+      const valueLabel = rest.join("=").replace(/_/g, " ");
+      return `${keyLabel}: ${valueLabel}`;
+    });
+  return mapped.join(" | ") || raw.replace(/_/g, " ");
+}
+
+function findDecisionContextForTrade(trade) {
+  const tradeTs = toTimestamp(trade.created_at);
+  const decisions = (state.data.recent_decisions || []).filter(
+    (decision) => decision.agent_id === trade.agent_id && decision.asset === trade.asset
+  );
+  if (!decisions.length || !tradeTs) {
+    return null;
+  }
+
+  const maxLagMs = 6 * 60 * 60 * 1000;
+  const prior = decisions
+    .map((decision) => {
+      const decisionTs = toTimestamp(decision.created_at);
+      return {
+        ...decision,
+        lag: tradeTs - decisionTs,
+      };
+    })
+    .filter((decision) => decision.lag >= 0 && decision.lag <= maxLagMs)
+    .sort((a, b) => a.lag - b.lag);
+  if (prior.length) {
+    return prior[0];
+  }
+
+  const nearest = decisions
+    .map((decision) => {
+      const decisionTs = toTimestamp(decision.created_at);
+      return {
+        ...decision,
+        distance: Math.abs(tradeTs - decisionTs),
+      };
+    })
+    .sort((a, b) => a.distance - b.distance);
+  return nearest[0] || null;
+}
+
+function formatDecisionContext(decision) {
+  if (!decision) {
+    return "-";
+  }
+  const score = Number(decision.score || 0);
+  const scoreText = `${score >= 0 ? "+" : ""}${score.toFixed(3)}`;
+  const strategies = Object.entries(decision.rationale?.strategy_scores || {})
+    .filter(([, value]) => Math.abs(Number(value || 0)) > 0.01)
+    .map(([name]) => name.replace(/_/g, " "));
+  const strategyText = strategies.length ? strategies.join(", ") : "no strategy details";
+  return `${decision.action} | score ${scoreText} | regime ${decision.regime || "-"} | ${strategyText}`;
 }
 
 function filterRows(rows) {

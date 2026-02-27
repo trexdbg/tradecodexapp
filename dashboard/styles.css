@@ -353,7 +353,7 @@ h2 {
   background: linear-gradient(0deg, rgba(25, 180, 214, 0.08), transparent 30%);
 }
 
-#scoreChart {
+#portfolioChart {
   width: 100%;
   height: 280px;
 }
@@ -417,12 +417,27 @@ table {
   min-width: 760px;
 }
 
+.execution-table {
+  min-width: 1300px;
+}
+
 th,
 td {
   padding: 0.52rem 0.45rem;
   text-align: left;
   border-bottom: 1px solid rgba(85, 160, 194, 0.15);
   font-size: 0.82rem;
+}
+
+.execution-table td.reason-cell,
+.execution-table td.context-cell {
+  max-width: 360px;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.execution-table td.context-cell {
+  color: #aac4d3;
 }
 
 th {
