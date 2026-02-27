@@ -319,3 +319,80 @@ Target: origin/main
 Commit message: chore: update trading snapshot
 Paths: trading-system\database.sqlite, dashboard\data\dashboard-data.json, trading-system\logs\orchestrator.log
 Commit: 5b58405
+2026-02-27T23:21:35Z | INFO | orchestrator | orchestrator_started | config=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\config.json | db=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\database.sqlite
+2026-02-27T23:21:37Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=97.08 | cash=97.08
+2026-02-27T23:21:38Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=HOLD | score=0.006 | regime=ranging
+2026-02-27T23:21:39Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=0.245 | regime=ranging
+2026-02-27T23:21:40Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=HOLD | score=0.306 | regime=ranging
+2026-02-27T23:21:41Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=0.039 | regime=ranging
+2026-02-27T23:21:41Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=HOLD | score=0.165 | regime=ranging
+2026-02-27T23:21:41Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T23:21:42Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=HOLD | score=-0.132 | regime=trending
+2026-02-27T23:21:43Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=-0.404 | regime=trending
+2026-02-27T23:21:44Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=-0.258 | regime=trending
+2026-02-27T23:21:44Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=104.91 | cash=104.91
+2026-02-27T23:21:44Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=HOLD | score=-0.091 | regime=ranging
+2026-02-27T23:21:44Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=0.221 | regime=ranging
+2026-02-27T23:21:44Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=HOLD | score=0.146 | regime=ranging
+2026-02-27T23:21:45Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=0.088 | regime=ranging
+2026-02-27T23:21:45Z | INFO | orchestrator | agent_cycle_start | agent=agent_04_daily_executor | equity=100.74 | cash=100.74
+2026-02-27T23:21:45Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=BTC | action=HOLD | score=0.042 | regime=ranging
+2026-02-27T23:21:45Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=ETH | action=HOLD | score=-0.011 | regime=ranging
+2026-02-27T23:21:45Z | INFO | orchestrator | cycle_complete | cycle=1 | summary={'timestamp': '2026-02-27T22:21:37.849797+00:00', 'decisions': 14, 'trades': 0, 'market_snapshot': {'BTC': {'last_price': 65580.9, 'price_change_pct_24h': -2.712, 'quote_volume_24h': 1383202104.8411984}, 'ETH': {'last_price': 1919.65, 'price_change_pct_24h': -5.435, 'quote_volume_24h': 803540636.216455}, 'SOL': {'last_price': 81.32, 'price_change_pct_24h': -5.365, 'quote_volume_24h': 271705884.42618}, 'BNB': {'last_price': 611.07, 'price_change_pct_24h': -2.008, 'quote_volume_24h': 77940855.37025}, 'XRP': {'last_price': 1.3511, 'price_change_pct_24h': -3.23, 'quote_volume_24h': 219400482.06222}}, 'data_quality': {'news_count': 40, 'news_feed_errors': {}, 'sentiment_mentions': {'BTC': 18, 'ETH': 4, 'SOL': 4, 'BNB': 1, 'XRP': 1}, 'snapshot_sources': {'BTC': 'binance', 'ETH': 'binance', 'SOL': 'binance', 'BNB': 'binance', 'XRP': 'binance'}, 'market_sources': {'snapshot': {'binance': 5}, 'candles': {'binance': 18}}}}
+2026-02-27T23:21:45Z | INFO | orchestrator | dashboard_export_stdout | Dashboard export written to: C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
+2026-02-27T23:21:45Z | INFO | orchestrator | dashboard_export_complete | output=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
+2026-02-27T23:21:49Z | INFO | orchestrator | push_github_complete | output=Status: pushed
+Repo: C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster
+Target: origin/main
+Commit message: chore: update trading snapshot
+Paths: trading-system\database.sqlite, dashboard\data\dashboard-data.json, trading-system\logs\orchestrator.log
+Commit: d70f60d
+2026-02-27T23:45:47Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=97.08 | cash=97.08
+2026-02-27T23:45:47Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=HOLD | score=-0.084 | regime=ranging
+2026-02-27T23:45:48Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=0.028 | regime=ranging
+2026-02-27T23:45:50Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=HOLD | score=0.046 | regime=ranging
+2026-02-27T23:45:50Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=-0.117 | regime=ranging
+2026-02-27T23:45:51Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=HOLD | score=0.003 | regime=ranging
+2026-02-27T23:45:51Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T23:45:52Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=HOLD | score=0.079 | regime=ranging
+2026-02-27T23:45:53Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=-0.244 | regime=trending
+2026-02-27T23:45:54Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=-0.252 | regime=trending
+2026-02-27T23:45:54Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=104.91 | cash=104.91
+2026-02-27T23:45:54Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=HOLD | score=-0.080 | regime=ranging
+2026-02-27T23:45:54Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=-0.016 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=HOLD | score=-0.027 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=-0.049 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | agent_cycle_start | agent=agent_04_daily_executor | equity=100.74 | cash=100.74
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=BTC | action=HOLD | score=0.029 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=ETH | action=HOLD | score=-0.009 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | agent_cycle_start | agent=agent_05_alpha_hunter | equity=100.00 | cash=100.00
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=BTC | action=HOLD | score=-0.021 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=SOL | action=HOLD | score=-0.080 | regime=ranging
+2026-02-27T23:45:55Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=XRP | action=HOLD | score=-0.057 | regime=ranging
+2026-02-27T23:52:20Z | INFO | orchestrator | orchestrator_started | config=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\config.json | db=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\database.sqlite
+2026-02-27T23:52:21Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=97.08 | cash=97.08
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=HOLD | score=-0.315 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=-0.158 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=HOLD | score=-0.438 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=0.096 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=HOLD | score=0.218 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=HOLD | score=-0.078 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=0.239 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=0.253 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=104.91 | cash=104.91
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=HOLD | score=-0.260 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=0.134 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=HOLD | score=0.495 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=0.302 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | agent_cycle_start | agent=agent_04_daily_executor | equity=100.74 | cash=100.74
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=BTC | action=HOLD | score=0.000 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=ETH | action=HOLD | score=0.009 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | agent_cycle_start | agent=agent_05_alpha_hunter | equity=100.00 | cash=100.00
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=BTC | action=HOLD | score=-0.166 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=SOL | action=HOLD | score=0.098 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | decision | agent=agent_05_alpha_hunter | asset=XRP | action=HOLD | score=0.322 | regime=ranging
+2026-02-27T23:52:21Z | INFO | orchestrator | cycle_complete | cycle=1 | summary={'timestamp': '2026-02-27T22:52:21.260679+00:00', 'decisions': 17, 'trades': 0, 'market_snapshot': {'BTC': {'last_price': 59197.41378765, 'price_change_pct_24h': 0.3045443346529668, 'quote_volume_24h': 0.0}, 'ETH': {'last_price': 3264.36363821, 'price_change_pct_24h': 0.18529643377680488, 'quote_volume_24h': 0.0}, 'SOL': {'last_price': 119.27685201, 'price_change_pct_24h': -0.10098434726105764, 'quote_volume_24h': 0.0}, 'BNB': {'last_price': 540.27285972, 'price_change_pct_24h': -0.11429644784149355, 'quote_volume_24h': 0.0}, 'XRP': {'last_price': 0.64045349, 'price_change_pct_24h': 0.3001203798476082, 'quote_volume_24h': 0.0}}, 'data_quality': {'news_count': 0, 'news_feed_errors': {'https://cointelegraph.com/rss': 'URLError', 'https://www.coindesk.com/arc/outboundfeeds/rss/': 'URLError'}, 'sentiment_mentions': {'BTC': 0, 'ETH': 0, 'SOL': 0, 'BNB': 0, 'XRP': 0}, 'snapshot_sources': {'BTC': 'synthetic', 'ETH': 'synthetic', 'SOL': 'synthetic', 'BNB': 'synthetic', 'XRP': 'synthetic'}, 'market_sources': {'snapshot': {'synthetic': 5}, 'candles': {'synthetic': 19}}}}
+2026-02-27T23:52:22Z | INFO | orchestrator | dashboard_export_stdout | Dashboard export written to: C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
+2026-02-27T23:52:22Z | INFO | orchestrator | dashboard_export_complete | output=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
+2026-02-27T23:52:22Z | INFO | orchestrator | push_github_skipped | reason=git_remote_unreachable
