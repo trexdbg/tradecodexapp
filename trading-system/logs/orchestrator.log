@@ -1,0 +1,38 @@
+2026-02-27T21:22:32Z | INFO | orchestrator | orchestrator_started | config=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\config.json | db=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\database.sqlite
+2026-02-27T21:22:34Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=100.00 | cash=100.00
+2026-02-27T21:22:34Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=HOLD | score=-0.014 | regime=ranging
+2026-02-27T21:22:35Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=0.072 | regime=ranging
+2026-02-27T21:22:35Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=HOLD | score=0.008 | regime=ranging
+2026-02-27T21:22:35Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=-0.016 | regime=ranging
+2026-02-27T21:22:36Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=HOLD | score=-0.017 | regime=ranging
+2026-02-27T21:22:36Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T21:22:36Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=SELL | score=-0.381 | regime=ranging
+2026-02-27T21:22:36Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=-0.318 | regime=trending
+2026-02-27T21:22:37Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=-0.335 | regime=trending
+2026-02-27T21:22:37Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=100.00 | cash=100.00
+2026-02-27T21:22:37Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=HOLD | score=-0.008 | regime=ranging
+2026-02-27T21:22:37Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=0.109 | regime=ranging
+2026-02-27T21:22:37Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=HOLD | score=-0.008 | regime=ranging
+2026-02-27T21:22:38Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=-0.009 | regime=ranging
+2026-02-27T21:22:38Z | INFO | orchestrator | cycle_complete | cycle=1 | summary={'timestamp': '2026-02-27T20:22:34.513111+00:00', 'decisions': 12, 'trades': 0, 'market_snapshot': {'BTC': {'last_price': 65581.31, 'price_change_pct_24h': -3.167, 'quote_volume_24h': 1398365581.638227}, 'ETH': {'last_price': 1924.31, 'price_change_pct_24h': -5.448, 'quote_volume_24h': 798633899.327669}, 'SOL': {'last_price': 81.73, 'price_change_pct_24h': -5.743, 'quote_volume_24h': 266911281.62342}, 'BNB': {'last_price': 611.02, 'price_change_pct_24h': -2.215, 'quote_volume_24h': 79008619.78831}, 'XRP': {'last_price': 1.3534, 'price_change_pct_24h': -3.755, 'quote_volume_24h': 216989533.78986}}}
+2026-02-27T21:56:55Z | INFO | orchestrator | orchestrator_started | config=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\config.json | db=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\database.sqlite
+2026-02-27T21:56:55Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=100.00 | cash=100.00
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=BUY | score=0.484 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | order_result | agent=agent_01_regime_risk | asset=BTC | side=BUY | status=filled | notional=16.95
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=-0.235 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=BUY | score=0.322 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | order_result | agent=agent_01_regime_risk | asset=SOL | side=BUY | status=filled | notional=11.28
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=-0.012 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=SELL | score=-0.504 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=HOLD | score=0.059 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=-0.032 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=0.074 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=100.00 | cash=100.00
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=BUY | score=0.667 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | order_result | agent=agent_03_defensive_news | asset=BTC | side=BUY | status=filled | notional=8.00
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=-0.269 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=SELL | score=-0.667 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=-0.033 | regime=ranging
+2026-02-27T21:56:55Z | INFO | orchestrator | cycle_complete | cycle=1 | summary={'timestamp': '2026-02-27T20:56:55.181226+00:00', 'decisions': 12, 'trades': 3, 'market_snapshot': {'BTC': {'last_price': 60696.63645247, 'price_change_pct_24h': 0.09285179677050719, 'quote_volume_24h': 0.0}, 'ETH': {'last_price': 3222.68618029, 'price_change_pct_24h': 0.2011967398574981, 'quote_volume_24h': 0.0}, 'SOL': {'last_price': 117.19029711, 'price_change_pct_24h': -0.17030016827082595, 'quote_volume_24h': 0.0}, 'BNB': {'last_price': 550.8118877, 'price_change_pct_24h': -0.20721334148898152, 'quote_volume_24h': 0.0}, 'XRP': {'last_price': 0.65533293, 'price_change_pct_24h': 0.045851153757099326, 'quote_volume_24h': 0.0}}}
+2026-02-27T21:56:55Z | INFO | orchestrator | dashboard_export_complete | output=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
