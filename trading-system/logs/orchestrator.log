@@ -144,3 +144,23 @@ RuntimeError: fatal: unable to access 'https://github.com/trexdbg/tradecodexapp.
 2026-02-27T22:29:17Z | INFO | orchestrator | dashboard_export_stdout | Dashboard export written to: C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
 2026-02-27T22:29:17Z | INFO | orchestrator | dashboard_export_complete | output=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\dashboard\data\dashboard-data.json
 2026-02-27T22:29:17Z | INFO | orchestrator | push_github_skipped | reason=git_credentials_not_configured
+2026-02-27T22:56:49Z | INFO | orchestrator | orchestrator_started | config=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\config.json | db=C:\Users\Tiffen\Desktop\SideProject\codex\cryptoMaster\trading-system\database.sqlite
+2026-02-27T22:56:49Z | INFO | orchestrator | agent_cycle_start | agent=agent_01_regime_risk | equity=102.40 | cash=4.99
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BTC | action=BUY | score=0.484 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=ETH | action=HOLD | score=-0.235 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=SOL | action=HOLD | score=0.322 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=BNB | action=HOLD | score=-0.012 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_01_regime_risk | asset=XRP | action=HOLD | score=-0.504 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | agent_cycle_start | agent=agent_02_momentum_guard | equity=100.00 | cash=100.00
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=BTC | action=HOLD | score=0.059 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=ETH | action=HOLD | score=-0.032 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_02_momentum_guard | asset=SOL | action=HOLD | score=0.074 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | agent_cycle_start | agent=agent_03_defensive_news | equity=101.59 | cash=59.96
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BTC | action=HOLD | score=0.667 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=ETH | action=HOLD | score=-0.269 | regime=ranging
+2026-02-27T22:56:49Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=XRP | action=HOLD | score=-0.667 | regime=ranging
+2026-02-27T22:56:50Z | INFO | orchestrator | decision | agent=agent_03_defensive_news | asset=BNB | action=HOLD | score=-0.033 | regime=ranging
+2026-02-27T22:56:50Z | INFO | orchestrator | agent_cycle_start | agent=agent_04_daily_executor | equity=100.24 | cash=93.99
+2026-02-27T22:56:50Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=BTC | action=HOLD | score=-0.382 | regime=ranging
+2026-02-27T22:56:50Z | INFO | orchestrator | decision | agent=agent_04_daily_executor | asset=ETH | action=HOLD | score=0.001 | regime=ranging
+2026-02-27T22:56:50Z | INFO | orchestrator | cycle_complete | cycle=1 | summary={'timestamp': '2026-02-27T21:56:49.669725+00:00', 'decisions': 14, 'trades': 0, 'market_snapshot': {'BTC': {'last_price': 60696.63645247, 'price_change_pct_24h': 0.09285179677050719, 'quote_volume_24h': 0.0}, 'ETH': {'last_price': 3222.68618029, 'price_change_pct_24h': 0.2011967398574981, 'quote_volume_24h': 0.0}, 'SOL': {'last_price': 117.19029711, 'price_change_pct_24h': -0.17030016827082595, 'quote_volume_24h': 0.0}, 'BNB': {'last_price': 550.8118877, 'price_change_pct_24h': -0.20721334148898152, 'quote_volume_24h': 0.0}, 'XRP': {'last_price': 0.65533293, 'price_change_pct_24h': 0.045851153757099326, 'quote_volume_24h': 0.0}}}
