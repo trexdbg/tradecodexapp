@@ -19,10 +19,12 @@ const state = {
   data: emptyPayload(),
   agentFilter: "ALL",
   assetFilter: "ALL",
+  selectedAgentId: null,
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   state.data = await loadDashboardData();
+  ensureSelectedAgent();
   bootstrapFilters();
   renderDashboard();
 });
@@ -76,10 +78,12 @@ function fillSelect(select, values) {
 }
 
 function renderDashboard() {
+  ensureSelectedAgent();
   renderHeader();
   renderKpis();
   renderMarketTiles();
   renderAgents();
+  renderAgentDetail();
   renderScoreChart();
   renderTables();
   renderEvents();
@@ -99,16 +103,45 @@ function renderHeader() {
 }
 
 function renderKpis() {
-  const summary = state.data.summary || {};
-  setText("#kpiEquity", formatMoney(summary.total_equity));
-  const pnlNode = document.querySelector("#kpiPnl");
-  if (pnlNode) {
-    pnlNode.textContent = `${formatMoney(summary.pnl_abs)} (${formatPercent(summary.pnl_pct)})`;
-    pnlNode.classList.toggle("positive", (summary.pnl_abs || 0) >= 0);
-    pnlNode.classList.toggle("negative", (summary.pnl_abs || 0) < 0);
+  const topAgent = getTopPerformerAgent();
+  const topPerfNode = document.querySelector("#kpiTopPerf");
+  const topGainLossNode = document.querySelector("#kpiTopGainLoss");
+
+  if (!topAgent) {
+    setText("#kpiTopAgent", "-");
+    setText("#kpiTopPerf", "-");
+    setText("#kpiTopWinLose", "-");
+    setText("#kpiTopGainLoss", "-");
+    if (topPerfNode) {
+      topPerfNode.classList.remove("positive", "negative");
+    }
+    if (topGainLossNode) {
+      topGainLossNode.classList.remove("positive", "negative");
+    }
+    return;
   }
-  setText("#kpiDecisions", String(summary.decisions_last_24h || 0));
-  setText("#kpiTrades", String(summary.trades_last_24h || 0));
+
+  const analytics = computeAgentAnalytics(topAgent.id);
+  const topPnl = Number(topAgent.pnl_abs || 0);
+  setText("#kpiTopAgent", `${topAgent.name} (${topAgent.id})`);
+  if (topPerfNode) {
+    topPerfNode.textContent = `${formatMoney(topPnl)} (${formatPercent(topAgent.pnl_pct)})`;
+    topPerfNode.classList.toggle("positive", topPnl >= 0);
+    topPerfNode.classList.toggle("negative", topPnl < 0);
+  }
+
+  setText(
+    "#kpiTopWinLose",
+    `${formatRate(analytics.stats.winRate)} / ${formatRate(analytics.stats.loseRate)}`
+  );
+
+  if (topGainLossNode) {
+    topGainLossNode.textContent = `${formatMoney(analytics.stats.gainsEur)} / ${formatMoney(
+      -analytics.stats.lossesEur
+    )}`;
+    topGainLossNode.classList.toggle("positive", analytics.stats.netRealizedEur >= 0);
+    topGainLossNode.classList.toggle("negative", analytics.stats.netRealizedEur < 0);
+  }
 }
 
 function renderMarketTiles() {
@@ -143,29 +176,158 @@ function renderAgents() {
   }
   agentsGrid.innerHTML = "";
 
-  const agents = [...(state.data.agents || [])];
-  agents.sort((a, b) => (b.equity || 0) - (a.equity || 0));
+  const agents = getAgentsSortedByPerformance();
   if (!agents.length) {
     agentsGrid.innerHTML = `<p class="no-data">Aucun agent initialise.</p>`;
     return;
   }
 
   agents.forEach((agent) => {
+    const analytics = computeAgentAnalytics(agent.id);
     const pnl = Number(agent.pnl_abs || 0);
-    const card = document.createElement("article");
-    card.className = "agent-card";
+    const toneClass = pnl > 0 ? "positive-card" : pnl < 0 ? "negative-card" : "neutral-card";
+    const selectedClass = state.selectedAgentId === agent.id ? "selected" : "";
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = `agent-card ${toneClass} ${selectedClass}`.trim();
+    card.setAttribute("aria-pressed", state.selectedAgentId === agent.id ? "true" : "false");
     card.innerHTML = `
       <div class="agent-row">
         <p class="agent-name">${escapeHtml(agent.name)} <span class="muted">(${escapeHtml(agent.id)})</span></p>
         <p class="agent-risk">${escapeHtml(agent.risk_profile)}</p>
       </div>
       <div class="agent-metrics">
-        <p>Equity<strong>${formatMoney(agent.equity)}</strong></p>
-        <p>Cash<strong>${formatMoney(agent.cash_balance)}</strong></p>
-        <p>PnL<strong class="${pnl >= 0 ? "positive" : "negative"}">${formatMoney(pnl)}</strong></p>
+        <p>Perf<strong class="${pnl >= 0 ? "positive" : "negative"}">${formatMoney(pnl)} (${formatPercent(
+      agent.pnl_pct
+    )})</strong></p>
+        <p>Win rate<strong>${formatRate(analytics.stats.winRate)}</strong></p>
+        <p>Trades gagnes<strong>${analytics.stats.wins}</strong></p>
       </div>
     `;
+    card.addEventListener("click", () => {
+      state.selectedAgentId = agent.id;
+      renderAgents();
+      renderAgentDetail();
+    });
     agentsGrid.appendChild(card);
+  });
+}
+
+function renderAgentDetail() {
+  const detailTitle = document.querySelector("#agentDetailTitle");
+  const detailMeta = document.querySelector("#agentDetailMeta");
+  const detailSummary = document.querySelector("#agentDetailSummary");
+  if (!detailTitle || !detailMeta || !detailSummary) {
+    return;
+  }
+
+  const selectedAgent = (state.data.agents || []).find((agent) => agent.id === state.selectedAgentId);
+  if (!selectedAgent) {
+    detailTitle.textContent = "Focus Agent";
+    detailMeta.textContent = "Clique sur un agent pour ouvrir le detail.";
+    detailSummary.innerHTML = `<p class="no-data">Aucun agent selectionne.</p>`;
+    renderOpenTradesTable([]);
+    renderHistoryTradesTable([]);
+    return;
+  }
+
+  const analytics = computeAgentAnalytics(selectedAgent.id);
+  const pnl = Number(selectedAgent.pnl_abs || 0);
+  const assets = (selectedAgent.assets || []).join(", ") || "-";
+  const timeframes = (selectedAgent.timeframes || []).join(", ") || "-";
+
+  detailTitle.textContent = `${selectedAgent.name} (${selectedAgent.id})`;
+  detailMeta.textContent = `${selectedAgent.risk_profile.toUpperCase()} | Assets: ${assets} | TF: ${timeframes}`;
+  detailSummary.innerHTML = `
+    <article class="detail-stat">
+      <p>PnL total</p>
+      <strong class="${pnl >= 0 ? "positive" : "negative"}">${formatMoney(pnl)} (${formatPercent(
+    selectedAgent.pnl_pct
+  )})</strong>
+    </article>
+    <article class="detail-stat">
+      <p>Trades clotures</p>
+      <strong>${analytics.stats.closedCount}</strong>
+    </article>
+    <article class="detail-stat">
+      <p>Win rate</p>
+      <strong class="positive">${formatRate(analytics.stats.winRate)}</strong>
+    </article>
+    <article class="detail-stat">
+      <p>Lose rate</p>
+      <strong class="negative">${formatRate(analytics.stats.loseRate)}</strong>
+    </article>
+    <article class="detail-stat">
+      <p>Gains realises</p>
+      <strong class="positive">${formatMoney(analytics.stats.gainsEur)}</strong>
+    </article>
+    <article class="detail-stat">
+      <p>Pertes realisees</p>
+      <strong class="negative">${formatMoney(-analytics.stats.lossesEur)}</strong>
+    </article>
+    <article class="detail-stat">
+      <p>PnL realise net</p>
+      <strong class="${analytics.stats.netRealizedEur >= 0 ? "positive" : "negative"}">${formatMoney(
+    analytics.stats.netRealizedEur
+  )}</strong>
+    </article>
+  `;
+
+  renderOpenTradesTable(analytics.openTrades);
+  renderHistoryTradesTable(analytics.closedTrades);
+}
+
+function renderOpenTradesTable(openTrades) {
+  const body = document.querySelector("#openTradesBody");
+  if (!body) {
+    return;
+  }
+  body.innerHTML = "";
+
+  if (!openTrades.length) {
+    body.innerHTML = `<tr><td colspan="6" class="no-data">Aucun trade actif.</td></tr>`;
+    return;
+  }
+
+  openTrades.forEach((position) => {
+    const unrealized = Number(position.unrealized_pnl_eur || 0);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${escapeHtml(position.asset)}</td>
+      <td>${formatQuantity(position.quantity)}</td>
+      <td>${formatMoney(position.avg_price)}</td>
+      <td>${formatMoney(position.market_price)}</td>
+      <td>${formatMoney(position.market_value_eur)}</td>
+      <td class="${unrealized >= 0 ? "positive" : "negative"}">${formatMoney(unrealized)}</td>
+    `;
+    body.appendChild(tr);
+  });
+}
+
+function renderHistoryTradesTable(closedTrades) {
+  const body = document.querySelector("#historyTradesBody");
+  if (!body) {
+    return;
+  }
+  body.innerHTML = "";
+
+  if (!closedTrades.length) {
+    body.innerHTML = `<tr><td colspan="6" class="no-data">Aucun trade cloture dans l'historique exporte.</td></tr>`;
+    return;
+  }
+
+  closedTrades.slice(0, 120).forEach((trade) => {
+    const pnl = Number(trade.pnl_eur || 0);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${formatDateTime(trade.exit_at)}</td>
+      <td>${escapeHtml(trade.asset)}</td>
+      <td>${formatQuantity(trade.quantity)}</td>
+      <td>${formatMoney(trade.entry_price)}</td>
+      <td>${formatMoney(trade.exit_price)}</td>
+      <td class="${pnl >= 0 ? "positive" : "negative"}">${formatMoney(pnl)}</td>
+    `;
+    body.appendChild(tr);
   });
 }
 
@@ -327,6 +489,155 @@ function filterRows(rows) {
   });
 }
 
+function computeAgentAnalytics(agentId) {
+  const agent = (state.data.agents || []).find((row) => row.id === agentId);
+  const trades = (state.data.recent_trades || [])
+    .filter((trade) => trade.agent_id === agentId)
+    .sort((a, b) => toTimestamp(a.created_at) - toTimestamp(b.created_at));
+
+  const closedTrades = buildClosedTrades(trades).sort(
+    (a, b) => toTimestamp(b.exit_at) - toTimestamp(a.exit_at)
+  );
+  const openTrades = [...(agent?.positions || [])]
+    .map((position) => {
+      const quantity = Number(position.quantity || 0);
+      const avgPrice = Number(position.avg_price || 0);
+      const marketPrice = Number(position.market_price || 0);
+      return {
+        ...position,
+        unrealized_pnl_eur: (marketPrice - avgPrice) * quantity,
+      };
+    })
+    .sort((a, b) => Number(b.market_value_eur || 0) - Number(a.market_value_eur || 0));
+
+  const wins = closedTrades.filter((trade) => Number(trade.pnl_eur || 0) > 0).length;
+  const losses = closedTrades.filter((trade) => Number(trade.pnl_eur || 0) < 0).length;
+  const closedCount = wins + losses;
+  const gainsEur = closedTrades.reduce((sum, trade) => {
+    const pnl = Number(trade.pnl_eur || 0);
+    return pnl > 0 ? sum + pnl : sum;
+  }, 0);
+  const lossesEur = closedTrades.reduce((sum, trade) => {
+    const pnl = Number(trade.pnl_eur || 0);
+    return pnl < 0 ? sum + Math.abs(pnl) : sum;
+  }, 0);
+  const netRealizedEur = gainsEur - lossesEur;
+
+  return {
+    openTrades,
+    closedTrades,
+    stats: {
+      wins,
+      losses,
+      closedCount,
+      winRate: closedCount ? wins / closedCount : 0,
+      loseRate: closedCount ? losses / closedCount : 0,
+      gainsEur,
+      lossesEur,
+      netRealizedEur,
+    },
+  };
+}
+
+function buildClosedTrades(trades) {
+  const lotsByAsset = new Map();
+  const closedTrades = [];
+  const eps = 1e-10;
+
+  trades.forEach((trade) => {
+    const asset = String(trade.asset || "").toUpperCase();
+    const side = String(trade.side || "").toUpperCase();
+    const quantity = Number(trade.quantity || 0);
+    const price = Number(trade.price || 0);
+    const feeEur = Number(trade.fee_eur || 0);
+
+    if (!asset || quantity <= 0 || price <= 0) {
+      return;
+    }
+
+    if (!lotsByAsset.has(asset)) {
+      lotsByAsset.set(asset, []);
+    }
+
+    const lots = lotsByAsset.get(asset);
+    if (side === "BUY") {
+      lots.push({
+        remaining: quantity,
+        entryPrice: price,
+        entryAt: trade.created_at,
+        entryFeePerUnit: feeEur / quantity,
+      });
+      return;
+    }
+
+    if (side !== "SELL") {
+      return;
+    }
+
+    let remainingToClose = quantity;
+    const exitFeePerUnit = feeEur / quantity;
+    while (remainingToClose > eps && lots.length) {
+      const lot = lots[0];
+      const matchedQty = Math.min(lot.remaining, remainingToClose);
+      const entryFee = matchedQty * lot.entryFeePerUnit;
+      const exitFee = matchedQty * exitFeePerUnit;
+      const pnlEur = (price - lot.entryPrice) * matchedQty - entryFee - exitFee;
+
+      closedTrades.push({
+        asset,
+        quantity: matchedQty,
+        entry_price: lot.entryPrice,
+        exit_price: price,
+        entry_at: lot.entryAt,
+        exit_at: trade.created_at,
+        pnl_eur: pnlEur,
+      });
+
+      lot.remaining -= matchedQty;
+      remainingToClose -= matchedQty;
+      if (lot.remaining <= eps) {
+        lots.shift();
+      }
+    }
+  });
+
+  return closedTrades;
+}
+
+function ensureSelectedAgent() {
+  const agents = state.data.agents || [];
+  if (!agents.length) {
+    state.selectedAgentId = null;
+    return;
+  }
+  if (agents.some((agent) => agent.id === state.selectedAgentId)) {
+    return;
+  }
+  const topAgent = getTopPerformerAgent();
+  state.selectedAgentId = topAgent ? topAgent.id : agents[0].id;
+}
+
+function getTopPerformerAgent() {
+  const rankedAgents = getAgentsSortedByPerformance();
+  return rankedAgents.length ? rankedAgents[0] : null;
+}
+
+function getAgentsSortedByPerformance() {
+  return [...(state.data.agents || [])].sort(compareAgentPerformance);
+}
+
+function compareAgentPerformance(a, b) {
+  const pctDiff = Number(b.pnl_pct || 0) - Number(a.pnl_pct || 0);
+  if (Math.abs(pctDiff) > 1e-9) {
+    return pctDiff;
+  }
+  const absDiff = Number(b.pnl_abs || 0) - Number(a.pnl_abs || 0);
+  if (Math.abs(absDiff) > 1e-9) {
+    return absDiff;
+  }
+  return Number(b.equity || 0) - Number(a.equity || 0);
+}
+
 function formatMoney(value) {
   return currency.format(Number(value || 0));
 }
@@ -335,6 +646,18 @@ function formatPercent(value) {
   const number = Number(value || 0) * 100;
   const sign = number >= 0 ? "+" : "";
   return `${sign}${number.toFixed(2)}%`;
+}
+
+function formatRate(value) {
+  const number = Number(value || 0) * 100;
+  return `${number.toFixed(1)}%`;
+}
+
+function formatQuantity(value) {
+  return Number(value || 0).toLocaleString("fr-FR", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 8,
+  });
 }
 
 function formatDateTime(value) {
@@ -351,6 +674,11 @@ function formatDateTime(value) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function toTimestamp(value) {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? 0 : parsed.getTime();
 }
 
 function setText(selector, text) {

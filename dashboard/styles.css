@@ -140,11 +140,14 @@ h2 {
   font-weight: 700;
 }
 
+#kpiTopAgent {
+  font-size: clamp(0.92rem, 1.2vw, 1.2rem);
+  line-height: 1.25;
+}
+
+.layout > .panel,
 .market-panel,
-.split .panel,
-.panel:last-child,
-.panel:nth-last-child(2),
-.panel:nth-last-child(3) {
+.split .panel {
   padding: 1rem;
 }
 
@@ -196,14 +199,44 @@ h2 {
 
 .agents-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 0.7rem;
 }
 
 .agent-card {
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.75rem;
   background: linear-gradient(180deg, rgba(24, 38, 53, 0.35), rgba(10, 16, 23, 0.3));
+  color: var(--ink);
+  font: inherit;
+  appearance: none;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+}
+
+.agent-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(25, 180, 214, 0.62);
+}
+
+.agent-card.selected {
+  border-color: rgba(25, 180, 214, 0.88);
+  box-shadow: 0 0 0 1px rgba(25, 180, 214, 0.88), 0 0 20px rgba(25, 180, 214, 0.2);
+}
+
+.agent-card.positive-card {
+  border-color: rgba(87, 199, 133, 0.45);
+}
+
+.agent-card.negative-card {
+  border-color: rgba(255, 110, 110, 0.45);
+}
+
+.agent-card.neutral-card {
+  border-color: rgba(133, 170, 191, 0.38);
 }
 
 .agent-row {
@@ -249,6 +282,66 @@ h2 {
   color: var(--ink);
   font-size: 0.87rem;
   margin-top: 0.15rem;
+}
+
+.agent-detail-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.agent-detail-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.55rem;
+}
+
+.detail-stat {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.65rem;
+  background: rgba(9, 18, 25, 0.45);
+}
+
+.detail-stat p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.detail-stat strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.94rem;
+}
+
+.agent-detail-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agent-subpanel {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+  background: rgba(9, 18, 25, 0.45);
+}
+
+.agent-subpanel h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.agent-subpanel table {
+  min-width: 560px;
 }
 
 .chart-wrap {
@@ -408,6 +501,10 @@ tbody tr:hover {
   .split {
     grid-template-columns: 1fr;
   }
+
+  .agent-detail-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -429,7 +526,15 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
+  .agents-grid {
+    grid-template-columns: 1fr;
+  }
+
   .agent-metrics {
     grid-template-columns: 1fr;
+  }
+
+  .detail-stat strong {
+    font-size: 0.9rem;
   }
 }

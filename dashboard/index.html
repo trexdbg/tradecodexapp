@@ -31,20 +31,20 @@
     <main class="layout">
       <section class="kpi-grid" id="kpiGrid">
         <article class="panel kpi">
-          <p class="kpi-label">Equity Totale</p>
-          <p class="kpi-value" id="kpiEquity">-</p>
+          <p class="kpi-label">Top Agent</p>
+          <p class="kpi-value" id="kpiTopAgent">-</p>
         </article>
         <article class="panel kpi">
-          <p class="kpi-label">PnL Global</p>
-          <p class="kpi-value" id="kpiPnl">-</p>
+          <p class="kpi-label">Performance</p>
+          <p class="kpi-value" id="kpiTopPerf">-</p>
         </article>
         <article class="panel kpi">
-          <p class="kpi-label">Decisions 24h</p>
-          <p class="kpi-value" id="kpiDecisions">-</p>
+          <p class="kpi-label">Win / Lose</p>
+          <p class="kpi-value" id="kpiTopWinLose">-</p>
         </article>
         <article class="panel kpi">
-          <p class="kpi-label">Trades 24h</p>
-          <p class="kpi-value" id="kpiTrades">-</p>
+          <p class="kpi-label">Gains / Pertes</p>
+          <p class="kpi-value" id="kpiTopGainLoss">-</p>
         </article>
       </section>
 
@@ -75,6 +75,53 @@
           </div>
           <div id="chartLegend" class="legend"></div>
         </article>
+      </section>
+
+      <section class="panel agent-detail-panel">
+        <div class="panel-head">
+          <h2 id="agentDetailTitle">Focus Agent</h2>
+          <p id="agentDetailMeta">Clique sur un agent pour ouvrir le detail.</p>
+        </div>
+        <div id="agentDetailSummary" class="agent-detail-summary"></div>
+        <div class="agent-detail-grid">
+          <article class="agent-subpanel">
+            <h3>Trades actuels</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Quantite</th>
+                    <th>Prix moyen</th>
+                    <th>Prix marche</th>
+                    <th>Valeur</th>
+                    <th>PnL latent</th>
+                  </tr>
+                </thead>
+                <tbody id="openTradesBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="agent-subpanel">
+            <h3>Historique trades clotures</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sortie</th>
+                    <th>Asset</th>
+                    <th>Quantite</th>
+                    <th>Entree</th>
+                    <th>Sortie</th>
+                    <th>PnL</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTradesBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="panel">
