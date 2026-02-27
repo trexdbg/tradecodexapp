@@ -1,0 +1,2 @@
+2026-02-27T22:27:02Z | INFO | daily_enforce_test | daily_trade_enforced | agent=agent_04_daily_executor | asset=BTC | side=BUY | status=filled | notional=6.00
+2026-02-27T22:28:14Z | INFO | daily_enforce_test | daily_trade_enforced | agent=agent_04_daily_executor | asset=BTC | side=BUY | status=filled | notional=6.00

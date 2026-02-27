@@ -9,13 +9,13 @@ The dashboard reads `./data/dashboard-data.json`.
 Generate it from the SQLite database with:
 
 ```bash
-python trading-system/export_dashboard_data.py
+python trading-system/skills/export_dashboard.py
 ```
 
 Optional flags:
 
 ```bash
-python trading-system/export_dashboard_data.py --db trading-system/database.sqlite --out dashboard/data/dashboard-data.json --decisions-limit 500 --trades-limit 300
+python trading-system/skills/export_dashboard.py --db trading-system/database.sqlite --out dashboard/data/dashboard-data.json --decisions-limit 500 --trades-limit 300
 ```
 
 ## Publish on GitHub Pages
