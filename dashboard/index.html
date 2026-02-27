@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cryptoMaster Intelligence Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <header class="topbar panel">
+      <div>
+        <p class="eyebrow">ORCHESTRATION FEED</p>
+        <h1 id="systemName">cryptoMaster Intelligence Board</h1>
+      </div>
+      <div class="status-wrap">
+        <div class="mode-pill">
+          <span class="mode-dot"></span>
+          <span id="modeLabel">DRY RUN</span>
+        </div>
+        <p id="generatedAt">Mise a jour: -</p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="kpi-grid" id="kpiGrid">
+        <article class="panel kpi">
+          <p class="kpi-label">Equity Totale</p>
+          <p class="kpi-value" id="kpiEquity">-</p>
+        </article>
+        <article class="panel kpi">
+          <p class="kpi-label">PnL Global</p>
+          <p class="kpi-value" id="kpiPnl">-</p>
+        </article>
+        <article class="panel kpi">
+          <p class="kpi-label">Decisions 24h</p>
+          <p class="kpi-value" id="kpiDecisions">-</p>
+        </article>
+        <article class="panel kpi">
+          <p class="kpi-label">Trades 24h</p>
+          <p class="kpi-value" id="kpiTrades">-</p>
+        </article>
+      </section>
+
+      <section class="panel market-panel">
+        <div class="panel-head">
+          <h2>Market Pulse</h2>
+          <p>Actifs monitor es en continu</p>
+        </div>
+        <div id="marketGrid" class="market-grid"></div>
+      </section>
+
+      <section class="split">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Agent Matrix</h2>
+            <p>Etat de chaque portefeuille</p>
+          </div>
+          <div id="agentsGrid" class="agents-grid"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Signal Map</h2>
+            <p>Scores recents par actif</p>
+          </div>
+          <div class="chart-wrap">
+            <svg id="scoreChart" viewBox="0 0 1000 280" preserveAspectRatio="none"></svg>
+          </div>
+          <div id="chartLegend" class="legend"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Flux d'execution</h2>
+          <div class="filters">
+            <label>
+              Agent
+              <select id="agentFilter"></select>
+            </label>
+            <label>
+              Asset
+              <select id="assetFilter"></select>
+            </label>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Agent</th>
+                <th>Asset</th>
+                <th>Side</th>
+                <th>Notional</th>
+                <th>Price</th>
+                <th>Fee</th>
+              </tr>
+            </thead>
+            <tbody id="tradesBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Decision Log</h2>
+          <p id="decisionMeta">Dernieres decisions</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Agent</th>
+                <th>Asset</th>
+                <th>Regime</th>
+                <th>Action</th>
+                <th>Score</th>
+                <th>Strategies</th>
+              </tr>
+            </thead>
+            <tbody id="decisionsBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Event Stream</h2>
+          <p>Telemetrie brute (SQLite events)</p>
+        </div>
+        <ul id="eventsList" class="event-list"></ul>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
