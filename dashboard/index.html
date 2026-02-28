@@ -65,13 +65,20 @@
           <div id="agentsGrid" class="agents-grid"></div>
         </article>
 
-        <article class="panel">
+        <article class="panel portfolio-panel">
           <div class="panel-head">
             <h2>Evolution Portefeuille</h2>
             <p id="portfolioChartMeta">Agent selectionne</p>
           </div>
-          <div class="chart-wrap">
-            <svg id="portfolioChart" viewBox="0 0 1000 280" preserveAspectRatio="none"></svg>
+          <div class="chart-wrap" id="portfolioChartWrap">
+            <svg
+              id="portfolioChart"
+              viewBox="0 0 1000 320"
+              preserveAspectRatio="none"
+              role="img"
+              aria-label="Evolution portefeuille agent"
+            ></svg>
+            <div id="portfolioChartTooltip" class="chart-tooltip" hidden></div>
           </div>
         </article>
       </section>

@@ -27,7 +27,7 @@ body {
 }
 
 body {
-  padding: 1.2rem;
+  padding: clamp(0.7rem, 1.5vw, 1.2rem);
   position: relative;
 }
 
@@ -44,6 +44,8 @@ body {
 .layout {
   display: grid;
   gap: 1rem;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .panel {
@@ -148,15 +150,21 @@ h2 {
 .layout > .panel,
 .market-panel,
 .split .panel {
-  padding: 1rem;
+  padding: clamp(0.85rem, 1.3vw, 1.15rem);
 }
 
 .panel-head {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
+  flex-wrap: wrap;
   gap: 0.8rem;
   margin-bottom: 0.75rem;
+}
+
+.portfolio-panel .panel-head p {
+  margin-left: auto;
+  text-align: right;
 }
 
 .market-grid {
@@ -346,16 +354,87 @@ h2 {
 
 .chart-wrap {
   position: relative;
-  min-height: 280px;
+  height: clamp(240px, 32vw, 340px);
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
-  background: linear-gradient(0deg, rgba(25, 180, 214, 0.08), transparent 30%);
+  background: radial-gradient(circle at 15% 0%, rgba(25, 180, 214, 0.1), transparent 45%),
+    linear-gradient(180deg, rgba(8, 19, 27, 0.9), rgba(8, 17, 24, 0.65));
 }
 
 #portfolioChart {
   width: 100%;
-  height: 280px;
+  height: 100%;
+  display: block;
+}
+
+.chart-grid {
+  stroke: rgba(94, 160, 191, 0.2);
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #9fb8c7;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.chart-baseline {
+  stroke: rgba(25, 180, 214, 0.3);
+  stroke-dasharray: 5 5;
+}
+
+.chart-series {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-hit {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.chart-focus-line {
+  stroke: rgba(203, 230, 242, 0.34);
+  stroke-dasharray: 4 5;
+}
+
+.chart-focus-dot {
+  stroke: #032133;
+  stroke-width: 1.5;
+}
+
+.chart-tooltip {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  min-width: 160px;
+  max-width: 220px;
+  padding: 0.5rem 0.62rem;
+  border: 1px solid rgba(130, 196, 225, 0.55);
+  border-radius: 8px;
+  background: rgba(3, 13, 19, 0.96);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+}
+
+.chart-tooltip p {
+  margin: 0;
+}
+
+.chart-tooltip .value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d8edf7;
+}
+
+.chart-tooltip .time {
+  margin-top: 0.18rem;
+  font-size: 0.7rem;
+  color: #8eb1c4;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .legend {
@@ -385,12 +464,14 @@ h2 {
   gap: 0.55rem;
   align-items: center;
   flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .filters label {
   display: inline-flex;
   gap: 0.35rem;
   align-items: center;
+  white-space: nowrap;
   font-size: 0.76rem;
   font-family: "IBM Plex Mono", monospace;
   color: var(--muted);
@@ -405,10 +486,13 @@ select {
   padding: 0.26rem 0.45rem;
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
+  min-width: 8.6rem;
 }
 
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
 }
 
 table {
@@ -507,7 +591,7 @@ tbody tr:hover {
   font-style: italic;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1240px) {
   .kpi-grid,
   .market-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -522,9 +606,23 @@ tbody tr:hover {
   }
 }
 
+@media (max-width: 980px) {
+  .market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .status-wrap {
+    text-align: left;
+  }
+}
+
 @media (max-width: 760px) {
   body {
-    padding: 0.7rem;
+    padding: 0.65rem;
   }
 
   .topbar {
@@ -541,6 +639,28 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
+  .portfolio-panel .panel-head p {
+    margin-left: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .filters {
+    width: 100%;
+    margin-left: 0;
+    gap: 0.45rem;
+  }
+
+  .filters label {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  select {
+    width: 100%;
+    min-width: 0;
+  }
+
   .agents-grid {
     grid-template-columns: 1fr;
   }
@@ -549,7 +669,40 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
+  .chart-wrap {
+    height: 250px;
+  }
+
+  th,
+  td {
+    padding: 0.45rem 0.4rem;
+    font-size: 0.77rem;
+  }
+
   .detail-stat strong {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .panel {
+    border-radius: 10px;
+  }
+
+  .kpi {
+    padding: 0.75rem 0.8rem;
+  }
+
+  .chart-wrap {
+    height: 228px;
+  }
+
+  .chart-axis-label {
+    font-size: 10px;
+  }
+
+  .chart-tooltip {
+    min-width: 130px;
+    padding: 0.44rem 0.52rem;
   }
 }

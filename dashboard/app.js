@@ -392,22 +392,45 @@ function renderEvents() {
 function renderPortfolioEvolutionChart() {
   const chart = document.querySelector("#portfolioChart");
   const meta = document.querySelector("#portfolioChartMeta");
-  if (!chart || !meta) {
+  const tooltip = document.querySelector("#portfolioChartTooltip");
+  if (!chart || !meta || !tooltip) {
     return;
   }
 
+  chart.onpointermove = null;
+  chart.onpointerleave = null;
+  chart.onpointerdown = null;
+  tooltip.hidden = true;
   chart.innerHTML = "";
+
   const selectedAgent = (state.data.agents || []).find((agent) => agent.id === state.selectedAgentId);
   if (!selectedAgent) {
     meta.textContent = "Agent selectionne";
-    chart.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">Selectionne un agent pour voir sa courbe</text>`;
+    chart.innerHTML = buildPortfolioChartEmptyState("Selectionne un agent pour voir sa courbe");
     return;
   }
 
   const series = buildPortfolioEvolutionSeries(selectedAgent);
   if (!series.length) {
     meta.textContent = `${selectedAgent.name} (${selectedAgent.id})`;
-    chart.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">Pas assez de donnees pour tracer la courbe</text>`;
+    chart.innerHTML = buildPortfolioChartEmptyState("Pas assez de donnees pour tracer la courbe");
+    return;
+  }
+
+  const points = series
+    .map((point, index) => {
+      const equity = Number(point.equity || 0);
+      return {
+        index,
+        time: point.time,
+        equity,
+        ts: toTimestamp(point.time),
+      };
+    })
+    .filter((point) => Number.isFinite(point.equity));
+  if (!points.length) {
+    meta.textContent = `${selectedAgent.name} (${selectedAgent.id})`;
+    chart.innerHTML = buildPortfolioChartEmptyState("Aucune valeur exploitable pour le graphe");
     return;
   }
 
@@ -420,9 +443,16 @@ function renderPortfolioEvolutionChart() {
   )})`;
 
   const width = 1000;
-  const height = 280;
-  const padding = 32;
-  const values = series.map((point) => Number(point.equity || 0));
+  const height = 320;
+  const margins = {
+    top: 26,
+    right: 84,
+    bottom: 44,
+    left: 86,
+  };
+  const plotWidth = width - margins.left - margins.right;
+  const plotHeight = height - margins.top - margins.bottom;
+  const values = points.map((point) => point.equity);
   let minValue = Math.min(...values);
   let maxValue = Math.max(...values);
   if (Math.abs(maxValue - minValue) < 1e-9) {
@@ -430,61 +460,142 @@ function renderPortfolioEvolutionChart() {
     minValue -= offset;
     maxValue += offset;
   }
-  const verticalPad = Math.max((maxValue - minValue) * 0.18, 0.5);
+  const verticalPad = Math.max((maxValue - minValue) * 0.15, 0.35);
   const yMin = minValue - verticalPad;
   const yMax = maxValue + verticalPad;
+
+  const hasTimeAxis = points.some((point) => point.ts > 0);
+  points.forEach((point, index) => {
+    point.xValue = hasTimeAxis && point.ts > 0 ? point.ts : index;
+  });
+  const xValues = points.map((point) => point.xValue);
+  const xMin = Math.min(...xValues);
+  let xMax = Math.max(...xValues);
+  if (Math.abs(xMax - xMin) < 1) {
+    xMax = xMin + 1;
+  }
+
   const toY = (value) => {
     const ratio = (Number(value || 0) - yMin) / Math.max(1e-9, yMax - yMin);
-    return height - padding - ratio * (height - padding * 2);
+    return height - margins.bottom - ratio * plotHeight;
+  };
+  const toX = (xValue) => {
+    const ratio = (Number(xValue || 0) - xMin) / Math.max(1e-9, xMax - xMin);
+    return margins.left + ratio * plotWidth;
   };
 
-  for (let i = 0; i < 5; i += 1) {
-    const y = padding + ((height - padding * 2) / 4) * i;
-    chart.insertAdjacentHTML(
-      "beforeend",
-      `<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="rgba(85,160,194,0.2)" stroke-width="1" />`
+  const chartCoords = points.map((point) => ({
+    ...point,
+    x: toX(point.xValue),
+    y: toY(point.equity),
+  }));
+  const linePath = buildSmoothLinePath(chartCoords);
+  const areaPath = `${linePath} L ${chartCoords[chartCoords.length - 1].x.toFixed(2)} ${(height - margins.bottom).toFixed(
+    2
+  )} L ${chartCoords[0].x.toFixed(2)} ${(height - margins.bottom).toFixed(2)} Z`;
+
+  const lineColor =
+    Math.abs(delta) < 1e-9 ? PORTFOLIO_COLOR : delta >= 0 ? "rgba(87,199,133,0.95)" : "rgba(255,110,110,0.95)";
+  const gradientStart =
+    Math.abs(delta) < 1e-9 ? "rgba(25,180,214,0.30)" : delta >= 0 ? "rgba(87,199,133,0.30)" : "rgba(255,110,110,0.28)";
+  const gradientEnd =
+    Math.abs(delta) < 1e-9 ? "rgba(25,180,214,0.02)" : delta >= 0 ? "rgba(87,199,133,0.02)" : "rgba(255,110,110,0.02)";
+
+  const gradientId = `portfolioAreaGradient_${String(selectedAgent.id || "agent").replace(/[^a-zA-Z0-9_-]/g, "_")}`;
+  const parts = [];
+  parts.push("<defs>");
+  parts.push(`<linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">`);
+  parts.push(`<stop offset="0%" stop-color="${gradientStart}" />`);
+  parts.push(`<stop offset="100%" stop-color="${gradientEnd}" />`);
+  parts.push("</linearGradient>");
+  parts.push("</defs>");
+
+  const yTicks = 5;
+  for (let i = 0; i < yTicks; i += 1) {
+    const ratio = i / Math.max(1, yTicks - 1);
+    const y = margins.top + ratio * plotHeight;
+    const value = yMax - ratio * (yMax - yMin);
+    parts.push(
+      `<line class="chart-grid" x1="${margins.left.toFixed(2)}" y1="${y.toFixed(2)}" x2="${(width - margins.right).toFixed(
+        2
+      )}" y2="${y.toFixed(2)}" />`
+    );
+    parts.push(
+      `<text class="chart-axis-label" x="${(margins.left - 10).toFixed(2)}" y="${(y + 4).toFixed(
+        2
+      )}" text-anchor="end">${escapeHtml(formatMoney(value))}</text>`
     );
   }
 
-  const xStep = (width - padding * 2) / Math.max(1, series.length - 1);
-  const linePath = series
-    .map((point, index) => {
-      const x = padding + xStep * index;
-      const y = toY(point.equity);
-      return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
-    })
-    .join(" ");
-  const areaPath = `${linePath} L ${(padding + xStep * (series.length - 1)).toFixed(2)} ${(
-    height - padding
-  ).toFixed(2)} L ${padding.toFixed(2)} ${(height - padding).toFixed(2)} Z`;
-  chart.insertAdjacentHTML(
-    "beforeend",
-    `<path d="${areaPath}" fill="rgba(25,180,214,0.12)" stroke="none" />`
-  );
-  chart.insertAdjacentHTML(
-    "beforeend",
-    `<path d="${linePath}" fill="none" stroke="${PORTFOLIO_COLOR}" stroke-width="2.6" stroke-linecap="round" />`
+  const xTicks = Math.min(5, Math.max(2, chartCoords.length));
+  for (let i = 0; i < xTicks; i += 1) {
+    const ratio = xTicks === 1 ? 0 : i / (xTicks - 1);
+    const xValue = xMin + ratio * (xMax - xMin);
+    const x = toX(xValue);
+    const label = hasTimeAxis ? formatChartTimeLabel(xValue) : `Point ${Math.round(xValue) + 1}`;
+    parts.push(
+      `<line class="chart-grid" x1="${x.toFixed(2)}" y1="${margins.top.toFixed(2)}" x2="${x.toFixed(2)}" y2="${(
+        height - margins.bottom
+      ).toFixed(2)}" />`
+    );
+    parts.push(
+      `<text class="chart-axis-label" x="${x.toFixed(2)}" y="${(height - margins.bottom + 18).toFixed(
+        2
+      )}" text-anchor="middle">${escapeHtml(label)}</text>`
+    );
+  }
+
+  const startY = toY(startValue);
+  parts.push(
+    `<line class="chart-baseline" x1="${margins.left.toFixed(2)}" y1="${startY.toFixed(2)}" x2="${(width - margins.right).toFixed(
+      2
+    )}" y2="${startY.toFixed(2)}" />`
   );
 
-  const endX = padding + xStep * (series.length - 1);
+  parts.push(`<path d="${areaPath}" fill="url(#${gradientId})" />`);
+  parts.push(`<path class="chart-series" d="${linePath}" stroke="${lineColor}" />`);
+
+  const startX = chartCoords[0].x;
+  const endX = chartCoords[chartCoords.length - 1].x;
   const endY = toY(endValue);
-  const startY = toY(startValue);
-  chart.insertAdjacentHTML(
-    "beforeend",
-    `<line x1="${padding}" y1="${startY.toFixed(2)}" x2="${width - padding}" y2="${startY.toFixed(
-      2
-    )}" stroke="rgba(25,180,214,0.25)" stroke-dasharray="4 4" />`
-  );
-  chart.insertAdjacentHTML(
-    "beforeend",
-    `<circle cx="${endX.toFixed(2)}" cy="${endY.toFixed(2)}" r="4.2" fill="${PORTFOLIO_COLOR}" />`
-  );
-  chart.insertAdjacentHTML(
-    "beforeend",
-    `<text x="${endX.toFixed(2)}" y="${(endY - 10).toFixed(2)}" fill="#cce8f3" font-size="12" text-anchor="end">${escapeHtml(
-      formatMoney(endValue)
+  parts.push(`<circle cx="${startX.toFixed(2)}" cy="${startY.toFixed(2)}" r="3.8" fill="${lineColor}" />`);
+  parts.push(`<circle cx="${endX.toFixed(2)}" cy="${endY.toFixed(2)}" r="4.3" fill="${lineColor}" />`);
+  parts.push(
+    `<text class="chart-axis-label" x="${(margins.left + 4).toFixed(2)}" y="${(startY - 8).toFixed(2)}">${escapeHtml(
+      formatMoney(startValue)
     )}</text>`
   );
+  parts.push(
+    `<text class="chart-axis-label" x="${(width - margins.right - 4).toFixed(2)}" y="${(endY - 8).toFixed(
+      2
+    )}" text-anchor="end">${escapeHtml(formatMoney(endValue))}</text>`
+  );
+
+  parts.push(
+    `<line id="portfolioFocusLine" class="chart-focus-line" x1="0" y1="${margins.top.toFixed(2)}" x2="0" y2="${(
+      height - margins.bottom
+    ).toFixed(2)}" visibility="hidden" />`
+  );
+  parts.push(
+    `<circle id="portfolioFocusDot" class="chart-focus-dot" cx="0" cy="0" r="5" fill="${lineColor}" visibility="hidden" />`
+  );
+  chartCoords.forEach((point, index) => {
+    parts.push(
+      `<circle class="chart-hit" data-index="${index}" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="9" />`
+    );
+  });
+
+  chart.innerHTML = parts.join("");
+  bindPortfolioChartInteractions({
+    chart,
+    tooltip,
+    chartCoords,
+    lineColor,
+    width,
+    height,
+    plotTop: margins.top,
+    plotBottom: height - margins.bottom,
+  });
 }
 
 function buildPortfolioEvolutionSeries(agent) {
@@ -547,6 +658,152 @@ function buildPortfolioEvolutionSeries(agent) {
     addPoint(state.data.generated_at, Number(agent.equity || points[0].equity));
   }
   return points;
+}
+
+function buildPortfolioChartEmptyState(message) {
+  return `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#86a2b4" font-size="15">${escapeHtml(
+    message
+  )}</text>`;
+}
+
+function buildSmoothLinePath(points) {
+  if (!points.length) {
+    return "";
+  }
+  if (points.length === 1) {
+    return `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
+  }
+  if (points.length === 2) {
+    return `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)} L ${points[1].x.toFixed(2)} ${points[1].y.toFixed(
+      2
+    )}`;
+  }
+
+  const segments = [`M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`];
+  for (let i = 1; i < points.length - 1; i += 1) {
+    const controlX = points[i].x.toFixed(2);
+    const controlY = points[i].y.toFixed(2);
+    const nextX = ((points[i].x + points[i + 1].x) / 2).toFixed(2);
+    const nextY = ((points[i].y + points[i + 1].y) / 2).toFixed(2);
+    segments.push(`Q ${controlX} ${controlY} ${nextX} ${nextY}`);
+  }
+  const last = points[points.length - 1];
+  segments.push(`T ${last.x.toFixed(2)} ${last.y.toFixed(2)}`);
+  return segments.join(" ");
+}
+
+function bindPortfolioChartInteractions({ chart, tooltip, chartCoords, lineColor, width, height, plotTop, plotBottom }) {
+  if (!chartCoords.length) {
+    return;
+  }
+
+  const focusLine = chart.querySelector("#portfolioFocusLine");
+  const focusDot = chart.querySelector("#portfolioFocusDot");
+  if (!focusLine || !focusDot) {
+    return;
+  }
+
+  const updateSelection = (index) => {
+    const point = chartCoords[Math.max(0, Math.min(chartCoords.length - 1, index))];
+    if (!point) {
+      return;
+    }
+
+    focusLine.setAttribute("x1", point.x.toFixed(2));
+    focusLine.setAttribute("x2", point.x.toFixed(2));
+    focusLine.setAttribute("y1", plotTop.toFixed(2));
+    focusLine.setAttribute("y2", plotBottom.toFixed(2));
+    focusLine.setAttribute("visibility", "visible");
+
+    focusDot.setAttribute("cx", point.x.toFixed(2));
+    focusDot.setAttribute("cy", point.y.toFixed(2));
+    focusDot.setAttribute("fill", lineColor);
+    focusDot.setAttribute("visibility", "visible");
+
+    tooltip.hidden = false;
+    tooltip.style.borderColor = lineColor;
+    tooltip.innerHTML = `
+      <p class="value">${escapeHtml(formatMoney(point.equity))}</p>
+      <p class="time">${escapeHtml(formatDateTime(point.time))}</p>
+    `;
+
+    const chartRect = chart.getBoundingClientRect();
+    const xPx = (point.x / width) * chartRect.width;
+    const yPx = (point.y / height) * chartRect.height;
+    const maxLeft = Math.max(8, chartRect.width - tooltip.offsetWidth - 8);
+    const maxTop = Math.max(8, chartRect.height - tooltip.offsetHeight - 8);
+    const left = clamp(xPx + 12, 8, maxLeft);
+    const top = clamp(yPx - tooltip.offsetHeight - 12, 8, maxTop);
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  };
+
+  const hideSelection = () => {
+    focusLine.setAttribute("visibility", "hidden");
+    focusDot.setAttribute("visibility", "hidden");
+    tooltip.hidden = true;
+  };
+
+  const findNearestPointIndex = (targetX) => {
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+    chartCoords.forEach((point, index) => {
+      const distance = Math.abs(point.x - targetX);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+    return nearestIndex;
+  };
+
+  const toSvgX = (event) => {
+    const ctm = chart.getScreenCTM();
+    if (!ctm) {
+      return null;
+    }
+    const svgPoint = chart.createSVGPoint();
+    svgPoint.x = event.clientX;
+    svgPoint.y = event.clientY;
+    return svgPoint.matrixTransform(ctm.inverse()).x;
+  };
+
+  chart.onpointermove = (event) => {
+    const x = toSvgX(event);
+    if (x == null) {
+      return;
+    }
+    updateSelection(findNearestPointIndex(x));
+  };
+  chart.onpointerdown = (event) => {
+    const x = toSvgX(event);
+    if (x == null) {
+      return;
+    }
+    updateSelection(findNearestPointIndex(x));
+  };
+  chart.onpointerleave = () => {
+    hideSelection();
+  };
+
+  updateSelection(chartCoords.length - 1);
+}
+
+function formatChartTimeLabel(value) {
+  const parsed = new Date(Number(value || 0));
+  if (Number.isNaN(parsed.getTime())) {
+    return "-";
+  }
+  return parsed.toLocaleString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
 function formatTradeReason(reason) {
