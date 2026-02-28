@@ -207,12 +207,13 @@ h2 {
 
 .agents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 0.7rem;
 }
 
 .agent-card {
   width: 100%;
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.75rem;
@@ -250,14 +251,32 @@ h2 {
 .agent-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.36rem 0.5rem;
 }
 
 .agent-name {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 600;
+  flex: 1 1 170px;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.agent-name-main {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.agent-id {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 0.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.03em;
+  overflow-wrap: anywhere;
 }
 
 .agent-risk {
@@ -269,17 +288,20 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   border: 1px solid var(--line);
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .agent-metrics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   gap: 0.4rem;
   margin-top: 0.55rem;
 }
 
 .agent-metrics p {
   margin: 0;
+  min-width: 0;
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.71rem;
   color: var(--muted);
@@ -290,6 +312,8 @@ h2 {
   color: var(--ink);
   font-size: 0.87rem;
   margin-top: 0.15rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .agent-detail-panel {
@@ -611,6 +635,10 @@ tbody tr:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .agents-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  }
+
   .topbar {
     align-items: flex-start;
   }
@@ -666,7 +694,7 @@ tbody tr:hover {
   }
 
   .agent-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .chart-wrap {
@@ -704,5 +732,14 @@ tbody tr:hover {
   .chart-tooltip {
     min-width: 130px;
     padding: 0.44rem 0.52rem;
+  }
+
+  .agent-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-risk {
+    font-size: 0.62rem;
+    padding-inline: 0.46rem;
   }
 }

@@ -187,7 +187,10 @@ function renderAgents() {
     card.setAttribute("aria-pressed", state.selectedAgentId === agent.id ? "true" : "false");
     card.innerHTML = `
       <div class="agent-row">
-        <p class="agent-name">${escapeHtml(agent.name)} <span class="muted">(${escapeHtml(agent.id)})</span></p>
+        <p class="agent-name">
+          <span class="agent-name-main">${escapeHtml(agent.name)}</span>
+          <span class="agent-id muted">(${escapeHtml(agent.id)})</span>
+        </p>
         <p class="agent-risk">${escapeHtml(agent.risk_profile)}</p>
       </div>
       <div class="agent-metrics">
