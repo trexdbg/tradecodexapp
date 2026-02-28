@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T23:17:58.118396+00:00",
+  "generated_at": "2026-02-28T23:19:08.828291+00:00",
   "system": {
     "name": "cryptoMaster Orchestrator",
     "mode": "dry_run",
@@ -17,46 +17,46 @@
     "decisions_count": 400,
     "trades_count": 42,
     "lookback_days": 3,
-    "decisions_last_24h": 584,
+    "decisions_last_24h": 611,
     "trades_last_24h": 25,
     "total_initial_balance": 800.0,
-    "total_equity": 803.68460144,
+    "total_equity": 803.53154879,
     "total_cash_balance": 627.59678034,
-    "total_positions_value": 176.0878211,
+    "total_positions_value": 175.93476845,
     "total_fees_eur": 0.50689328,
-    "pnl_abs": 3.68460144,
-    "pnl_pct": 0.004606
+    "pnl_abs": 3.53154879,
+    "pnl_pct": 0.004414
   },
   "market": [
     {
       "asset": "BTC",
-      "last_price": 56711.913401,
-      "price_change_pct_24h": 1.818,
-      "quote_volume_24h": 1230949237.071342
+      "last_price": 56685.805779,
+      "price_change_pct_24h": 1.631,
+      "quote_volume_24h": 1230885549.0939448
     },
     {
       "asset": "ETH",
-      "last_price": 1664.119479,
-      "price_change_pct_24h": 2.071,
-      "quote_volume_24h": 744066445.8365952
+      "last_price": 1661.730657,
+      "price_change_pct_24h": 1.81,
+      "quote_volume_24h": 744075648.0669628
     },
     {
       "asset": "SOL",
-      "last_price": 71.444414,
-      "price_change_pct_24h": 3.586,
-      "quote_volume_24h": 323817847.55605555
+      "last_price": 71.393588,
+      "price_change_pct_24h": 3.322,
+      "quote_volume_24h": 323909500.77772814
     },
     {
       "asset": "BNB",
-      "last_price": 522.203266,
-      "price_change_pct_24h": 0.699,
-      "quote_volume_24h": 87775833.29743026
+      "last_price": 521.991491,
+      "price_change_pct_24h": 0.55,
+      "quote_volume_24h": 87756168.48107098
     },
     {
       "asset": "XRP",
-      "last_price": 1.1689132899999999,
-      "price_change_pct_24h": 2.056,
-      "quote_volume_24h": 258429298.78991717
+      "last_price": 1.16789677,
+      "price_change_pct_24h": 1.877,
+      "quote_volume_24h": 258347897.80806607
     }
   ],
   "agents": [
@@ -77,51 +77,51 @@
       ],
       "cash_balance": 60.30265894,
       "initial_balance": 100.0,
-      "positions_value_eur": 36.7725304,
-      "equity": 97.07518934,
-      "pnl_abs": -2.92481066,
-      "pnl_pct": -0.029248,
+      "positions_value_eur": 36.73627167,
+      "equity": 97.03893061,
+      "pnl_abs": -2.96106939,
+      "pnl_pct": -0.029611,
       "positions": [
         {
           "asset": "SOL",
           "quantity": 0.18230728,
           "avg_price": 71.520653,
-          "market_price": 71.444414,
-          "market_value_eur": 13.02483679,
+          "market_price": 71.393588,
+          "market_value_eur": 13.01557084,
           "updated_at": "2026-02-28T21:42:55.463824+00:00",
-          "weight_pct": 13.4173
+          "weight_pct": 13.4127
         },
         {
           "asset": "XRP",
           "quantity": 10.7292043262,
           "avg_price": 1.16721909,
-          "market_price": 1.16891329,
-          "market_value_eur": 12.54150953,
+          "market_price": 1.16789677,
+          "market_value_eur": 12.53060308,
           "updated_at": "2026-02-28T21:42:56.722065+00:00",
-          "weight_pct": 12.9194
+          "weight_pct": 12.913
         },
         {
           "asset": "ETH",
           "quantity": 0.0067340021,
           "avg_price": 1659.282538,
-          "market_price": 1664.119479,
-          "market_value_eur": 11.20618408,
+          "market_price": 1661.730657,
+          "market_value_eur": 11.19009775,
           "updated_at": "2026-02-28T21:50:32.418584+00:00",
-          "weight_pct": 11.5438
+          "weight_pct": 11.5316
         }
       ],
       "decisions": {
         "all_time": {
           "BUY": 31,
           "SELL": 7,
-          "HOLD": 177,
-          "total": 215
+          "HOLD": 182,
+          "total": 220
         },
         "last_24h": {
           "BUY": 18,
           "SELL": 0,
-          "HOLD": 112,
-          "total": 130
+          "HOLD": 117,
+          "total": 135
         }
       },
       "trades": {
@@ -147,33 +147,33 @@
       ],
       "cash_balance": 94.4945,
       "initial_balance": 100.0,
-      "positions_value_eur": 5.47985824,
-      "equity": 99.97435824,
-      "pnl_abs": -0.02564176,
-      "pnl_pct": -0.000256,
+      "positions_value_eur": 5.47595983,
+      "equity": 99.97045983,
+      "pnl_abs": -0.02954017,
+      "pnl_pct": -0.000295,
       "positions": [
         {
           "asset": "SOL",
           "quantity": 0.0767010034,
           "avg_price": 71.707015,
-          "market_price": 71.444414,
-          "market_value_eur": 5.47985824,
+          "market_price": 71.393588,
+          "market_value_eur": 5.47595983,
           "updated_at": "2026-02-28T22:06:27.969255+00:00",
-          "weight_pct": 5.4813
+          "weight_pct": 5.4776
         }
       ],
       "decisions": {
         "all_time": {
-          "BUY": 5,
+          "BUY": 6,
           "SELL": 1,
-          "HOLD": 123,
-          "total": 129
+          "HOLD": 125,
+          "total": 132
         },
         "last_24h": {
-          "BUY": 5,
+          "BUY": 6,
           "SELL": 0,
-          "HOLD": 73,
-          "total": 78
+          "HOLD": 75,
+          "total": 81
         }
       },
       "trades": {
@@ -209,14 +209,14 @@
         "all_time": {
           "BUY": 5,
           "SELL": 6,
-          "HOLD": 161,
-          "total": 172
+          "HOLD": 165,
+          "total": 176
         },
         "last_24h": {
           "BUY": 0,
           "SELL": 0,
-          "HOLD": 104,
-          "total": 104
+          "HOLD": 108,
+          "total": 108
         }
       },
       "trades": {
@@ -240,42 +240,42 @@
       ],
       "cash_balance": 91.54260739,
       "initial_balance": 100.0,
-      "positions_value_eur": 10.19380497,
-      "equity": 101.73641236,
-      "pnl_abs": 1.73641236,
-      "pnl_pct": 0.017364,
+      "positions_value_eur": 10.18413892,
+      "equity": 101.72674631,
+      "pnl_abs": 1.72674631,
+      "pnl_pct": 0.017267,
       "positions": [
         {
           "asset": "ETH",
           "quantity": 0.003064756,
           "avg_price": 1659.511255,
-          "market_price": 1664.119479,
-          "market_value_eur": 5.10012017,
+          "market_price": 1661.730657,
+          "market_value_eur": 5.09279902,
           "updated_at": "2026-02-28T21:42:59.222658+00:00",
-          "weight_pct": 5.0131
+          "weight_pct": 5.0064
         },
         {
           "asset": "BTC",
           "quantity": 8.98168e-05,
           "avg_price": 56629.151731,
-          "market_price": 56711.913401,
-          "market_value_eur": 5.0936848,
+          "market_price": 56685.805779,
+          "market_value_eur": 5.0913399,
           "updated_at": "2026-02-28T21:42:59.195944+00:00",
-          "weight_pct": 5.0067
+          "weight_pct": 5.0049
         }
       ],
       "decisions": {
         "all_time": {
-          "BUY": 11,
+          "BUY": 12,
           "SELL": 3,
-          "HOLD": 62,
-          "total": 76
+          "HOLD": 63,
+          "total": 78
         },
         "last_24h": {
-          "BUY": 11,
+          "BUY": 12,
           "SELL": 1,
-          "HOLD": 40,
-          "total": 52
+          "HOLD": 41,
+          "total": 54
         }
       },
       "trades": {
@@ -302,51 +302,51 @@
       ],
       "cash_balance": 71.16412024,
       "initial_balance": 100.0,
-      "positions_value_eur": 28.6409378,
-      "equity": 99.80505804,
-      "pnl_abs": -0.19494196,
-      "pnl_pct": -0.001949,
+      "positions_value_eur": 28.62110154,
+      "equity": 99.78522178,
+      "pnl_abs": -0.21477822,
+      "pnl_pct": -0.002148,
       "positions": [
         {
           "asset": "SOL",
           "quantity": 0.1775210937,
           "avg_price": 71.944203,
-          "market_price": 71.444414,
-          "market_value_eur": 12.68289051,
+          "market_price": 71.393588,
+          "market_value_eur": 12.67386782,
           "updated_at": "2026-02-28T22:48:05.171460+00:00",
-          "weight_pct": 12.7077
+          "weight_pct": 12.7011
         },
         {
           "asset": "XRP",
           "quantity": 7.2474241802,
           "avg_price": 1.17772313,
-          "market_price": 1.16891329,
-          "market_value_eur": 8.47161044,
+          "market_price": 1.16789677,
+          "market_value_eur": 8.46424329,
           "updated_at": "2026-02-28T22:48:05.706458+00:00",
-          "weight_pct": 8.4882
+          "weight_pct": 8.4825
         },
         {
           "asset": "BTC",
           "quantity": 0.0001320082,
           "avg_price": 56814.65816,
-          "market_price": 56711.913401,
-          "market_value_eur": 7.48643685,
+          "market_price": 56685.805779,
+          "market_value_eur": 7.48299043,
           "updated_at": "2026-02-28T22:24:41.131471+00:00",
-          "weight_pct": 7.5011
+          "weight_pct": 7.4991
         }
       ],
       "decisions": {
         "all_time": {
           "BUY": 4,
           "SELL": 0,
-          "HOLD": 83,
-          "total": 87
+          "HOLD": 86,
+          "total": 90
         },
         "last_24h": {
           "BUY": 4,
           "SELL": 0,
-          "HOLD": 74,
-          "total": 78
+          "HOLD": 77,
+          "total": 81
         }
       },
       "trades": {
@@ -381,14 +381,14 @@
         "all_time": {
           "BUY": 0,
           "SELL": 0,
-          "HOLD": 48,
-          "total": 48
+          "HOLD": 51,
+          "total": 51
         },
         "last_24h": {
           "BUY": 0,
           "SELL": 0,
-          "HOLD": 48,
-          "total": 48
+          "HOLD": 51,
+          "total": 51
         }
       },
       "trades": {
@@ -414,60 +414,60 @@
       ],
       "cash_balance": 23.05263878,
       "initial_balance": 100.0,
-      "positions_value_eur": 76.96533487,
-      "equity": 100.01797365,
-      "pnl_abs": 0.01797365,
-      "pnl_pct": 0.00018,
+      "positions_value_eur": 76.89762988,
+      "equity": 99.95026866,
+      "pnl_abs": -0.04973134,
+      "pnl_pct": -0.000497,
       "positions": [
         {
           "asset": "XRP",
           "quantity": 17.5920966654,
           "avg_price": 1.1731026894,
-          "market_price": 1.16891329,
-          "market_value_eur": 20.56363559,
+          "market_price": 1.16789677,
+          "market_value_eur": 20.54575287,
           "updated_at": "2026-02-28T22:48:05.829153+00:00",
-          "weight_pct": 20.5599
+          "weight_pct": 20.556
         },
         {
           "asset": "ETH",
           "quantity": 0.01172519,
           "avg_price": 1668.3639617042,
-          "market_price": 1664.119479,
-          "market_value_eur": 19.51211709,
+          "market_price": 1661.730657,
+          "market_value_eur": 19.4841077,
           "updated_at": "2026-02-28T22:48:05.779104+00:00",
-          "weight_pct": 19.5086
+          "weight_pct": 19.4938
         },
         {
           "asset": "SOL",
           "quantity": 0.2693197171,
           "avg_price": 71.8451842715,
-          "market_price": 71.444414,
-          "market_value_eur": 19.24138936,
+          "market_price": 71.393588,
+          "market_value_eur": 19.22770092,
           "updated_at": "2026-02-28T22:48:05.806549+00:00",
-          "weight_pct": 19.2379
+          "weight_pct": 19.2373
         },
         {
           "asset": "BTC",
           "quantity": 0.0003111902,
           "avg_price": 56814.65816,
-          "market_price": 56711.913401,
-          "market_value_eur": 17.64819283,
+          "market_price": 56685.805779,
+          "market_value_eur": 17.64006839,
           "updated_at": "2026-02-28T22:24:41.500859+00:00",
-          "weight_pct": 17.645
+          "weight_pct": 17.6488
         }
       ],
       "decisions": {
         "all_time": {
-          "BUY": 21,
+          "BUY": 22,
           "SELL": 2,
-          "HOLD": 41,
-          "total": 64
+          "HOLD": 44,
+          "total": 68
         },
         "last_24h": {
-          "BUY": 21,
+          "BUY": 22,
           "SELL": 2,
-          "HOLD": 41,
-          "total": 64
+          "HOLD": 44,
+          "total": 68
         }
       },
       "trades": {
@@ -493,51 +493,51 @@
       ],
       "cash_balance": 82.13445483,
       "initial_balance": 100.0,
-      "positions_value_eur": 18.03535482,
-      "equity": 100.16980965,
-      "pnl_abs": 0.16980965,
-      "pnl_pct": 0.001698,
+      "positions_value_eur": 18.01966661,
+      "equity": 100.15412144,
+      "pnl_abs": 0.15412144,
+      "pnl_pct": 0.001541,
       "positions": [
         {
           "asset": "ETH",
           "quantity": 0.0036223353,
           "avg_price": 1659.511255,
-          "market_price": 1664.119479,
-          "market_value_eur": 6.02799868,
+          "market_price": 1661.730657,
+          "market_value_eur": 6.01934557,
           "updated_at": "2026-02-28T21:42:59.678342+00:00",
-          "weight_pct": 6.0178
+          "weight_pct": 6.0101
         },
         {
           "asset": "SOL",
           "quantity": 0.0840449165,
           "avg_price": 71.520653,
-          "market_price": 71.444414,
-          "market_value_eur": 6.00453981,
+          "market_price": 71.393588,
+          "market_value_eur": 6.00026814,
           "updated_at": "2026-02-28T21:42:59.699857+00:00",
-          "weight_pct": 5.9944
+          "weight_pct": 5.991
         },
         {
           "asset": "BTC",
           "quantity": 0.0001058475,
           "avg_price": 56814.65816,
-          "market_price": 56711.913401,
-          "market_value_eur": 6.00281633,
+          "market_price": 56685.805779,
+          "market_value_eur": 6.0000529,
           "updated_at": "2026-02-28T22:24:41.565012+00:00",
-          "weight_pct": 5.9926
+          "weight_pct": 5.9908
         }
       ],
       "decisions": {
         "all_time": {
-          "BUY": 18,
+          "BUY": 19,
           "SELL": 1,
-          "HOLD": 11,
-          "total": 30
+          "HOLD": 13,
+          "total": 33
         },
         "last_24h": {
-          "BUY": 18,
+          "BUY": 19,
           "SELL": 1,
-          "HOLD": 11,
-          "total": 30
+          "HOLD": 13,
+          "total": 33
         }
       },
       "trades": {
@@ -550,6 +550,2207 @@
     }
   ],
   "recent_decisions": [
+    {
+      "id": 848,
+      "agent_id": "agent_08_codex_operator",
+      "asset": "SOL",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.1602,
+      "action": "BUY",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "codex_skill_orchestrator",
+        "execution_guard": {
+          "available_cash_eur": 74.12212511,
+          "current_position_value_eur": 6.00026814,
+          "position_cap_eur": 24.03698915,
+          "position_pnl_pct": -0.001777
+        },
+        "managed_by": "codex",
+        "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+        "raw_action": "BUY",
+        "regime": {
+          "confidence": 0.391202,
+          "momentum": 0.028313,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1602,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "codex_skill_orchestrator",
+          "decision_owner_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "managed_by": "codex",
+          "managed_via_prompt": "trading-system/PROMPT.md",
+          "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "trend_follow",
+            "sentiment_filter"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.4,
+            "sentiment_filter": 0.9,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "ou_mean_reversion": -0.0344,
+          "sentiment_filter": 0.0833,
+          "trend_follow": 0.3982
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.4233608897558069,
+            "regime": "ranging",
+            "score": 0.1106,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.326885418195431,
+            "regime": "trending",
+            "score": 0.2595,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.660200+00:00"
+    },
+    {
+      "id": 847,
+      "agent_id": "agent_08_codex_operator",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.1246,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "codex_skill_orchestrator",
+        "execution_guard": {},
+        "managed_by": "codex",
+        "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.262814,
+          "momentum": 0.018486,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1246,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "codex_skill_orchestrator",
+          "decision_owner_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "managed_by": "codex",
+          "managed_via_prompt": "trading-system/PROMPT.md",
+          "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "trend_follow",
+            "sentiment_filter"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.4,
+            "sentiment_filter": 0.9,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "ou_mean_reversion": -0.0367,
+          "sentiment_filter": 0.25,
+          "trend_follow": 0.2357
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": 0.091,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.18686302961129111,
+            "regime": "ranging",
+            "score": 0.1919,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.651636+00:00"
+    },
+    {
+      "id": 846,
+      "agent_id": "agent_08_codex_operator",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.0465,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "codex_skill_orchestrator",
+        "execution_guard": {},
+        "managed_by": "codex",
+        "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.269333,
+          "momentum": 0.019083,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.0465,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "codex_skill_orchestrator",
+          "decision_owner_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "managed_by": "codex",
+          "managed_via_prompt": "trading-system/PROMPT.md",
+          "ownership_note": "This agent is operated by Codex. Trade decisions are produced by Codex using the project skills pipeline.",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "trend_follow",
+            "sentiment_filter"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.4,
+            "sentiment_filter": 0.9,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "ou_mean_reversion": -0.0274,
+          "sentiment_filter": -0.0317,
+          "trend_follow": 0.25
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": 0.0222,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "trend_follow",
+              "sentiment_filter"
+            ],
+            "confidence": 0.22282387115426808,
+            "regime": "ranging",
+            "score": 0.0951,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.644661+00:00"
+    },
+    {
+      "id": 845,
+      "agent_id": "agent_07_risky_scalper",
+      "asset": "XRP",
+      "timeframe": "15m",
+      "regime": "trending",
+      "score": 0.1738,
+      "action": "BUY",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "available_cash_eur": 20.05390719,
+          "current_position_value_eur": 20.55320401,
+          "position_cap_eur": 35.98477912,
+          "position_pnl_pct": -0.004077
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "BUY",
+        "regime": {
+          "confidence": 0.414134,
+          "momentum": 0.030022,
+          "regime": "trending",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1738,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.35,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.45
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0185,
+          "trend_follow": 0.3351
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.4141336390687139,
+            "regime": "trending",
+            "score": 0.1738,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.629825+00:00"
+    },
+    {
+      "id": 844,
+      "agent_id": "agent_07_risky_scalper",
+      "asset": "SOL",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1414,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "blocked_reason": "sell_blocked_by_pnl_guard",
+          "max_stop_loss_pct": 0.03,
+          "min_take_profit_pct": 0.002,
+          "position_pnl_pct": -0.006286
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "SELL",
+        "regime": {
+          "confidence": 0.423361,
+          "momentum": 0.026303,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1414,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.35,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.45
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.015,
+          "mean_reversion": -0.3173
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.4233608897558069,
+            "regime": "ranging",
+            "score": -0.1414,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.623019+00:00"
+    },
+    {
+      "id": 843,
+      "agent_id": "agent_07_risky_scalper",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1432,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "blocked_reason": "sell_blocked_by_pnl_guard",
+          "max_stop_loss_pct": 0.03,
+          "min_take_profit_pct": 0.002,
+          "position_pnl_pct": -0.003981
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "SELL",
+        "regime": {
+          "confidence": 0.300789,
+          "momentum": 0.018166,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1432,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.35,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.45
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0123,
+          "mean_reversion": -0.3181
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": -0.1432,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.616804+00:00"
+    },
+    {
+      "id": 842,
+      "agent_id": "agent_07_risky_scalper",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1586,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "blocked_reason": "sell_blocked_by_pnl_guard",
+          "max_stop_loss_pct": 0.03,
+          "min_take_profit_pct": 0.002,
+          "position_pnl_pct": -0.002268
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "SELL",
+        "regime": {
+          "confidence": 0.292588,
+          "momentum": 0.019073,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1586,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.35,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.45
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0099,
+          "mean_reversion": -0.3481
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": -0.1586,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.588193+00:00"
+    },
+    {
+      "id": 841,
+      "agent_id": "agent_06_ou_mean_reversion",
+      "asset": "SOL",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.0637,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.391202,
+          "momentum": 0.028313,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.0637,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.2,
+            "ou_mean_reversion": 1.65,
+            "sentiment_filter": 0.7,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.3173,
+          "ou_mean_reversion": -0.0205,
+          "sentiment_filter": 0.0833
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.4233608897558069,
+            "regime": "ranging",
+            "score": -0.116,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.326885418195431,
+            "regime": "trending",
+            "score": 0.041,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.459037+00:00"
+    },
+    {
+      "id": 840,
+      "agent_id": "agent_06_ou_mean_reversion",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1299,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.262814,
+          "momentum": 0.018486,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1299,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.2,
+            "ou_mean_reversion": 1.65,
+            "sentiment_filter": 0.7,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4487,
+          "ou_mean_reversion": -0.0367,
+          "sentiment_filter": 0.25
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": -0.0898,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.18686302961129111,
+            "regime": "ranging",
+            "score": -0.2102,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.452018+00:00"
+    },
+    {
+      "id": 839,
+      "agent_id": "agent_06_ou_mean_reversion",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.199,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.269333,
+          "momentum": 0.019083,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.199,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "ou_mean_reversion",
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.2,
+            "ou_mean_reversion": 1.65,
+            "sentiment_filter": 0.7,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4753,
+          "ou_mean_reversion": -0.0274,
+          "sentiment_filter": -0.0317
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": -0.1528,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "ou_mean_reversion",
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.22282387115426808,
+            "regime": "ranging",
+            "score": -0.2914,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.443186+00:00"
+    },
+    {
+      "id": 838,
+      "agent_id": "agent_05_alpha_hunter",
+      "asset": "XRP",
+      "timeframe": "15m",
+      "regime": "trending",
+      "score": 0.0065,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.376482,
+          "momentum": 0.01396,
+          "regime": "trending",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.0065,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.15,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.3
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0212,
+          "mean_reversion": -0.7328,
+          "trend_follow": 0.2258
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.4141336390687139,
+            "regime": "trending",
+            "score": 0.1865,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.20121378723678435,
+            "regime": "ranging",
+            "score": -0.3025,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.5764118210160241,
+            "regime": "trending",
+            "score": -0.0955,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.430743+00:00"
+    },
+    {
+      "id": 837,
+      "agent_id": "agent_05_alpha_hunter",
+      "asset": "SOL",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.0328,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.391059,
+          "momentum": 0.016058,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.0328,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.15,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.3
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0197,
+          "mean_reversion": -0.3173,
+          "trend_follow": 0.2647
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.4233608897558069,
+            "regime": "ranging",
+            "score": -0.1547,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.326885418195431,
+            "regime": "trending",
+            "score": 0.2221,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.39019532137619756,
+            "regime": "trending",
+            "score": -0.0548,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.095172+00:00"
+    },
+    {
+      "id": 836,
+      "agent_id": "agent_05_alpha_hunter",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.2045,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.264508,
+          "momentum": 0.011968,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.2045,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "breakout_confirmation",
+            "mean_reversion"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 1.15,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.3
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0144,
+          "mean_reversion": -0.4753,
+          "trend_follow": -0.0539
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": -0.1729,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.22282387115426808,
+            "regime": "ranging",
+            "score": -0.3594,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.23555576004493808,
+            "regime": "trending",
+            "score": -0.0214,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.087412+00:00"
+    },
+    {
+      "id": 835,
+      "agent_id": "agent_04_daily_executor",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.1221,
+      "action": "BUY",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "available_cash_eur": 61.02459129,
+          "current_position_value_eur": 5.09277305,
+          "position_cap_eur": 20.34534407,
+          "position_pnl_pct": 0.001332
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "BUY",
+        "regime": {
+          "confidence": 0.300789,
+          "momentum": 0.018166,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1221,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "breakout_confirmation",
+            "trend_follow",
+            "sentiment_filter"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0123,
+          "sentiment_filter": 0.25,
+          "trend_follow": 0.1497
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation",
+              "sentiment_filter"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": 0.1221,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.071122+00:00"
+    },
+    {
+      "id": 834,
+      "agent_id": "agent_04_daily_executor",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.0545,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.292588,
+          "momentum": 0.019073,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.0545,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "breakout_confirmation",
+            "trend_follow",
+            "sentiment_filter"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0099,
+          "sentiment_filter": -0.0317,
+          "trend_follow": 0.1695
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation",
+              "sentiment_filter"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": 0.0545,
+            "source": "binance",
+            "timeframe": "15m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.062923+00:00"
+    },
+    {
+      "id": 833,
+      "agent_id": "agent_03_defensive_news",
+      "asset": "BNB",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1912,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.162685,
+          "momentum": 0.009231,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1912,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.85,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.3267,
+          "sentiment_filter": 0.0
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.19465302101659987,
+            "regime": "ranging",
+            "score": -0.1026,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.09874833264432219,
+            "regime": "ranging",
+            "score": -0.3685,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:08.051532+00:00"
+    },
+    {
+      "id": 832,
+      "agent_id": "agent_03_defensive_news",
+      "asset": "XRP",
+      "timeframe": "15m",
+      "regime": "trending",
+      "score": -0.1215,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.34316,
+          "momentum": 0.026219,
+          "regime": "trending",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1215,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.85,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.7328,
+          "sentiment_filter": 0.0
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "sentiment_filter"
+            ],
+            "confidence": 0.4141336390687139,
+            "regime": "trending",
+            "score": 0.0,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.20121378723678435,
+            "regime": "ranging",
+            "score": -0.3646,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:07.719315+00:00"
+    },
+    {
+      "id": 831,
+      "agent_id": "agent_03_defensive_news",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.159,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.262814,
+          "momentum": 0.018486,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.159,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.85,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4487,
+          "sentiment_filter": 0.25
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": -0.0825,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.18686302961129111,
+            "regime": "ranging",
+            "score": -0.312,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:07.324930+00:00"
+    },
+    {
+      "id": 830,
+      "agent_id": "agent_03_defensive_news",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.2914,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "1h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.269333,
+          "momentum": 0.019083,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.2914,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "sentiment_filter"
+          ],
+          "risk_profile": "defensive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.85,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4753,
+          "sentiment_filter": -0.0317
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": -0.2169,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "sentiment_filter"
+            ],
+            "confidence": 0.22282387115426808,
+            "regime": "ranging",
+            "score": -0.4403,
+            "source": "binance",
+            "timeframe": "1h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:07.297392+00:00"
+    },
+    {
+      "id": 829,
+      "agent_id": "agent_02_momentum_guard",
+      "asset": "SOL",
+      "timeframe": "1h",
+      "regime": "trending",
+      "score": 0.142,
+      "action": "BUY",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {
+          "available_cash_eur": 84.49738904,
+          "current_position_value_eur": 5.47660957,
+          "position_cap_eur": 21.99364411,
+          "position_pnl_pct": -0.004253
+        },
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "BUY",
+        "regime": {
+          "confidence": 0.347989,
+          "momentum": 0.002397,
+          "regime": "trending",
+          "volatility_state": "high_volatility"
+        },
+        "risk_exit": null,
+        "score": 0.142,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "mean_reversion",
+            "breakout_confirmation"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0261,
+          "trend_follow": 0.2647
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.326885418195431,
+            "regime": "trending",
+            "score": 0.2437,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.39019532137619756,
+            "regime": "trending",
+            "score": -0.0613,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:07.085284+00:00"
+    },
+    {
+      "id": 828,
+      "agent_id": "agent_02_momentum_guard",
+      "asset": "ETH",
+      "timeframe": "1h",
+      "regime": "ranging",
+      "score": -0.1468,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.245431,
+          "momentum": -0.004818,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1468,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "mean_reversion",
+            "breakout_confirmation"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0193,
+          "mean_reversion": -0.71,
+          "trend_follow": 0.2084
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.18686302961129111,
+            "regime": "ranging",
+            "score": -0.1719,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.36256786625037174,
+            "regime": "trending",
+            "score": -0.0966,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:06.429804+00:00"
+    },
+    {
+      "id": 827,
+      "agent_id": "agent_02_momentum_guard",
+      "asset": "BTC",
+      "timeframe": "1h",
+      "regime": "ranging",
+      "score": -0.1283,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "1h": "binance",
+            "4h": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.227068,
+          "momentum": 0.002495,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1283,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "trend_follow",
+            "mean_reversion",
+            "breakout_confirmation"
+          ],
+          "risk_profile": "balanced",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.0
+          }
+        },
+        "strategy_scores": {
+          "breakout_confirmation": 0.0204,
+          "mean_reversion": -0.7297,
+          "trend_follow": 0.2562
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.22282387115426808,
+            "regime": "ranging",
+            "score": -0.1802,
+            "source": "binance",
+            "timeframe": "1h"
+          },
+          {
+            "active_strategies": [
+              "trend_follow",
+              "breakout_confirmation"
+            ],
+            "confidence": 0.23555576004493808,
+            "regime": "trending",
+            "score": -0.0245,
+            "source": "binance",
+            "timeframe": "4h"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:05.836681+00:00"
+    },
+    {
+      "id": 826,
+      "agent_id": "agent_01_regime_risk",
+      "asset": "XRP",
+      "timeframe": "15m",
+      "regime": "trending",
+      "score": 0.1069,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "30m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.430185,
+          "momentum": 0.029196,
+          "regime": "trending",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1069,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "trend_follow"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.6784,
+          "trend_follow": 0.3943
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "trend_follow"
+            ],
+            "confidence": 0.4141336390687139,
+            "regime": "trending",
+            "score": 0.3351,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.4528861254326434,
+            "regime": "ranging",
+            "score": -0.2158,
+            "source": "binance",
+            "timeframe": "30m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:05.233237+00:00"
+    },
+    {
+      "id": 825,
+      "agent_id": "agent_01_regime_risk",
+      "asset": "BNB",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1201,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "30m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.229797,
+          "momentum": 0.015276,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1201,
+        "sentiment_score": 0.0,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "trend_follow"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.3273,
+          "trend_follow": 0.1908
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.19465302101659987,
+            "regime": "ranging",
+            "score": -0.0647,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.2794983095649877,
+            "regime": "ranging",
+            "score": -0.1984,
+            "source": "binance",
+            "timeframe": "30m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:04.636042+00:00"
+    },
+    {
+      "id": 824,
+      "agent_id": "agent_01_regime_risk",
+      "asset": "SOL",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": 0.1619,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "30m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.485357,
+          "momentum": 0.033194,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": 0.1619,
+        "sentiment_score": 0.08333333333333333,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "trend_follow"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.3173,
+          "trend_follow": 0.4028
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.4233608897558069,
+            "regime": "ranging",
+            "score": -0.0433,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "trend_follow"
+            ],
+            "confidence": 0.5730323381299621,
+            "regime": "trending",
+            "score": 0.4522,
+            "source": "binance",
+            "timeframe": "30m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:04.050916+00:00"
+    },
+    {
+      "id": 823,
+      "agent_id": "agent_01_regime_risk",
+      "asset": "ETH",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1578,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "30m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.345167,
+          "momentum": 0.022832,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1578,
+        "sentiment_score": 0.25,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "trend_follow"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4405,
+          "trend_follow": 0.2663
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.30078877042779206,
+            "regime": "ranging",
+            "score": -0.131,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.4079261615309992,
+            "regime": "ranging",
+            "score": -0.1957,
+            "source": "binance",
+            "timeframe": "30m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:03.443776+00:00"
+    },
+    {
+      "id": 822,
+      "agent_id": "agent_01_regime_risk",
+      "asset": "BTC",
+      "timeframe": "15m",
+      "regime": "ranging",
+      "score": -0.1722,
+      "action": "HOLD",
+      "rationale": {
+        "data_sources": {
+          "snapshot": "binance",
+          "timeframes": {
+            "15m": "binance",
+            "30m": "binance"
+          }
+        },
+        "decision_engine": "rule_based",
+        "execution_guard": {},
+        "managed_by": "system",
+        "ownership_note": "",
+        "raw_action": "HOLD",
+        "regime": {
+          "confidence": 0.329898,
+          "momentum": 0.022695,
+          "regime": "ranging",
+          "volatility_state": "normal"
+        },
+        "risk_exit": null,
+        "score": -0.1722,
+        "sentiment_score": -0.03174603174603174,
+        "strategy_profile": {
+          "decision_engine": "rule_based",
+          "decision_owner_note": "",
+          "managed_by": "system",
+          "managed_via_prompt": null,
+          "ownership_note": "",
+          "resolved_strategies": [
+            "mean_reversion",
+            "trend_follow"
+          ],
+          "risk_profile": "aggressive",
+          "strategy_weights": {
+            "breakout_confirmation": 0.9,
+            "mean_reversion": 1.0,
+            "ou_mean_reversion": 1.1,
+            "sentiment_filter": 0.6,
+            "trend_follow": 1.15
+          }
+        },
+        "strategy_scores": {
+          "mean_reversion": -0.4679,
+          "trend_follow": 0.2713
+        },
+        "timeframe_signals": [
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.29258812962398006,
+            "regime": "ranging",
+            "score": -0.1411,
+            "source": "binance",
+            "timeframe": "15m"
+          },
+          {
+            "active_strategies": [
+              "mean_reversion",
+              "trend_follow"
+            ],
+            "confidence": 0.38266238720243595,
+            "regime": "ranging",
+            "score": -0.2163,
+            "source": "binance",
+            "timeframe": "30m"
+          }
+        ]
+      },
+      "created_at": "2026-02-28T23:19:02.844911+00:00"
+    },
     {
       "id": 821,
       "agent_id": "agent_08_codex_operator",
@@ -29079,1997 +31280,6 @@
         ]
       },
       "created_at": "2026-02-28T15:49:15.889035+00:00"
-    },
-    {
-      "id": 448,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "XRP",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.19,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.349214,
-          "momentum": 0.001354,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.19,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": -0.0004,
-          "mean_reversion": -0.4411,
-          "trend_follow": -0.3181
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.21872418646873676,
-            "regime": "ranging",
-            "score": -0.2217,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.466930936128568,
-            "regime": "trending",
-            "score": -0.0868,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.6357372242122434,
-            "regime": "trending",
-            "score": -0.2695,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:15.838116+00:00"
-    },
-    {
-      "id": 447,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "SOL",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2179,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.292471,
-          "momentum": 0.003045,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2179,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0028,
-          "mean_reversion": -0.5964,
-          "trend_follow": -0.2351
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.20951776641189407,
-            "regime": "ranging",
-            "score": -0.2999,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40193635280293005,
-            "regime": "trending",
-            "score": -0.0501,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40535259358819553,
-            "regime": "trending",
-            "score": -0.2252,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:15.182708+00:00"
-    },
-    {
-      "id": 446,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.127,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.182794,
-          "momentum": 0.001877,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.127,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0007,
-          "mean_reversion": -0.2361
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.1123825265051954,
-            "regime": "ranging",
-            "score": -0.2984,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.28665007135250825,
-            "regime": "ranging",
-            "score": 0.0191,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.2567243902862665,
-            "regime": "ranging",
-            "score": 0.2666,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:15.158323+00:00"
-    },
-    {
-      "id": 445,
-      "agent_id": "agent_04_daily_executor",
-      "asset": "ETH",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": 0.0517,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.136739,
-          "momentum": 0.012058,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": 0.0517,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "breakout_confirmation",
-            "trend_follow",
-            "sentiment_filter"
-          ],
-          "risk_profile": "balanced",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0061,
-          "sentiment_filter": 0.0,
-          "trend_follow": 0.1419
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation",
-              "sentiment_filter"
-            ],
-            "confidence": 0.13673854650113187,
-            "regime": "ranging",
-            "score": 0.0517,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:15.109411+00:00"
-    },
-    {
-      "id": 444,
-      "agent_id": "agent_04_daily_executor",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": 0.0323,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.112383,
-          "momentum": 0.011469,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": 0.0323,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "breakout_confirmation",
-            "trend_follow",
-            "sentiment_filter"
-          ],
-          "risk_profile": "balanced",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0054,
-          "sentiment_filter": -0.1167,
-          "trend_follow": 0.1742
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation",
-              "sentiment_filter"
-            ],
-            "confidence": 0.1123825265051954,
-            "regime": "ranging",
-            "score": 0.0323,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:15.025941+00:00"
-    },
-    {
-      "id": 443,
-      "agent_id": "agent_03_defensive_news",
-      "asset": "BNB",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2168,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.167334,
-          "momentum": 0.003571,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2168,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.85,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.3703,
-          "sentiment_filter": 0.0
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.10829236691553555,
-            "regime": "ranging",
-            "score": -0.3527,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.2854183978847558,
-            "regime": "ranging",
-            "score": 0.0551,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:14.975886+00:00"
-    },
-    {
-      "id": 442,
-      "agent_id": "agent_03_defensive_news",
-      "asset": "XRP",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1721,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.30146,
-          "momentum": 0.008637,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1721,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.85,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.4411,
-          "sentiment_filter": 0.0
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.21872418646873676,
-            "regime": "ranging",
-            "score": -0.2582,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "sentiment_filter"
-            ],
-            "confidence": 0.466930936128568,
-            "regime": "trending",
-            "score": 0.0,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:14.558392+00:00"
-    },
-    {
-      "id": 441,
-      "agent_id": "agent_03_defensive_news",
-      "asset": "ETH",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1814,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.22617,
-          "momentum": 0.003338,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1814,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.85,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.3098,
-          "sentiment_filter": 0.0
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.13673854650113187,
-            "regime": "ranging",
-            "score": -0.2804,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.40503332406101406,
-            "regime": "ranging",
-            "score": 0.0167,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:14.039955+00:00"
-    },
-    {
-      "id": 440,
-      "agent_id": "agent_03_defensive_news",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2718,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.170472,
-          "momentum": 0.003732,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2718,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.85,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.3816,
-          "sentiment_filter": -0.1167
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.1123825265051954,
-            "regime": "ranging",
-            "score": -0.3934,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.28665007135250825,
-            "regime": "ranging",
-            "score": -0.0285,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:14.014443+00:00"
-    },
-    {
-      "id": 439,
-      "agent_id": "agent_02_momentum_guard",
-      "asset": "SOL",
-      "timeframe": "1h",
-      "regime": "trending",
-      "score": -0.1202,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.403075,
-          "momentum": -0.01677,
-          "regime": "trending",
-          "volatility_state": "high_volatility"
-        },
-        "risk_exit": null,
-        "score": -0.1202,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "mean_reversion",
-            "breakout_confirmation"
-          ],
-          "risk_profile": "balanced",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": -0.0062,
-          "trend_follow": -0.2351
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40193635280293005,
-            "regime": "trending",
-            "score": -0.0569,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40535259358819553,
-            "regime": "trending",
-            "score": -0.2469,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:13.986044+00:00"
-    },
-    {
-      "id": 438,
-      "agent_id": "agent_02_momentum_guard",
-      "asset": "ETH",
-      "timeframe": "1h",
-      "regime": "ranging",
-      "score": 0.0185,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.372434,
-          "momentum": -0.014672,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": 0.0185,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "mean_reversion",
-            "breakout_confirmation"
-          ],
-          "risk_profile": "balanced",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": -0.009,
-          "mean_reversion": 0.2382,
-          "trend_follow": -0.2571
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40503332406101406,
-            "regime": "ranging",
-            "score": -0.0267,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.30723580666888534,
-            "regime": "ranging",
-            "score": 0.1088,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:13.249130+00:00"
-    },
-    {
-      "id": 437,
-      "agent_id": "agent_02_momentum_guard",
-      "asset": "BTC",
-      "timeframe": "1h",
-      "regime": "ranging",
-      "score": 0.0329,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.276675,
-          "momentum": -0.010913,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": 0.0329,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "mean_reversion",
-            "breakout_confirmation"
-          ],
-          "risk_profile": "balanced",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": -0.0056,
-          "mean_reversion": 0.2351,
-          "trend_follow": -0.1992
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.28665007135250825,
-            "regime": "ranging",
-            "score": -0.0162,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.2567243902862665,
-            "regime": "ranging",
-            "score": 0.131,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:12.509708+00:00"
-    },
-    {
-      "id": 436,
-      "agent_id": "agent_01_regime_risk",
-      "asset": "XRP",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2286,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "30m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.171395,
-          "momentum": 0.011346,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2286,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "trend_follow"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.15
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.4991,
-          "trend_follow": 0.1771
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.21872418646873676,
-            "regime": "ranging",
-            "score": -0.1901,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.10446179903609772,
-            "regime": "ranging",
-            "score": -0.2831,
-            "source": "binance",
-            "timeframe": "30m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:11.523201+00:00"
-    },
-    {
-      "id": 435,
-      "agent_id": "agent_01_regime_risk",
-      "asset": "BNB",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.3196,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "30m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.091854,
-          "momentum": 0.007311,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.3196,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "trend_follow"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.15
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.6575,
-          "trend_follow": 0.1873
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.10829236691553555,
-            "regime": "ranging",
-            "score": -0.2976,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.06860577807464403,
-            "regime": "ranging",
-            "score": -0.3507,
-            "source": "binance",
-            "timeframe": "30m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:10.788460+00:00"
-    },
-    {
-      "id": 434,
-      "agent_id": "agent_01_regime_risk",
-      "asset": "SOL",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.3093,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "30m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.160091,
-          "momentum": 0.015791,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.3093,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "trend_follow"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.15
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.6794,
-          "trend_follow": 0.2457
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.20951776641189407,
-            "regime": "ranging",
-            "score": -0.2748,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.09019038770895163,
-            "regime": "ranging",
-            "score": -0.3582,
-            "source": "binance",
-            "timeframe": "30m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:09.878042+00:00"
-    },
-    {
-      "id": 433,
-      "agent_id": "agent_01_regime_risk",
-      "asset": "ETH",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2752,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "30m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.118107,
-          "momentum": 0.010469,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2752,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "trend_follow"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.15
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.5662,
-          "trend_follow": 0.1614
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.13673854650113187,
-            "regime": "ranging",
-            "score": -0.2306,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.091758780470237,
-            "regime": "ranging",
-            "score": -0.3382,
-            "source": "binance",
-            "timeframe": "30m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:09.127821+00:00"
-    },
-    {
-      "id": 432,
-      "agent_id": "agent_01_regime_risk",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.3191,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "30m": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.095481,
-          "momentum": 0.00835,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.3191,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "mean_reversion",
-            "trend_follow"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.15
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.6519,
-          "trend_follow": 0.1801
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.1123825265051954,
-            "regime": "ranging",
-            "score": -0.284,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "trend_follow"
-            ],
-            "confidence": 0.0715787447702859,
-            "regime": "ranging",
-            "score": -0.3687,
-            "source": "binance",
-            "timeframe": "30m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:49:08.330693+00:00"
-    },
-    {
-      "id": 431,
-      "agent_id": "agent_07_risky_scalper",
-      "asset": "XRP",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1985,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {
-          "blocked_reason": "no_position"
-        },
-        "raw_action": "SELL",
-        "regime": {
-          "confidence": 0.216805,
-          "momentum": 0.022775,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1985,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.35,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.45
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.007,
-          "mean_reversion": -0.4297
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.21680453954357037,
-            "regime": "ranging",
-            "score": -0.1985,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.836703+00:00"
-    },
-    {
-      "id": 430,
-      "agent_id": "agent_07_risky_scalper",
-      "asset": "SOL",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2582,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {
-          "blocked_reason": "no_position"
-        },
-        "raw_action": "SELL",
-        "regime": {
-          "confidence": 0.204029,
-          "momentum": 0.017024,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2582,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.35,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.45
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0086,
-          "mean_reversion": -0.5584
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.20402941298414334,
-            "regime": "ranging",
-            "score": -0.2582,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.819429+00:00"
-    },
-    {
-      "id": 429,
-      "agent_id": "agent_07_risky_scalper",
-      "asset": "ETH",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2103,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {
-          "blocked_reason": "no_position"
-        },
-        "raw_action": "SELL",
-        "regime": {
-          "confidence": 0.133957,
-          "momentum": 0.011615,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2103,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.35,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.45
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0057,
-          "mean_reversion": -0.4533
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.13395706988427053,
-            "regime": "ranging",
-            "score": -0.2103,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.799167+00:00"
-    },
-    {
-      "id": 428,
-      "agent_id": "agent_07_risky_scalper",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2586,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance"
-          }
-        },
-        "execution_guard": {
-          "blocked_reason": "no_position"
-        },
-        "raw_action": "SELL",
-        "regime": {
-          "confidence": 0.109337,
-          "momentum": 0.010986,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2586,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.35,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.45
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0049,
-          "mean_reversion": -0.5551
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.10933652487971246,
-            "regime": "ranging",
-            "score": -0.2586,
-            "source": "binance",
-            "timeframe": "15m"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.769687+00:00"
-    },
-    {
-      "id": 427,
-      "agent_id": "agent_06_ou_mean_reversion",
-      "asset": "SOL",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1176,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.270276,
-          "momentum": 0.00828,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1176,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "ou_mean_reversion",
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.2,
-            "ou_mean_reversion": 1.65,
-            "sentiment_filter": 0.7,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.5584,
-          "ou_mean_reversion": -0.0021,
-          "sentiment_filter": 0.0833
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.20402941298414334,
-            "regime": "ranging",
-            "score": -0.2008,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.402769305097826,
-            "regime": "trending",
-            "score": 0.0489,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.733241+00:00"
-    },
-    {
-      "id": 426,
-      "agent_id": "agent_06_ou_mean_reversion",
-      "asset": "ETH",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1065,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.224257,
-          "momentum": 0.003051,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1065,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "ou_mean_reversion",
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.2,
-            "ou_mean_reversion": 1.65,
-            "sentiment_filter": 0.7,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.2929,
-          "ou_mean_reversion": 0.0129,
-          "sentiment_filter": 0.0
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.13395706988427053,
-            "regime": "ranging",
-            "score": -0.1699,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.4048570256064688,
-            "regime": "ranging",
-            "score": 0.0203,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.701648+00:00"
-    },
-    {
-      "id": 425,
-      "agent_id": "agent_06_ou_mean_reversion",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1551,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.169267,
-          "momentum": 0.003286,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1551,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "ou_mean_reversion",
-            "mean_reversion",
-            "sentiment_filter"
-          ],
-          "risk_profile": "defensive",
-          "strategy_weights": {
-            "breakout_confirmation": 0.9,
-            "mean_reversion": 1.2,
-            "ou_mean_reversion": 1.65,
-            "sentiment_filter": 0.7,
-            "trend_follow": 1.0
-          }
-        },
-        "strategy_scores": {
-          "mean_reversion": -0.3547,
-          "ou_mean_reversion": 0.0148,
-          "sentiment_filter": -0.1167
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.10933652487971246,
-            "regime": "ranging",
-            "score": -0.2347,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "ou_mean_reversion",
-              "mean_reversion",
-              "sentiment_filter"
-            ],
-            "confidence": 0.28912937627891444,
-            "regime": "ranging",
-            "score": 0.004,
-            "source": "binance",
-            "timeframe": "1h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.674006+00:00"
-    },
-    {
-      "id": 424,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "XRP",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1868,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.348405,
-          "momentum": 0.001135,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1868,
-        "sentiment_score": 0.0,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": -0.0006,
-          "mean_reversion": -0.4297,
-          "trend_follow": -0.3186
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.21680453954357037,
-            "regime": "ranging",
-            "score": -0.216,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.467436387743116,
-            "regime": "trending",
-            "score": -0.0871,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.6367468942357741,
-            "regime": "trending",
-            "score": -0.2697,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.635484+00:00"
-    },
-    {
-      "id": 423,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "SOL",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.2071,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.289688,
-          "momentum": 0.002489,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.2071,
-        "sentiment_score": 0.08333333333333333,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0022,
-          "mean_reversion": -0.5584,
-          "trend_follow": -0.2356
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.20402941298414334,
-            "regime": "ranging",
-            "score": -0.2809,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.402769305097826,
-            "regime": "trending",
-            "score": -0.0503,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "trend_follow",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.40616311776965774,
-            "regime": "trending",
-            "score": -0.2257,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.072948+00:00"
-    },
-    {
-      "id": 422,
-      "agent_id": "agent_05_alpha_hunter",
-      "asset": "BTC",
-      "timeframe": "15m",
-      "regime": "ranging",
-      "score": -0.1151,
-      "action": "HOLD",
-      "rationale": {
-        "data_sources": {
-          "snapshot": "binance",
-          "timeframes": {
-            "15m": "binance",
-            "1h": "binance",
-            "4h": "binance"
-          }
-        },
-        "execution_guard": {},
-        "raw_action": "HOLD",
-        "regime": {
-          "confidence": 0.181968,
-          "momentum": 0.001463,
-          "regime": "ranging",
-          "volatility_state": "normal"
-        },
-        "risk_exit": null,
-        "score": -0.1151,
-        "sentiment_score": -0.11666666666666665,
-        "strategy_profile": {
-          "resolved_strategies": [
-            "trend_follow",
-            "breakout_confirmation",
-            "mean_reversion"
-          ],
-          "risk_profile": "aggressive",
-          "strategy_weights": {
-            "breakout_confirmation": 1.15,
-            "mean_reversion": 1.0,
-            "ou_mean_reversion": 1.1,
-            "sentiment_filter": 0.6,
-            "trend_follow": 1.3
-          }
-        },
-        "strategy_scores": {
-          "breakout_confirmation": 0.0003,
-          "mean_reversion": -0.2123
-        },
-        "timeframe_signals": [
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.10933652487971246,
-            "regime": "ranging",
-            "score": -0.2811,
-            "source": "binance",
-            "timeframe": "15m"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.28912937627891444,
-            "regime": "ranging",
-            "score": 0.0252,
-            "source": "binance",
-            "timeframe": "1h"
-          },
-          {
-            "active_strategies": [
-              "mean_reversion",
-              "breakout_confirmation"
-            ],
-            "confidence": 0.2581741061565112,
-            "regime": "ranging",
-            "score": 0.2683,
-            "source": "binance",
-            "timeframe": "4h"
-          }
-        ]
-      },
-      "created_at": "2026-02-28T15:48:54.046802+00:00"
     }
   ],
   "recent_trades": [
@@ -31663,6 +31873,155 @@
     }
   ],
   "recent_events": [
+    {
+      "id": 229,
+      "event_type": "cycle_summary",
+      "payload": {
+        "data_quality": {
+          "fx_source": "frankfurter",
+          "market_currency": "EUR",
+          "market_sources": {
+            "candles": {
+              "binance": 19
+            },
+            "snapshot": {
+              "binance": 5
+            }
+          },
+          "news_cache_age_minutes": null,
+          "news_cache_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\data\\news-cache.json",
+          "news_cache_used": false,
+          "news_count": 40,
+          "news_feed_errors": {},
+          "sentiment_mentions": {
+            "BNB": 1,
+            "BTC": 21,
+            "ETH": 4,
+            "SOL": 4,
+            "XRP": 3
+          },
+          "snapshot_sources": {
+            "BNB": "binance",
+            "BTC": "binance",
+            "ETH": "binance",
+            "SOL": "binance",
+            "XRP": "binance"
+          },
+          "usd_to_eur_rate": 0.8471
+        },
+        "decisions": 27,
+        "market_snapshot": {
+          "BNB": {
+            "last_price": 521.991491,
+            "price_change_pct_24h": 0.55,
+            "quote_volume_24h": 87756168.48107098
+          },
+          "BTC": {
+            "last_price": 56685.805779,
+            "price_change_pct_24h": 1.631,
+            "quote_volume_24h": 1230885549.0939448
+          },
+          "ETH": {
+            "last_price": 1661.730657,
+            "price_change_pct_24h": 1.81,
+            "quote_volume_24h": 744075648.0669628
+          },
+          "SOL": {
+            "last_price": 71.393588,
+            "price_change_pct_24h": 3.322,
+            "quote_volume_24h": 323909500.77772814
+          },
+          "XRP": {
+            "last_price": 1.16789677,
+            "price_change_pct_24h": 1.877,
+            "quote_volume_24h": 258347897.80806607
+          }
+        },
+        "timestamp": "2026-02-28T23:19:02.246435+00:00",
+        "trades": 0
+      },
+      "created_at": "2026-02-28T23:19:08.675931+00:00"
+    },
+    {
+      "id": 228,
+      "event_type": "order_skipped",
+      "payload": {
+        "agent_id": "agent_08_codex_operator",
+        "asset": "SOL",
+        "created_at": "2026-02-28T23:19:08.666564+00:00",
+        "minimum_order_eur": 5.0,
+        "notional_eur": 0.00897915,
+        "reason": "notional_below_minimum",
+        "score": 0.1602,
+        "side": "BUY"
+      },
+      "created_at": "2026-02-28T23:19:08.666576+00:00"
+    },
+    {
+      "id": 227,
+      "event_type": "order_skipped",
+      "payload": {
+        "agent_id": "agent_07_risky_scalper",
+        "asset": "XRP",
+        "created_at": "2026-02-28T23:19:08.635781+00:00",
+        "minimum_order_eur": 5.0,
+        "notional_eur": 0.0,
+        "reason": "notional_below_minimum",
+        "score": 0.1738,
+        "side": "BUY"
+      },
+      "created_at": "2026-02-28T23:19:08.635793+00:00"
+    },
+    {
+      "id": 226,
+      "event_type": "order_skipped",
+      "payload": {
+        "agent_id": "agent_04_daily_executor",
+        "asset": "ETH",
+        "created_at": "2026-02-28T23:19:08.077752+00:00",
+        "minimum_order_eur": 5.0,
+        "notional_eur": 0.0,
+        "reason": "notional_below_minimum",
+        "score": 0.1221,
+        "side": "BUY"
+      },
+      "created_at": "2026-02-28T23:19:08.077764+00:00"
+    },
+    {
+      "id": 225,
+      "event_type": "order_skipped",
+      "payload": {
+        "agent_id": "agent_02_momentum_guard",
+        "asset": "SOL",
+        "created_at": "2026-02-28T23:19:07.254241+00:00",
+        "minimum_order_eur": 5.0,
+        "notional_eur": 0.02180146,
+        "reason": "notional_below_minimum",
+        "score": 0.142,
+        "side": "BUY"
+      },
+      "created_at": "2026-02-28T23:19:07.254258+00:00"
+    },
+    {
+      "id": 224,
+      "event_type": "push_github",
+      "payload": {
+        "created_at": "2026-02-28T23:18:01.650039+00:00",
+        "output": "Status: pushed\nRepo: C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\nTarget: origin/main\nCommit message: chore: update trading snapshot\nPaths: trading-system/database.sqlite, dashboard/data/dashboard-data.json, trading-system/logs/orchestrator.log\nSkipped paths: trading-system/database.sqlite (ignored_by_gitignore), trading-system/logs/orchestrator.log (ignored_by_gitignore)\nCommit: 7de9a66",
+        "status": "ok"
+      },
+      "created_at": "2026-02-28T23:18:01.650053+00:00"
+    },
+    {
+      "id": 223,
+      "event_type": "dashboard_export",
+      "payload": {
+        "created_at": "2026-02-28T23:17:58.162741+00:00",
+        "cycles": 1,
+        "output_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\dashboard\\data\\dashboard-data.json"
+      },
+      "created_at": "2026-02-28T23:17:58.162752+00:00"
+    },
     {
       "id": 222,
       "event_type": "cycle_summary",
@@ -33857,238 +34216,10 @@
         "trades": 0
       },
       "created_at": "2026-02-28T16:05:22.124990+00:00"
-    },
-    {
-      "id": 109,
-      "event_type": "push_github",
-      "payload": {
-        "created_at": "2026-02-28T16:05:04.097871+00:00",
-        "output": "Status: pushed\nRepo: C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\nTarget: origin/main\nCommit message: chore: update trading snapshot\nPaths: trading-system/database.sqlite, dashboard/data/dashboard-data.json, trading-system/logs/orchestrator.log\nSkipped paths: trading-system/database.sqlite (ignored_by_gitignore), trading-system/logs/orchestrator.log (ignored_by_gitignore)\nCommit: 22ea35c",
-        "status": "ok"
-      },
-      "created_at": "2026-02-28T16:05:04.097899+00:00"
-    },
-    {
-      "id": 108,
-      "event_type": "dashboard_export",
-      "payload": {
-        "created_at": "2026-02-28T16:04:55.160978+00:00",
-        "cycles": 1,
-        "output_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\dashboard\\data\\dashboard-data.json"
-      },
-      "created_at": "2026-02-28T16:04:55.161000+00:00"
-    },
-    {
-      "id": 107,
-      "event_type": "cycle_summary",
-      "payload": {
-        "data_quality": {
-          "fx_source": "frankfurter",
-          "market_currency": "EUR",
-          "market_sources": {
-            "candles": {
-              "binance": 19
-            },
-            "snapshot": {
-              "binance": 5
-            }
-          },
-          "news_cache_age_minutes": null,
-          "news_cache_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\data\\news-cache.json",
-          "news_cache_used": false,
-          "news_count": 40,
-          "news_feed_errors": {},
-          "sentiment_mentions": {
-            "BNB": 1,
-            "BTC": 20,
-            "ETH": 4,
-            "SOL": 4,
-            "XRP": 3
-          },
-          "snapshot_sources": {
-            "BNB": "binance",
-            "BTC": "binance",
-            "ETH": "binance",
-            "SOL": "binance",
-            "XRP": "binance"
-          },
-          "usd_to_eur_rate": 0.8471
-        },
-        "decisions": 24,
-        "market_snapshot": {
-          "BNB": {
-            "last_price": 511.326502,
-            "price_change_pct_24h": -1.639,
-            "quote_volume_24h": 82750789.94590595
-          },
-          "BTC": {
-            "last_price": 54856.40014799999,
-            "price_change_pct_24h": -1.946,
-            "quote_volume_24h": 1181261560.7965322
-          },
-          "ETH": {
-            "last_price": 1606.279491,
-            "price_change_pct_24h": -2.538,
-            "quote_volume_24h": 684855219.7330972
-          },
-          "SOL": {
-            "last_price": 68.335557,
-            "price_change_pct_24h": -2.218,
-            "quote_volume_24h": 305965408.74903685
-          },
-          "XRP": {
-            "last_price": 1.1202050399999999,
-            "price_change_pct_24h": -2.226,
-            "quote_volume_24h": 247436310.02970976
-          }
-        },
-        "timestamp": "2026-02-28T16:04:44.787232+00:00",
-        "trades": 0
-      },
-      "created_at": "2026-02-28T16:04:54.560151+00:00"
-    },
-    {
-      "id": 106,
-      "event_type": "push_github",
-      "payload": {
-        "created_at": "2026-02-28T15:53:27.561029+00:00",
-        "output": "Status: pushed\nRepo: C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\nTarget: origin/main\nCommit message: chore: update trading snapshot\nPaths: trading-system/database.sqlite, dashboard/data/dashboard-data.json, trading-system/logs/orchestrator.log\nSkipped paths: trading-system/database.sqlite (ignored_by_gitignore), trading-system/logs/orchestrator.log (ignored_by_gitignore)\nCommit: 9709bf6",
-        "status": "ok"
-      },
-      "created_at": "2026-02-28T15:53:27.561054+00:00"
-    },
-    {
-      "id": 105,
-      "event_type": "dashboard_export",
-      "payload": {
-        "created_at": "2026-02-28T15:53:21.287715+00:00",
-        "cycles": 1,
-        "output_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\dashboard\\data\\dashboard-data.json"
-      },
-      "created_at": "2026-02-28T15:53:21.287756+00:00"
-    },
-    {
-      "id": 104,
-      "event_type": "cycle_summary",
-      "payload": {
-        "data_quality": {
-          "fx_source": "frankfurter",
-          "market_currency": "EUR",
-          "market_sources": {
-            "candles": {
-              "binance": 19
-            },
-            "snapshot": {
-              "binance": 5
-            }
-          },
-          "news_cache_age_minutes": null,
-          "news_cache_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\data\\news-cache.json",
-          "news_cache_used": false,
-          "news_count": 40,
-          "news_feed_errors": {},
-          "sentiment_mentions": {
-            "BNB": 1,
-            "BTC": 20,
-            "ETH": 4,
-            "SOL": 4,
-            "XRP": 3
-          },
-          "snapshot_sources": {
-            "BNB": "binance",
-            "BTC": "binance",
-            "ETH": "binance",
-            "SOL": "binance",
-            "XRP": "binance"
-          },
-          "usd_to_eur_rate": 0.8471
-        },
-        "decisions": 24,
-        "market_snapshot": {
-          "BNB": {
-            "last_price": 510.648822,
-            "price_change_pct_24h": -2.004,
-            "quote_volume_24h": 82525056.42769255
-          },
-          "BTC": {
-            "last_price": 54873.994415,
-            "price_change_pct_24h": -2.222,
-            "quote_volume_24h": 1185089565.1156423
-          },
-          "ETH": {
-            "last_price": 1605.796644,
-            "price_change_pct_24h": -2.898,
-            "quote_volume_24h": 687247927.5324781
-          },
-          "SOL": {
-            "last_price": 68.34402800000001,
-            "price_change_pct_24h": -2.725,
-            "quote_volume_24h": 306781927.8855078
-          },
-          "XRP": {
-            "last_price": 1.11927323,
-            "price_change_pct_24h": -2.745,
-            "quote_volume_24h": 249993982.21869525
-          }
-        },
-        "timestamp": "2026-02-28T15:53:12.894659+00:00",
-        "trades": 0
-      },
-      "created_at": "2026-02-28T15:53:20.785889+00:00"
-    },
-    {
-      "id": 103,
-      "event_type": "push_github_error",
-      "payload": {
-        "created_at": "2026-02-28T15:52:23.528208+00:00",
-        "output": "Traceback (most recent call last):\n  File \"C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\skills\\push_github.py\", line 180, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\skills\\push_github.py\", line 107, in main\n    result = push_to_github(\n        message=args.message,\n    ...<4 lines>...\n        dry_run=args.dry_run,\n    )\n  File \"C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\skills\\push_github.py\", line 41, in push_to_github\n    _run_git([\"add\", \"--\", *target_paths], REPO_ROOT)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\trading-system\\skills\\push_github.py\", line 152, in _run_git\n    raise RuntimeError(detail)\nRuntimeError: The following paths are ignored by one of your .gitignore files:\ntrading-system\nhint: Use -f if you really want to add them.\nhint: Disable this message with \"git config set advice.addIgnoredFile false\"",
-        "status": "failed"
-      },
-      "created_at": "2026-02-28T15:52:23.528258+00:00"
     }
   ],
   "score_series": {
     "BTC": [
-      {
-        "time": "2026-02-28T16:12:02.678396+00:00",
-        "score": -0.3688,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:05.720195+00:00",
-        "score": -0.0974,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:06.954955+00:00",
-        "score": -0.3247,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:07.613666+00:00",
-        "score": 0.0431,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:07.632528+00:00",
-        "score": -0.2296,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:07.958940+00:00",
-        "score": -0.2035,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:07.985599+00:00",
-        "score": -0.3183,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:12:08.030139+00:00",
-        "score": -0.006,
-        "action": "HOLD"
-      },
       {
         "time": "2026-02-28T21:42:54.222598+00:00",
         "score": 0.0409,
@@ -34448,44 +34579,49 @@
         "time": "2026-02-28T23:17:57.949223+00:00",
         "score": 0.0488,
         "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:02.844911+00:00",
+        "score": -0.1722,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:05.836681+00:00",
+        "score": -0.1283,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:07.297392+00:00",
+        "score": -0.2914,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.062923+00:00",
+        "score": 0.0545,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.087412+00:00",
+        "score": -0.2045,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.443186+00:00",
+        "score": -0.199,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.588193+00:00",
+        "score": -0.1586,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.644661+00:00",
+        "score": 0.0465,
+        "action": "HOLD"
       }
     ],
     "ETH": [
-      {
-        "time": "2026-02-28T16:04:52.189157+00:00",
-        "score": -0.1597,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:04:53.709208+00:00",
-        "score": 0.0517,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:04:54.444780+00:00",
-        "score": -0.0981,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:04:54.520542+00:00",
-        "score": -0.1943,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:05:16.369218+00:00",
-        "score": -0.2365,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:05:20.067641+00:00",
-        "score": -0.1056,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T16:05:20.827988+00:00",
-        "score": -0.1532,
-        "action": "HOLD"
-      },
       {
         "time": "2026-02-28T16:05:21.627406+00:00",
         "score": 0.0501,
@@ -34850,39 +34986,44 @@
         "time": "2026-02-28T23:17:57.957625+00:00",
         "score": 0.1301,
         "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:03.443776+00:00",
+        "score": -0.1578,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:06.429804+00:00",
+        "score": -0.1468,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:07.324930+00:00",
+        "score": -0.159,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.071122+00:00",
+        "score": 0.1221,
+        "action": "BUY"
+      },
+      {
+        "time": "2026-02-28T23:19:08.452018+00:00",
+        "score": -0.1299,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.616804+00:00",
+        "score": -0.1432,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.651636+00:00",
+        "score": 0.1246,
+        "action": "HOLD"
       }
     ],
     "SOL": [
-      {
-        "time": "2026-02-28T15:52:14.123069+00:00",
-        "score": -0.3238,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:52:17.812380+00:00",
-        "score": -0.1179,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:52:19.006654+00:00",
-        "score": -0.2276,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:52:19.949287+00:00",
-        "score": -0.1394,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:52:20.074193+00:00",
-        "score": -0.2928,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:53:15.460931+00:00",
-        "score": -0.2938,
-        "action": "HOLD"
-      },
       {
         "time": "2026-02-28T15:53:19.255557+00:00",
         "score": -0.122,
@@ -35252,19 +35393,39 @@
         "time": "2026-02-28T23:17:57.965344+00:00",
         "score": 0.1619,
         "action": "BUY"
+      },
+      {
+        "time": "2026-02-28T23:19:04.050916+00:00",
+        "score": 0.1619,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:07.085284+00:00",
+        "score": 0.142,
+        "action": "BUY"
+      },
+      {
+        "time": "2026-02-28T23:19:08.095172+00:00",
+        "score": -0.0328,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.459037+00:00",
+        "score": -0.0637,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.623019+00:00",
+        "score": -0.1414,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.660200+00:00",
+        "score": 0.1602,
+        "action": "BUY"
       }
     ],
     "BNB": [
-      {
-        "time": "2026-02-28T15:49:10.788460+00:00",
-        "score": -0.3196,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:49:14.975886+00:00",
-        "score": -0.2168,
-        "action": "HOLD"
-      },
       {
         "time": "2026-02-28T15:52:14.859523+00:00",
         "score": -0.3436,
@@ -35404,34 +35565,19 @@
         "time": "2026-02-28T23:17:57.520239+00:00",
         "score": -0.2086,
         "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:04.636042+00:00",
+        "score": -0.1201,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.051532+00:00",
+        "score": -0.1912,
+        "action": "HOLD"
       }
     ],
     "XRP": [
-      {
-        "time": "2026-02-28T15:48:54.635484+00:00",
-        "score": -0.1868,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:48:54.836703+00:00",
-        "score": -0.1985,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:49:11.523201+00:00",
-        "score": -0.2286,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:49:14.558392+00:00",
-        "score": -0.1721,
-        "action": "HOLD"
-      },
-      {
-        "time": "2026-02-28T15:49:15.838116+00:00",
-        "score": -0.19,
-        "action": "HOLD"
-      },
       {
         "time": "2026-02-28T15:49:16.061124+00:00",
         "score": -0.2037,
@@ -35715,6 +35861,26 @@
       {
         "time": "2026-02-28T23:17:57.928786+00:00",
         "score": 0.1769,
+        "action": "BUY"
+      },
+      {
+        "time": "2026-02-28T23:19:05.233237+00:00",
+        "score": 0.1069,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:07.719315+00:00",
+        "score": -0.1215,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.430743+00:00",
+        "score": 0.0065,
+        "action": "HOLD"
+      },
+      {
+        "time": "2026-02-28T23:19:08.629825+00:00",
+        "score": 0.1738,
         "action": "BUY"
       }
     ]
