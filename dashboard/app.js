@@ -1,6 +1,8 @@
 const DATA_URL = "./data/dashboard-data.json";
 const FALLBACK_URL = "./data/sample-dashboard-data.json";
 const PORTFOLIO_COLOR = "#19b4d6";
+const EXECUTION_LOOKBACK_DAYS = 3;
+const AGENT_INACTIVE_DAYS = 3;
 
 const currency = new Intl.NumberFormat("fr-FR", {
   style: "currency",
@@ -179,7 +181,14 @@ function renderAgents() {
   agents.forEach((agent) => {
     const analytics = computeAgentAnalytics(agent.id);
     const pnl = Number(agent.pnl_abs || 0);
-    const toneClass = pnl > 0 ? "positive-card" : pnl < 0 ? "negative-card" : "neutral-card";
+    const activity = getAgentActivity(agent);
+    const toneClass = activity.isInactive
+      ? "inactive-card"
+      : pnl > 0
+      ? "positive-card"
+      : pnl < 0
+      ? "negative-card"
+      : "neutral-card";
     const selectedClass = state.selectedAgentId === agent.id ? "selected" : "";
     const card = document.createElement("button");
     card.type = "button";
@@ -191,7 +200,10 @@ function renderAgents() {
           <span class="agent-name-main">${escapeHtml(agent.name)}</span>
           <span class="agent-id muted">(${escapeHtml(agent.id)})</span>
         </p>
-        <p class="agent-risk">${escapeHtml(agent.risk_profile)}</p>
+        <div class="agent-tags">
+          <p class="agent-risk">${escapeHtml(agent.risk_profile)}</p>
+          <p class="agent-status ${activity.statusClass}">${escapeHtml(activity.label)}</p>
+        </div>
       </div>
       <div class="agent-metrics">
         <p>Perf<strong class="${pnl >= 0 ? "positive" : "negative"}">${formatMoney(pnl)} (${formatPercent(
@@ -342,14 +354,18 @@ function renderTradesTable() {
 
   const trades = filterRows(state.data.recent_trades || []);
   if (!trades.length) {
-    body.innerHTML = `<tr><td colspan="10" class="no-data">Aucun trade pour ce filtre.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="11" class="no-data">Aucun trade sur les 3 derniers jours pour ce filtre.</td></tr>`;
     return;
   }
 
+  const realizedPnlByTradeId = buildRealizedPnlByTradeId(state.data.recent_trades || []);
   trades.slice(0, 30).forEach((trade) => {
     const tr = document.createElement("tr");
     const side = String(trade.side || "").toUpperCase();
     const sideClass = side === "BUY" ? "positive" : side === "SELL" ? "negative" : "";
+    const realizedPnl = resolveTradeRealizedPnl(trade, realizedPnlByTradeId);
+    const realizedClass = realizedPnl == null ? "muted" : realizedPnl >= 0 ? "positive" : "negative";
+    const realizedText = realizedPnl == null ? "-" : formatMoney(realizedPnl);
     const reasonLabel = formatTradeReason(trade.reason);
     const decisionContext = formatDecisionContext(findDecisionContextForTrade(trade));
     tr.innerHTML = `
@@ -361,6 +377,7 @@ function renderTradesTable() {
       <td>${formatMoney(trade.notional_eur)}</td>
       <td>${formatMoney(trade.price)}</td>
       <td>${formatMoney(trade.fee_eur)}</td>
+      <td class="${realizedClass}">${realizedText}</td>
       <td class="reason-cell">${escapeHtml(reasonLabel)}</td>
       <td class="context-cell">${escapeHtml(decisionContext)}</td>
     `;
@@ -881,11 +898,179 @@ function formatDecisionContext(decision) {
 }
 
 function filterRows(rows) {
+  const referenceTs = resolveDashboardReferenceTimestamp();
+  const lookbackMs = EXECUTION_LOOKBACK_DAYS * 24 * 60 * 60 * 1000;
+  const cutoffTs = referenceTs - lookbackMs;
+
   return rows.filter((row) => {
     const agentOk = state.agentFilter === "ALL" || row.agent_id === state.agentFilter;
     const assetOk = state.assetFilter === "ALL" || row.asset === state.assetFilter;
-    return agentOk && assetOk;
+    const rowTs = toTimestamp(row.created_at);
+    const recencyOk = rowTs > 0 ? rowTs >= cutoffTs : true;
+    return agentOk && assetOk && recencyOk;
   });
+}
+
+function getAgentActivity(agent) {
+  const referenceTs = resolveDashboardReferenceTimestamp();
+  const tradeMetaTs = toTimestamp(agent?.trades?.last_trade_at);
+  const fallbackLastTradeTs = getLatestTradeTimestampForAgent(agent?.id);
+  const lastTradeTs = tradeMetaTs > 0 ? tradeMetaTs : fallbackLastTradeTs;
+
+  if (lastTradeTs <= 0) {
+    return {
+      isInactive: true,
+      statusClass: "status-inactive",
+      label: "Aucun trade",
+    };
+  }
+
+  const daysSince = Math.max(0, (referenceTs - lastTradeTs) / (24 * 60 * 60 * 1000));
+  const daysRounded = Math.floor(daysSince);
+  if (daysSince >= AGENT_INACTIVE_DAYS) {
+    return {
+      isInactive: true,
+      statusClass: "status-inactive",
+      label: `Inactif ${daysRounded}j`,
+    };
+  }
+
+  if (daysSince >= 1) {
+    return {
+      isInactive: false,
+      statusClass: "status-active",
+      label: `Actif ${daysRounded}j`,
+    };
+  }
+
+  return {
+    isInactive: false,
+    statusClass: "status-active",
+    label: "Actif <24h",
+  };
+}
+
+function resolveDashboardReferenceTimestamp() {
+  const generatedTs = toTimestamp(state.data.generated_at);
+  if (generatedTs > 0) {
+    return generatedTs;
+  }
+
+  const latestTradeTs = (state.data.recent_trades || []).reduce((maxTs, trade) => {
+    const tradeTs = toTimestamp(trade.created_at);
+    return tradeTs > maxTs ? tradeTs : maxTs;
+  }, 0);
+  if (latestTradeTs > 0) {
+    return latestTradeTs;
+  }
+  return Date.now();
+}
+
+function getLatestTradeTimestampForAgent(agentId) {
+  if (!agentId) {
+    return 0;
+  }
+  return (state.data.recent_trades || []).reduce((maxTs, trade) => {
+    if (trade.agent_id !== agentId) {
+      return maxTs;
+    }
+    const tradeTs = toTimestamp(trade.created_at);
+    return tradeTs > maxTs ? tradeTs : maxTs;
+  }, 0);
+}
+
+function resolveTradeRealizedPnl(trade, realizedPnlByTradeId) {
+  const side = String(trade.side || "").toUpperCase();
+  if (side !== "SELL") {
+    return null;
+  }
+
+  if (trade.realized_pnl_eur != null) {
+    const explicitValue = Number(trade.realized_pnl_eur);
+    if (Number.isFinite(explicitValue)) {
+      return explicitValue;
+    }
+  }
+
+  const tradeId = Number(trade.id);
+  if (!Number.isFinite(tradeId)) {
+    return 0;
+  }
+  if (realizedPnlByTradeId.has(tradeId)) {
+    return Number(realizedPnlByTradeId.get(tradeId) || 0);
+  }
+  return 0;
+}
+
+function buildRealizedPnlByTradeId(trades) {
+  const orderedTrades = [...trades].sort((a, b) => {
+    const aId = Number(a.id || 0);
+    const bId = Number(b.id || 0);
+    if (Number.isFinite(aId) && Number.isFinite(bId) && aId !== bId) {
+      return aId - bId;
+    }
+    return toTimestamp(a.created_at) - toTimestamp(b.created_at);
+  });
+
+  const lotsByKey = new Map();
+  const realizedByTradeId = new Map();
+  const eps = 1e-10;
+
+  orderedTrades.forEach((trade) => {
+    const tradeId = Number(trade.id);
+    const agentId = String(trade.agent_id || "");
+    const asset = String(trade.asset || "").toUpperCase();
+    const side = String(trade.side || "").toUpperCase();
+    const quantity = Number(trade.quantity || 0);
+    const price = Number(trade.price || 0);
+    const feeEur = Number(trade.fee_eur || 0);
+
+    if (!agentId || !asset || quantity <= 0 || price <= 0) {
+      return;
+    }
+
+    const key = `${agentId}::${asset}`;
+    if (!lotsByKey.has(key)) {
+      lotsByKey.set(key, []);
+    }
+
+    const lots = lotsByKey.get(key);
+    if (side === "BUY") {
+      lots.push({
+        remaining: quantity,
+        entryPrice: price,
+        entryFeePerUnit: feeEur / quantity,
+      });
+      return;
+    }
+
+    if (side !== "SELL") {
+      return;
+    }
+
+    let remainingToClose = quantity;
+    let realizedPnl = 0;
+    const exitFeePerUnit = feeEur / quantity;
+    while (remainingToClose > eps && lots.length) {
+      const lot = lots[0];
+      const matchedQty = Math.min(lot.remaining, remainingToClose);
+      const entryFee = matchedQty * lot.entryFeePerUnit;
+      const exitFee = matchedQty * exitFeePerUnit;
+      realizedPnl += (price - lot.entryPrice) * matchedQty - entryFee - exitFee;
+
+      lot.remaining -= matchedQty;
+      remainingToClose -= matchedQty;
+      if (lot.remaining <= eps) {
+        lots.shift();
+      }
+    }
+
+    if (Number.isFinite(tradeId)) {
+      realizedByTradeId.set(tradeId, realizedPnl);
+    }
+  });
+
+  return realizedByTradeId;
 }
 
 function computeAgentAnalytics(agentId) {

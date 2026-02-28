@@ -223,7 +223,17 @@ h2 {
   appearance: none;
   text-align: left;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+}
+
+.agent-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: rgba(133, 170, 191, 0.5);
 }
 
 .agent-card:hover {
@@ -237,11 +247,30 @@ h2 {
 }
 
 .agent-card.positive-card {
-  border-color: rgba(87, 199, 133, 0.45);
+  border-color: rgba(87, 199, 133, 0.7);
+  background: linear-gradient(180deg, rgba(22, 56, 44, 0.45), rgba(10, 16, 23, 0.35));
+}
+
+.agent-card.positive-card::before {
+  background: rgba(87, 199, 133, 0.95);
 }
 
 .agent-card.negative-card {
-  border-color: rgba(255, 110, 110, 0.45);
+  border-color: rgba(255, 110, 110, 0.72);
+  background: linear-gradient(180deg, rgba(63, 26, 33, 0.42), rgba(10, 16, 23, 0.35));
+}
+
+.agent-card.negative-card::before {
+  background: rgba(255, 110, 110, 0.95);
+}
+
+.agent-card.inactive-card {
+  border-color: rgba(213, 176, 103, 0.8);
+  background: linear-gradient(180deg, rgba(60, 45, 22, 0.45), rgba(10, 16, 23, 0.35));
+}
+
+.agent-card.inactive-card::before {
+  background: rgba(213, 176, 103, 0.95);
 }
 
 .agent-card.neutral-card {
@@ -290,6 +319,37 @@ h2 {
   border: 1px solid var(--line);
   flex: 0 0 auto;
   white-space: nowrap;
+}
+
+.agent-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-end;
+}
+
+.agent-status {
+  margin: 0;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.agent-status.status-active {
+  border-color: rgba(87, 199, 133, 0.45);
+  color: #9fe3bb;
+}
+
+.agent-status.status-inactive {
+  border-color: rgba(213, 176, 103, 0.7);
+  background: rgba(213, 176, 103, 0.14);
+  color: #f2c979;
 }
 
 .agent-metrics {
@@ -526,7 +586,7 @@ table {
 }
 
 .execution-table {
-  min-width: 1300px;
+  min-width: 1400px;
 }
 
 th,
@@ -695,6 +755,11 @@ tbody tr:hover {
 
   .agent-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .agent-tags {
+    align-items: flex-start;
+    width: 100%;
   }
 
   .chart-wrap {

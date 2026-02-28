@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T21:50:37.319140+00:00",
+  "generated_at": "2026-02-28T22:00:03.164735+00:00",
   "system": {
     "name": "cryptoMaster Orchestrator",
     "mode": "dry_run",
@@ -16,7 +16,8 @@
     "agent_count": 8,
     "decisions_count": 400,
     "trades_count": 32,
-    "decisions_last_24h": 558,
+    "lookback_days": 3,
+    "decisions_last_24h": 530,
     "trades_last_24h": 19,
     "total_initial_balance": 800.0,
     "total_equity": 804.1995065,
@@ -117,15 +118,16 @@
           "total": 180
         },
         "last_24h": {
-          "BUY": 6,
+          "BUY": 4,
           "SELL": 2,
-          "HOLD": 142,
-          "total": 150
+          "HOLD": 134,
+          "total": 140
         }
       },
       "trades": {
         "all_time_count": 12,
         "all_time_fees_eur": 0.22383696,
+        "last_trade_at": "2026-02-28T21:50:32.418584+00:00",
         "last_24h_count": 5,
         "last_24h_fees_eur": 0.12891741
       }
@@ -160,13 +162,14 @@
         "last_24h": {
           "BUY": 0,
           "SELL": 0,
-          "HOLD": 90,
-          "total": 90
+          "HOLD": 84,
+          "total": 84
         }
       },
       "trades": {
         "all_time_count": 0,
         "all_time_fees_eur": 0.0,
+        "last_trade_at": null,
         "last_24h_count": 0,
         "last_24h_fees_eur": 0.0
       }
@@ -202,13 +205,14 @@
         "last_24h": {
           "BUY": 0,
           "SELL": 1,
-          "HOLD": 119,
-          "total": 120
+          "HOLD": 111,
+          "total": 112
         }
       },
       "trades": {
         "all_time_count": 6,
         "all_time_fees_eur": 0.08498198,
+        "last_trade_at": "2026-02-27T22:20:23.141571+00:00",
         "last_24h_count": 1,
         "last_24h_fees_eur": 0.04498638
       }
@@ -260,13 +264,14 @@
         "last_24h": {
           "BUY": 2,
           "SELL": 2,
-          "HOLD": 56,
-          "total": 60
+          "HOLD": 52,
+          "total": 56
         }
       },
       "trades": {
         "all_time_count": 6,
         "all_time_fees_eur": 0.03792503,
+        "last_trade_at": "2026-02-28T21:42:59.222658+00:00",
         "last_24h_count": 5,
         "last_24h_fees_eur": 0.03192503
       }
@@ -309,6 +314,7 @@
       "trades": {
         "all_time_count": 0,
         "all_time_fees_eur": 0.0,
+        "last_trade_at": null,
         "last_24h_count": 0,
         "last_24h_fees_eur": 0.0
       }
@@ -350,6 +356,7 @@
       "trades": {
         "all_time_count": 0,
         "all_time_fees_eur": 0.0,
+        "last_trade_at": null,
         "last_24h_count": 0,
         "last_24h_fees_eur": 0.0
       }
@@ -410,6 +417,7 @@
       "trades": {
         "all_time_count": 4,
         "all_time_fees_eur": 0.03443916,
+        "last_trade_at": "2026-02-28T21:50:37.100618+00:00",
         "last_24h_count": 4,
         "last_24h_fees_eur": 0.03443916
       }
@@ -470,6 +478,7 @@
       "trades": {
         "all_time_count": 4,
         "all_time_fees_eur": 0.02622489,
+        "last_trade_at": "2026-02-28T21:42:59.699857+00:00",
         "last_24h_count": 4,
         "last_24h_fees_eur": 0.02622489
       }
@@ -30170,6 +30179,7 @@
       "price": 1659.282538,
       "notional_eur": 9.03193113,
       "fee_eur": 0.00903193,
+      "realized_pnl_eur": null,
       "reason": "breakout_confirmation,trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:50:37.100618+00:00"
@@ -30183,6 +30193,7 @@
       "price": 1659.282538,
       "notional_eur": 11.17361211,
       "fee_eur": 0.01117361,
+      "realized_pnl_eur": null,
       "reason": "trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:50:32.418584+00:00"
@@ -30196,6 +30207,7 @@
       "price": 71.520653,
       "notional_eur": 6.01094731,
       "fee_eur": 0.00601095,
+      "realized_pnl_eur": null,
       "reason": "ou_mean_reversion,sentiment_filter,trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.699857+00:00"
@@ -30209,6 +30221,7 @@
       "price": 1659.511255,
       "notional_eur": 6.01130615,
       "fee_eur": 0.00601131,
+      "realized_pnl_eur": null,
       "reason": "ou_mean_reversion,sentiment_filter,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.678342+00:00"
@@ -30222,6 +30235,7 @@
       "price": 56629.151731,
       "notional_eur": 7.20263849,
       "fee_eur": 0.00720264,
+      "realized_pnl_eur": 0.18843585,
       "reason": "ou_mean_reversion,sentiment_filter,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.658495+00:00"
@@ -30235,6 +30249,7 @@
       "price": 1.16721909,
       "notional_eur": 9.03227207,
       "fee_eur": 0.00903227,
+      "realized_pnl_eur": null,
       "reason": "breakout_confirmation,trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.637640+00:00"
@@ -30248,6 +30263,7 @@
       "price": 71.520653,
       "notional_eur": 8.3749535,
       "fee_eur": 0.00837495,
+      "realized_pnl_eur": 0.35857855,
       "reason": "breakout_confirmation,trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.617356+00:00"
@@ -30261,6 +30277,7 @@
       "price": 1659.511255,
       "notional_eur": 5.08599709,
       "fee_eur": 0.005086,
+      "realized_pnl_eur": null,
       "reason": "breakout_confirmation,sentiment_filter,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.222658+00:00"
@@ -30274,6 +30291,7 @@
       "price": 56629.151731,
       "notional_eur": 5.08625141,
       "fee_eur": 0.00508625,
+      "realized_pnl_eur": null,
       "reason": "breakout_confirmation,sentiment_filter,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:59.195944+00:00"
@@ -30287,6 +30305,7 @@
       "price": 1.16721909,
       "notional_eur": 12.52333211,
       "fee_eur": 0.01252333,
+      "realized_pnl_eur": null,
       "reason": "trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:56.722065+00:00"
@@ -30300,6 +30319,7 @@
       "price": 71.520653,
       "notional_eur": 13.03873571,
       "fee_eur": 0.01303874,
+      "realized_pnl_eur": null,
       "reason": "trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T21:42:55.463824+00:00"
@@ -30313,6 +30333,7 @@
       "price": 55035.951464,
       "notional_eur": 7.0,
       "fee_eur": 0.007,
+      "realized_pnl_eur": null,
       "reason": "mandatory_daily_trade|date=2026-02-28",
       "dry_run": true,
       "created_at": "2026-02-28T16:12:08.055616+00:00"
@@ -30326,6 +30347,7 @@
       "price": 68.318615,
       "notional_eur": 8.0,
       "fee_eur": 0.008,
+      "realized_pnl_eur": null,
       "reason": "mandatory_daily_trade|date=2026-02-28",
       "dry_run": true,
       "created_at": "2026-02-28T15:48:54.850372+00:00"
@@ -30339,6 +30361,7 @@
       "price": 63704.12,
       "notional_eur": 8.00408124,
       "fee_eur": 0.00800408,
+      "realized_pnl_eur": 0.98907716,
       "reason": "breakout_confirmation,sentiment_filter,trend_follow|regime=trending|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-28T08:16:19.544902+00:00"
@@ -30352,6 +30375,7 @@
       "price": 55712.68288336,
       "notional_eur": 7.0,
       "fee_eur": 0.007,
+      "realized_pnl_eur": null,
       "reason": "mandatory_daily_trade|date=2026-02-28",
       "dry_run": true,
       "created_at": "2026-02-28T07:35:27.874853+00:00"
@@ -30365,6 +30389,7 @@
       "price": 65589.81,
       "notional_eur": 6.74869968,
       "fee_eur": 0.0067487,
+      "realized_pnl_eur": 0.73595098,
       "reason": "breakout_confirmation,sentiment_filter,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-27T22:20:23.820076+00:00"
@@ -30378,6 +30403,7 @@
       "price": 65589.81,
       "notional_eur": 44.98638201,
       "fee_eur": 0.04498638,
+      "realized_pnl_eur": 4.90580016,
       "reason": "mean_reversion,sentiment_filter|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-27T22:20:23.141571+00:00"
@@ -30391,6 +30417,7 @@
       "price": 81.31,
       "notional_eur": 23.47676283,
       "fee_eur": 0.02347676,
+      "realized_pnl_eur": -10.41725541,
       "reason": "mean_reversion,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-27T22:20:19.737311+00:00"
@@ -30404,6 +30431,7 @@
       "price": 65589.81,
       "notional_eur": 68.70496288,
       "fee_eur": 0.06870496,
+      "realized_pnl_eur": 7.49232997,
       "reason": "mean_reversion,trend_follow|regime=ranging|timeframe=15m",
       "dry_run": true,
       "created_at": "2026-02-27T22:20:18.497292+00:00"
@@ -30417,6 +30445,7 @@
       "price": 58313.28679618,
       "notional_eur": 6.0,
       "fee_eur": 0.006,
+      "realized_pnl_eur": null,
       "reason": "mandatory_daily_trade|date=2026-02-27",
       "dry_run": true,
       "created_at": "2026-02-27T21:29:17.457462+00:00"
@@ -30430,6 +30459,7 @@
       "price": 58313.28679618,
       "notional_eur": 7.99784005,
       "fee_eur": 0.00799784,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,sentiment_filter|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:29:17.370114+00:00"
@@ -30443,6 +30473,7 @@
       "price": 58313.28679618,
       "notional_eur": 7.99847996,
       "fee_eur": 0.00799848,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,sentiment_filter|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:12:17.089783+00:00"
@@ -30456,6 +30487,7 @@
       "price": 58313.28679618,
       "notional_eur": 10.2352052,
       "fee_eur": 0.01023521,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:12:16.974724+00:00"
@@ -30469,6 +30501,7 @@
       "price": 58313.28679618,
       "notional_eur": 7.99911992,
       "fee_eur": 0.00799912,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,sentiment_filter|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:04:24.435124+00:00"
@@ -30482,6 +30515,7 @@
       "price": 117.19087871,
       "notional_eur": 11.27571657,
       "fee_eur": 0.01127572,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:04:24.347529+00:00"
@@ -30495,6 +30529,7 @@
       "price": 58313.28679618,
       "notional_eur": 16.94442706,
       "fee_eur": 0.01694443,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:04:24.301531+00:00"
@@ -30508,6 +30543,7 @@
       "price": 58313.28679618,
       "notional_eur": 7.99975994,
       "fee_eur": 0.00799976,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,sentiment_filter|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:03:36.875519+00:00"
@@ -30521,6 +30557,7 @@
       "price": 117.19087871,
       "notional_eur": 11.27890129,
       "fee_eur": 0.0112789,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:03:36.778488+00:00"
@@ -30534,6 +30571,7 @@
       "price": 58313.28679618,
       "notional_eur": 16.94921285,
       "fee_eur": 0.01694921,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T21:03:36.743741+00:00"
@@ -30547,6 +30585,7 @@
       "price": 58313.28679618,
       "notional_eur": 8.0004,
       "fee_eur": 0.0080004,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,sentiment_filter|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T20:56:55.338434+00:00"
@@ -30560,6 +30599,7 @@
       "price": 117.19087871,
       "notional_eur": 11.28208691,
       "fee_eur": 0.01128209,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T20:56:55.239770+00:00"
@@ -30573,12 +30613,33 @@
       "price": 58313.28679618,
       "notional_eur": 16.954,
       "fee_eur": 0.016954,
+      "realized_pnl_eur": null,
       "reason": "mean_reversion,trend_follow|regime=ranging",
       "dry_run": true,
       "created_at": "2026-02-27T20:56:55.199093+00:00"
     }
   ],
   "recent_events": [
+    {
+      "id": 135,
+      "event_type": "push_github",
+      "payload": {
+        "created_at": "2026-02-28T21:50:41.102380+00:00",
+        "output": "Status: pushed\nRepo: C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\nTarget: origin/main\nCommit message: chore: update trading snapshot\nPaths: trading-system/database.sqlite, dashboard/data/dashboard-data.json, trading-system/logs/orchestrator.log\nSkipped paths: trading-system/database.sqlite (ignored_by_gitignore), trading-system/logs/orchestrator.log (ignored_by_gitignore)\nCommit: b8b3b22",
+        "status": "ok"
+      },
+      "created_at": "2026-02-28T21:50:41.102394+00:00"
+    },
+    {
+      "id": 134,
+      "event_type": "dashboard_export",
+      "payload": {
+        "created_at": "2026-02-28T21:50:37.366528+00:00",
+        "cycles": 1,
+        "output_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\dashboard\\data\\dashboard-data.json"
+      },
+      "created_at": "2026-02-28T21:50:37.366539+00:00"
+    },
     {
       "id": 133,
       "event_type": "cycle_summary",
@@ -33602,36 +33663,6 @@
         "trades": 3
       },
       "created_at": "2026-02-27T21:04:24.501936+00:00"
-    },
-    {
-      "id": 15,
-      "event_type": "paper_trade",
-      "payload": {
-        "agent_id": "agent_03_defensive_news",
-        "asset": "BTC",
-        "fee_eur": 0.00799912,
-        "notional_eur": 7.99911992,
-        "price": 58313.28679618,
-        "quantity": 0.0001371749,
-        "side": "BUY",
-        "status": "filled"
-      },
-      "created_at": "2026-02-27T21:04:24.440888+00:00"
-    },
-    {
-      "id": 14,
-      "event_type": "paper_trade",
-      "payload": {
-        "agent_id": "agent_01_regime_risk",
-        "asset": "SOL",
-        "fee_eur": 0.01127572,
-        "notional_eur": 11.27571657,
-        "price": 117.19087871,
-        "quantity": 0.096216674,
-        "side": "BUY",
-        "status": "filled"
-      },
-      "created_at": "2026-02-27T21:04:24.352241+00:00"
     }
   ],
   "score_series": {
