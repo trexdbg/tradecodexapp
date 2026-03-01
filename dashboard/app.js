@@ -78,13 +78,13 @@ function renderDashboard() {
   ensureSelectedAgent();
   renderHeader();
   renderKpis();
-  renderMarketTiles();
   renderMarketHistoryPanel();
   renderAgents();
   renderAgentDetail();
   renderPortfolioEvolutionChart();
   renderTables();
   renderEvents();
+  renderNewsAndSentiment();
 }
 
 function renderHeader() {
@@ -142,31 +142,6 @@ function renderKpis() {
   }
 }
 
-function renderMarketTiles() {
-  const marketGrid = document.querySelector("#marketGrid");
-  if (!marketGrid) {
-    return;
-  }
-  marketGrid.innerHTML = "";
-  const entries = state.data.market || [];
-  if (!entries.length) {
-    marketGrid.innerHTML = `<p class="no-data">Aucune donnee marche.</p>`;
-    return;
-  }
-
-  entries.forEach((item) => {
-    const delta = Number(item.price_change_pct_24h || 0);
-    const tile = document.createElement("article");
-    tile.className = "market-tile";
-    tile.innerHTML = `
-      <p class="asset">${escapeHtml(item.asset)}</p>
-      <p class="price">${formatAssetPrice(item.last_price)}</p>
-      <p class="delta ${delta >= 0 ? "positive" : "negative"}">${formatPercent(delta / 100)}</p>
-    `;
-    marketGrid.appendChild(tile);
-  });
-}
-
 function renderMarketHistoryPanel() {
   const panel = document.querySelector("#marketHistoryPanel");
   if (!panel) {
@@ -215,9 +190,16 @@ function renderMarketHistoryPanel() {
   }
 
   const sorted = [...slice].sort((a, b) => Math.abs(b.change_pct || 0) - Math.abs(a.change_pct || 0));
+  const marketPriceByAsset = new Map(
+    (state.data.market || []).map((item) => [String(item.asset || "").toUpperCase(), Number(item.last_price || 0)])
+  );
   cardsContainer.innerHTML = "";
-  sorted.slice(0, 6).forEach((entry) => {
+  sorted.slice(0, 10).forEach((entry) => {
     const changePct = Number(entry.change_pct || 0);
+    const assetKey = String(entry.asset || "").toUpperCase();
+    const currentPrice = marketPriceByAsset.has(assetKey)
+      ? Number(marketPriceByAsset.get(assetKey) || 0)
+      : Number(entry.end_price || 0);
     const sparkline = buildMarketSparkline(entry.series || [], changePct);
     const card = document.createElement("article");
     card.className = "market-history-card";
@@ -228,8 +210,11 @@ function renderMarketHistoryPanel() {
       </div>
       <div class="market-history-card-body">
         <div class="price-row">
-          <span>${formatMoney(entry.start_price || 0)}</span>
-          <span>${formatMoney(entry.end_price || 0)}</span>
+          <span>Debut: ${formatAssetPrice(entry.start_price || 0)}</span>
+          <span>Fin: ${formatAssetPrice(entry.end_price || 0)}</span>
+        </div>
+        <div class="price-row current">
+          <span>Prix actuel: ${formatAssetPrice(currentPrice)}</span>
         </div>
         ${sparkline}
       </div>
@@ -521,6 +506,54 @@ function renderEvents() {
       <p>${escapeHtml(formatDateTime(event.created_at))}</p>
     `;
     eventsList.appendChild(entry);
+  });
+}
+
+function renderNewsAndSentiment() {
+  const overallNode = document.querySelector("#fearGreedOverall");
+  const byAssetNode = document.querySelector("#sentimentByAsset");
+  const newsNode = document.querySelector("#newsFeedList");
+  if (!overallNode || !byAssetNode || !newsNode) {
+    return;
+  }
+
+  const sentiment = state.data.sentiment || {};
+  const fearGreedOverall = Number(sentiment.fear_greed_10_overall || 0);
+  overallNode.textContent = `Fear/Greed global: ${fearGreedOverall.toFixed(2)} / 10`;
+  overallNode.classList.toggle("positive", fearGreedOverall >= 5);
+  overallNode.classList.toggle("negative", fearGreedOverall < 5);
+
+  const byAsset = sentiment.fear_greed_10_by_asset || {};
+  const entries = Object.entries(byAsset).sort((a, b) => String(a[0]).localeCompare(String(b[0])));
+  if (!entries.length) {
+    byAssetNode.innerHTML = `<p class="no-data">Aucun score sentiment.</p>`;
+  } else {
+    byAssetNode.innerHTML = "";
+    entries.forEach(([asset, score]) => {
+      const value = Number(score || 0);
+      const row = document.createElement("p");
+      row.className = `sentiment-row ${value >= 5 ? "positive" : "negative"}`;
+      row.textContent = `${asset}: ${value.toFixed(2)} / 10`;
+      byAssetNode.appendChild(row);
+    });
+  }
+
+  const news = Array.isArray(state.data.news_feed) ? state.data.news_feed : [];
+  if (!news.length) {
+    newsNode.innerHTML = `<p class="no-data">Aucune news disponible.</p>`;
+    return;
+  }
+
+  newsNode.innerHTML = "";
+  news.slice(0, 12).forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "news-item";
+    card.innerHTML = `
+      <p class="news-title">${escapeHtml(item.title || "-")}</p>
+      <p class="news-meta">${escapeHtml(formatDateTime(item.published_at))} | ${escapeHtml(item.source || "-")}</p>
+      <p class="news-excerpt">${escapeHtml(item.excerpt || "-")}</p>
+    `;
+    newsNode.appendChild(card);
   });
 }
 
@@ -1548,6 +1581,14 @@ function emptyPayload() {
     recent_trades: [],
     recent_events: [],
     score_series: {},
+    news_feed: [],
+    sentiment: {
+      score_by_asset: {},
+      mentions_by_asset: {},
+      fear_greed_10_by_asset: {},
+      fear_greed_10_overall: 5,
+      news_count: 0,
+    },
   };
 }
 

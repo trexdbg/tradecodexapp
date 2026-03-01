@@ -50,10 +50,9 @@
 
       <section class="panel market-panel">
         <div class="panel-head">
-          <h2>Market Pulse</h2>
-          <p>Actifs monitor es en continu</p>
+          <h2>Evolution des prix</h2>
+          <p>Top 10 paires par volume</p>
         </div>
-        <div id="marketGrid" class="market-grid"></div>
         <div id="marketHistoryPanel" class="market-history-panel">
           <div class="market-history-head">
             <div>
@@ -199,6 +198,24 @@
           <p>Telemetrie brute (SQLite events)</p>
         </div>
         <ul id="eventsList" class="event-list"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>News & Sentiment</h2>
+          <p>Flux news + score fear/greed (0-10)</p>
+        </div>
+        <div class="news-sentiment-grid">
+          <article class="news-sentiment-card">
+            <h3>Sentiment</h3>
+            <p id="fearGreedOverall" class="sentiment-overall">-</p>
+            <div id="sentimentByAsset" class="sentiment-list"></div>
+          </article>
+          <article class="news-sentiment-card">
+            <h3>News recentes</h3>
+            <div id="newsFeedList" class="news-feed-list"></div>
+          </article>
+        </div>
       </section>
     </main>
 

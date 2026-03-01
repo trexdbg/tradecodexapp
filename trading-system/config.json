@@ -7,17 +7,12 @@
     "base_currency": "EUR",
     "starting_capital": 100.0,
     "minimum_timeframe_minutes": 15,
-      "supported_assets": [
+    "supported_assets": [
       "BTC",
       "ETH",
       "SOL",
       "BNB",
-      "XRP",
-      "ADA",
-      "DOGE",
-      "LINK",
-      "AVAX",
-      "MATIC"
+      "XRP"
       ]
   },
   "market_data": {
@@ -38,6 +33,13 @@
   },
   "execution": {
     "fee_rate": 0.001,
+    "slippage_bps": 5.0,
+    "top_pairs_refresh_enabled": true,
+    "top_pairs_count": 10,
+    "top_pairs_quote": "USDT",
+    "top_pairs_refresh_timezone": "Europe/Paris",
+    "top_pairs_refresh_hour": 0,
+    "top_pairs_refresh_minute": 0,
     "minimum_order_eur": 5.0,
     "cycle_sleep_seconds": 3
   },
@@ -51,9 +53,7 @@
         "ETH",
         "SOL",
         "BNB",
-        "XRP",
-        "ADA",
-        "AVAX"
+        "XRP"
       ],
       "timeframes": [
         "15m",
@@ -69,9 +69,7 @@
       "assets": [
         "BTC",
         "ETH",
-        "SOL",
-        "LINK",
-        "DOGE"
+        "SOL"
       ],
       "timeframes": [
         "1h",
@@ -84,22 +82,120 @@
       "daily_trade_side": "BUY"
     },
     {
-      "id": "agent_03_defensive_news",
-      "name": "Defensive News",
+      "id": "agent_14_core_builder",
+      "name": "Core Builder (DCA-like)",
+      "philosophy": "Build core BTC/ETH exposure with DCA-like dip buying, guarded by trend and sentiment filters, while prioritizing capital protection.",
       "risk_profile": "defensive",
       "assets": [
         "BTC",
-        "ETH",
+        "ETH"
+      ],
+      "timeframes": [
+        "1h",
+        "4h"
+      ],
+      "strategies": [
+        "trend_follow",
+        "mean_reversion",
+        "sentiment_filter"
+      ],
+      "regime_strategy_map": {
+        "trending": [
+          "trend_follow",
+          "sentiment_filter"
+        ],
+        "ranging": [
+          "mean_reversion",
+          "sentiment_filter"
+        ]
+      },
+      "buy_threshold": 0.18,
+      "sell_threshold": -0.7,
+      "max_position_pct": 0.22,
+      "cash_buffer_pct": 0.3,
+      "max_open_positions": 2,
+      "trade_cooldown_minutes": 1440,
+      "take_profit_pct": 0.3,
+      "stop_loss_pct": 0.15,
+      "min_take_profit_pct": 0.0,
+      "max_stop_loss_pct": 0.2,
+      "max_average_down_pct": -0.15
+    },
+    {
+      "id": "agent_15_trend_rider",
+      "name": "Trend Rider (Breakout + Trend)",
+      "philosophy": "Trade only strong trend continuation and breakouts on SOL/BNB, concentrate risk in one position, and cut losers fast.",
+      "risk_profile": "aggressive",
+      "assets": [
+        "SOL",
+        "BNB"
+      ],
+      "timeframes": [
+        "1h",
+        "4h"
+      ],
+      "strategies": [
+        "trend_follow",
+        "breakout_confirmation"
+      ],
+      "regime_strategy_map": {
+        "trending": [
+          "trend_follow",
+          "breakout_confirmation"
+        ],
+        "ranging": []
+      },
+      "buy_threshold": 0.48,
+      "sell_threshold": -0.28,
+      "max_position_pct": 0.32,
+      "cash_buffer_pct": 0.12,
+      "max_open_positions": 1,
+      "trade_cooldown_minutes": 120,
+      "take_profit_pct": 0.06,
+      "stop_loss_pct": 0.03,
+      "min_take_profit_pct": 0.01,
+      "max_stop_loss_pct": 0.03,
+      "max_average_down_pct": -0.05
+    },
+    {
+      "id": "agent_16_range_harvester",
+      "name": "Range Harvester (Mean Reversion)",
+      "philosophy": "Harvest range-bound pullbacks on XRP/ETH with short holding periods, strict cooldown, and tight risk exits.",
+      "risk_profile": "balanced",
+      "assets": [
         "XRP",
-        "BNB",
-        "MATIC"
+        "ETH"
       ],
       "timeframes": [
         "15m",
         "1h"
       ],
-      "force_daily_trade": false,
-      "daily_trade_side": "BUY"
+      "strategies": [
+        "mean_reversion",
+        "breakout_confirmation",
+        "sentiment_filter"
+      ],
+      "regime_strategy_map": {
+        "trending": [
+          "sentiment_filter"
+        ],
+        "ranging": [
+          "mean_reversion",
+          "breakout_confirmation",
+          "sentiment_filter"
+        ]
+      },
+      "buy_threshold": 0.3,
+      "sell_threshold": -0.26,
+      "max_position_pct": 0.24,
+      "cash_buffer_pct": 0.25,
+      "max_open_positions": 2,
+      "trade_cooldown_minutes": 90,
+      "take_profit_pct": 0.018,
+      "stop_loss_pct": 0.012,
+      "min_take_profit_pct": 0.006,
+      "max_stop_loss_pct": 0.015,
+      "max_average_down_pct": -0.02
     },
     {
       "id": "agent_04_daily_executor",
@@ -107,9 +203,7 @@
       "risk_profile": "balanced",
       "assets": [
         "BTC",
-        "ETH",
-        "DOGE",
-        "LINK"
+        "ETH"
       ],
       "timeframes": [
         "15m"
@@ -153,9 +247,7 @@
       "assets": [
         "BTC",
         "SOL",
-        "XRP",
-        "LINK",
-        "MATIC"
+        "XRP"
       ],
       "timeframes": [
         "15m",
@@ -198,9 +290,7 @@
       "assets": [
         "BTC",
         "ETH",
-        "SOL",
-        "ADA",
-        "MATIC"
+        "SOL"
       ],
       "timeframes": [
         "15m",
@@ -249,8 +339,7 @@
         "BTC",
         "ETH",
         "SOL",
-        "XRP",
-        "DOGE"
+        "XRP"
       ],
       "timeframes": [
         "15m"
@@ -302,8 +391,7 @@
       "assets": [
         "BTC",
         "ETH",
-        "SOL",
-        "ADA"
+        "SOL"
       ],
       "timeframes": [
         "15m",

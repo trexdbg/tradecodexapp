@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T20:23:53.652547+00:00",
+  "generated_at": "2026-03-01T20:25:25.495145+00:00",
   "system": {
     "name": "cryptoMaster Orchestrator",
     "mode": "dry_run",
@@ -39481,6 +39481,26 @@
   ],
   "recent_events": [
     {
+      "id": 733,
+      "event_type": "push_github",
+      "payload": {
+        "created_at": "2026-03-01T20:23:57.769512+00:00",
+        "output": "Status: pushed\nRepo: C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\nTarget: origin/main\nCommit message: chore: update trading snapshot\nPaths: trading-system/database.sqlite, dashboard/data/dashboard-data.json, trading-system/logs/orchestrator.log\nSkipped paths: trading-system/database.sqlite (ignored_by_gitignore), trading-system/logs/orchestrator.log (ignored_by_gitignore)\nCommit: 13a3158",
+        "status": "ok"
+      },
+      "created_at": "2026-03-01T20:23:57.769527+00:00"
+    },
+    {
+      "id": 732,
+      "event_type": "dashboard_export",
+      "payload": {
+        "created_at": "2026-03-01T20:23:53.778781+00:00",
+        "cycles": 1,
+        "output_path": "C:\\Users\\Tiffen\\Desktop\\SideProject\\codex\\cryptoMaster\\dashboard\\data\\dashboard-data.json"
+      },
+      "created_at": "2026-03-01T20:23:53.778799+00:00"
+    },
+    {
       "id": 731,
       "event_type": "cycle_summary",
       "payload": {
@@ -42478,38 +42498,6 @@
         "side": "BUY"
       },
       "created_at": "2026-03-01T19:30:35.016546+00:00"
-    },
-    {
-      "id": 612,
-      "event_type": "order_skipped",
-      "payload": {
-        "agent_id": "agent_12_codex_hyperliquid_meanrev_ls",
-        "asset": "ETH",
-        "created_at": "2026-03-01T19:30:34.998830+00:00",
-        "minimum_order_eur": 5.0,
-        "notional_eur": 2.83637305,
-        "reason": "notional_below_minimum",
-        "score": 0.3648,
-        "side": "BUY"
-      },
-      "created_at": "2026-03-01T19:30:34.998841+00:00"
-    },
-    {
-      "id": 611,
-      "event_type": "paper_trade",
-      "payload": {
-        "agent_id": "agent_07_risky_scalper",
-        "asset": "XRP",
-        "fee_eur": 0.01489132,
-        "notional_eur": 14.89131591,
-        "price": 1.1508872985,
-        "quantity": 12.938987099,
-        "reference_price": 1.15146303,
-        "side": "SELL",
-        "slippage_bps": 5.0,
-        "status": "filled"
-      },
-      "created_at": "2026-03-01T19:30:34.871797+00:00"
     }
   ],
   "score_series": {

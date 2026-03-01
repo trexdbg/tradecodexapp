@@ -286,6 +286,12 @@ h2 {
   color: var(--muted);
 }
 
+.market-history-card .price-row.current {
+  justify-content: flex-start;
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .market-history-card svg {
   width: 100%;
   height: 50px;
@@ -787,6 +793,74 @@ tbody tr:hover {
   margin: 0;
 }
 
+.news-sentiment-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.6fr;
+  gap: 0.8rem;
+}
+
+.news-sentiment-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: rgba(9, 18, 25, 0.5);
+}
+
+.news-sentiment-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.sentiment-overall {
+  margin: 0 0 0.55rem;
+  font-weight: 700;
+}
+
+.sentiment-list {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sentiment-row {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+}
+
+.news-feed-list {
+  display: grid;
+  gap: 0.6rem;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.news-item {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.65rem;
+  background: rgba(11, 21, 30, 0.45);
+}
+
+.news-title {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+
+.news-meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.news-excerpt {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
 .event-item .event-type {
   color: var(--accent);
   text-transform: uppercase;
@@ -856,6 +930,10 @@ tbody tr:hover {
   }
 
   .agent-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-sentiment-grid {
     grid-template-columns: 1fr;
   }
 }

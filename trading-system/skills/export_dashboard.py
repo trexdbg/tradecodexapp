@@ -29,7 +29,6 @@ def export_dashboard_snapshot(
         raise FileNotFoundError(f"Database not found: {db_file}")
 
     config = _load_json_file(config_path) if config_path else {}
-    assets = _extract_assets_from_config(config)
     agent_config_by_id = _build_agent_config_index(config)
     base_currency = str(config.get("system", {}).get("base_currency", "EUR")).upper()
     now_utc = datetime.now(timezone.utc)
@@ -41,6 +40,7 @@ def export_dashboard_snapshot(
     conn = sqlite3.connect(str(db_file))
     conn.row_factory = sqlite3.Row
     try:
+        assets = _extract_assets(conn, config)
         market_snapshot = _fetch_market_snapshot(conn, assets, base_currency=base_currency)
         last_prices = _derive_last_prices(conn, assets, market_snapshot)
 
@@ -82,6 +82,7 @@ def export_dashboard_snapshot(
             trades_24h=trades_24h,
             lookback_days=lookback_days,
         )
+        news_and_sentiment = _extract_news_and_sentiment(conn)
 
         payload = {
             "generated_at": generated_at,
@@ -99,6 +100,8 @@ def export_dashboard_snapshot(
             "recent_events": events_recent,
             "score_series": _build_score_series(decisions_recent, assets),
             "market_history": _build_market_history(conn, assets),
+            "news_feed": news_and_sentiment.get("news_feed", []),
+            "sentiment": news_and_sentiment.get("sentiment", {}),
         }
     finally:
         conn.close()
@@ -860,6 +863,74 @@ def _extract_assets_from_config(config):
     if not isinstance(assets, list):
         return []
     return [str(asset).upper() for asset in assets]
+
+
+def _extract_assets(conn, config):
+    latest_summary = conn.execute(
+        """
+        SELECT payload
+        FROM events
+        WHERE event_type = 'cycle_summary'
+        ORDER BY id DESC
+        LIMIT 1
+        """
+    ).fetchone()
+    if latest_summary:
+        payload = _safe_json_loads(latest_summary["payload"], {})
+        snapshot = payload.get("market_snapshot", {})
+        if isinstance(snapshot, dict):
+            assets = [str(asset).upper() for asset in snapshot.keys() if str(asset).strip()]
+            if assets:
+                return assets
+
+    rotation = conn.execute(
+        """
+        SELECT payload
+        FROM events
+        WHERE event_type = 'top_pairs_rotation'
+        ORDER BY id DESC
+        LIMIT 1
+        """
+    ).fetchone()
+    if rotation:
+        payload = _safe_json_loads(rotation["payload"], {})
+        assets = payload.get("assets", [])
+        if isinstance(assets, list) and assets:
+            return [str(asset).upper() for asset in assets if str(asset).strip()]
+
+    return _extract_assets_from_config(config)
+
+
+def _extract_news_and_sentiment(conn):
+    row = conn.execute(
+        """
+        SELECT payload
+        FROM events
+        WHERE event_type = 'cycle_summary'
+        ORDER BY id DESC
+        LIMIT 1
+        """
+    ).fetchone()
+    if not row:
+        return {"news_feed": [], "sentiment": {}}
+
+    payload = _safe_json_loads(row["payload"], {})
+    data_quality = payload.get("data_quality", {}) if isinstance(payload, dict) else {}
+    news_feed = data_quality.get("news_items", [])
+    if not isinstance(news_feed, list):
+        news_feed = []
+
+    sentiment = {
+        "score_by_asset": data_quality.get("sentiment_scores", {}),
+        "mentions_by_asset": data_quality.get("sentiment_mentions", {}),
+        "fear_greed_10_by_asset": data_quality.get("fear_greed_score_10_by_asset", {}),
+        "fear_greed_10_overall": float(data_quality.get("fear_greed_score_10_overall", 5.0) or 5.0),
+        "news_count": int(data_quality.get("news_count", len(news_feed))),
+    }
+    return {
+        "news_feed": news_feed,
+        "sentiment": sentiment,
+    }
 
 
 def _load_json_file(path: str | None):

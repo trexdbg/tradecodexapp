@@ -8,11 +8,14 @@ Le systeme fonctionne en **dry-run uniquement** (pas de trading live).
 
 ## Apercu
 
-- 3 agents de trading avec profils de risque differents.
+- Plusieurs agents de trading avec profils de risque differents.
+- Support des positions long et short en dry-run (agents avec `allow_short: true`).
 - Actifs supportes: `BTC`, `ETH`, `SOL`, `BNB`, `XRP`.
 - Decisions et trades stockes en SQLite (`trading-system/database.sqlite`).
 - Export des donnees vers `dashboard/data/dashboard-data.json`.
 - Dashboard consultable localement ou via GitHub Pages.
+- Garde-fous de rentabilite: cooldown par actif, prises de profit/pertes automatiques, limite de concentration.
+- Garde-fous de qualite des donnees: priorite aux sources live, blocage des ordres quand seules des donnees synthetiques sont disponibles.
 
 ## Structure du projet
 
@@ -92,13 +95,46 @@ Commit + push sur GitHub (avec message):
 python trading-system/skills/push_github.py --message "chore: update dashboard data"
 ```
 
+Creer un agent (dry-run):
+
+```bash
+python trading-system/skills/create_agent.py --id agent_06_swing --name "Swing Pulse" --risk-profile balanced --assets BTC,ETH --timeframes 15m,1h --dry-run
+```
+
+Creer un agent short-capable Hyperliquid:
+
+```bash
+python trading-system/skills/create_agent.py --id agent_09_codex_hyperliquid_ls --name "Codex Hyperliquid LS Core" --risk-profile balanced --assets BTC,ETH,SOL --timeframes 15m,1h --allow-short --exchange hyperliquid
+```
+
+Lancer un backtest walk-forward (train/test + benchmark buy&hold):
+
+```bash
+python trading-system/skills/backtest_walk_forward.py --out trading-system/data/backtest-walkforward.json
+```
+
+Run rapide sur un agent:
+
+```bash
+python trading-system/skills/backtest_walk_forward.py --agents agent_07_risky_scalper --lookback-candles 260 --warmup-candles 40 --train-candles 80 --test-candles 40 --step-candles 40 --out trading-system/data/backtest-riskiest-smoke.json
+```
+
 ## Configuration
 
 Le fichier `trading-system/config.json` controle:
 - les regles systeme (`dry_run`, capital initial, timeframe minimum)
+- un mode realiste (`system.realistic_mode: true`) qui bloque les trades forces (`force_daily_trade`)
 - les agents (assets, strategies, seuils buy/sell)
-- les parametres execution (frais, minimum ordre, pause entre cycles)
+- les parametres execution (frais, slippage en bps, minimum ordre, pause entre cycles, rotation quotidienne des top paires volume a minuit)
 - les flux RSS pour le sentiment news
+- les presets de strategie via `risk_profile` (utile pour creer rapidement de nouveaux agents)
+
+Un agent peut maintenant etre defini en mode minimal:
+- `id`, `name`, `risk_profile`, `assets`, `timeframes`
+- puis overrides optionnels selon besoin (strategies custom, seuils, garde-fous, daily trade)
+- options de direction: `allow_short` et `exchange` (ex: `hyperliquid`)
+
+Template de depart: `trading-system/agent-template.json`.
 
 ## Pipeline de donnees
 
