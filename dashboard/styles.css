@@ -722,6 +722,31 @@ tbody tr:hover {
   font-size: 0.72rem;
 }
 
+.trade-type-pill {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+  min-width: 3.6rem;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.trade-type-long {
+  color: #9fe3bb;
+  border-color: rgba(87, 199, 133, 0.45);
+  background: rgba(87, 199, 133, 0.12);
+}
+
+.trade-type-short {
+  color: #f2c979;
+  border-color: rgba(213, 176, 103, 0.6);
+  background: rgba(213, 176, 103, 0.12);
+}
+
 .no-data {
   color: var(--muted);
   font-style: italic;

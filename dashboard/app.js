@@ -302,15 +302,19 @@ function renderOpenTradesTable(openTrades) {
   body.innerHTML = "";
 
   if (!openTrades.length) {
-    body.innerHTML = `<tr><td colspan="6" class="no-data">Aucun trade actif.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" class="no-data">Aucun trade actif.</td></tr>`;
     return;
   }
 
   openTrades.forEach((position) => {
+    const quantity = Number(position.quantity || 0);
+    const type = quantity < 0 ? "SHORT" : "LONG";
+    const typeLabel = type === "SHORT" ? "Short" : "Long";
     const unrealized = Number(position.unrealized_pnl_eur || 0);
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${escapeHtml(position.asset)}</td>
+      <td><span class="trade-type-pill ${type === "SHORT" ? "trade-type-short" : "trade-type-long"}">${typeLabel}</span></td>
       <td>${formatQuantity(position.quantity)}</td>
       <td>${formatMoney(position.avg_price)}</td>
       <td>${formatMoney(position.market_price)}</td>
@@ -329,16 +333,19 @@ function renderHistoryTradesTable(closedTrades) {
   body.innerHTML = "";
 
   if (!closedTrades.length) {
-    body.innerHTML = `<tr><td colspan="6" class="no-data">Aucun trade cloture dans l'historique exporte.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" class="no-data">Aucun trade cloture dans l'historique exporte.</td></tr>`;
     return;
   }
 
   closedTrades.slice(0, 120).forEach((trade) => {
     const pnl = Number(trade.pnl_eur || 0);
+    const type = String(trade.type || "LONG").toUpperCase();
+    const typeLabel = type === "SHORT" ? "Short" : "Long";
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${formatDateTime(trade.exit_at)}</td>
       <td>${escapeHtml(trade.asset)}</td>
+      <td><span class="trade-type-pill ${type === "SHORT" ? "trade-type-short" : "trade-type-long"}">${typeLabel}</span></td>
       <td>${formatQuantity(trade.quantity)}</td>
       <td>${formatMoney(trade.entry_price)}</td>
       <td>${formatMoney(trade.exit_price)}</td>
@@ -1151,43 +1158,81 @@ function buildClosedTrades(trades) {
     }
 
     const lots = lotsByAsset.get(asset);
-    if (side === "BUY") {
-      lots.push({
-        remaining: quantity,
-        entryPrice: price,
-        entryAt: trade.created_at,
-        entryFeePerUnit: feeEur / quantity,
-      });
-      return;
-    }
-
-    if (side !== "SELL") {
-      return;
-    }
-
     let remainingToClose = quantity;
     const exitFeePerUnit = feeEur / quantity;
-    while (remainingToClose > eps && lots.length) {
-      const lot = lots[0];
-      const matchedQty = Math.min(lot.remaining, remainingToClose);
-      const entryFee = matchedQty * lot.entryFeePerUnit;
-      const exitFee = matchedQty * exitFeePerUnit;
-      const pnlEur = (price - lot.entryPrice) * matchedQty - entryFee - exitFee;
 
-      closedTrades.push({
-        asset,
-        quantity: matchedQty,
-        entry_price: lot.entryPrice,
-        exit_price: price,
-        entry_at: lot.entryAt,
-        exit_at: trade.created_at,
-        pnl_eur: pnlEur,
-      });
+    if (side === "BUY") {
+      while (remainingToClose > eps && lots.length && lots[0].side === "SHORT") {
+        const lot = lots[0];
+        const matchedQty = Math.min(lot.remaining, remainingToClose);
+        const entryFee = matchedQty * lot.entryFeePerUnit;
+        const exitFee = matchedQty * exitFeePerUnit;
+        const pnlEur = (lot.entryPrice - price) * matchedQty - entryFee - exitFee;
 
-      lot.remaining -= matchedQty;
-      remainingToClose -= matchedQty;
-      if (lot.remaining <= eps) {
-        lots.shift();
+        closedTrades.push({
+          asset,
+          type: "SHORT",
+          quantity: matchedQty,
+          entry_price: lot.entryPrice,
+          exit_price: price,
+          entry_at: lot.entryAt,
+          exit_at: trade.created_at,
+          pnl_eur: pnlEur,
+        });
+
+        lot.remaining -= matchedQty;
+        remainingToClose -= matchedQty;
+        if (lot.remaining <= eps) {
+          lots.shift();
+        }
+      }
+
+      if (remainingToClose > eps) {
+        lots.push({
+          side: "LONG",
+          remaining: remainingToClose,
+          entryPrice: price,
+          entryAt: trade.created_at,
+          entryFeePerUnit: feeEur / quantity,
+        });
+      }
+      return;
+    }
+
+    if (side === "SELL") {
+      while (remainingToClose > eps && lots.length && lots[0].side === "LONG") {
+        const lot = lots[0];
+        const matchedQty = Math.min(lot.remaining, remainingToClose);
+        const entryFee = matchedQty * lot.entryFeePerUnit;
+        const exitFee = matchedQty * exitFeePerUnit;
+        const pnlEur = (price - lot.entryPrice) * matchedQty - entryFee - exitFee;
+
+        closedTrades.push({
+          asset,
+          type: "LONG",
+          quantity: matchedQty,
+          entry_price: lot.entryPrice,
+          exit_price: price,
+          entry_at: lot.entryAt,
+          exit_at: trade.created_at,
+          pnl_eur: pnlEur,
+        });
+
+        lot.remaining -= matchedQty;
+        remainingToClose -= matchedQty;
+        if (lot.remaining <= eps) {
+          lots.shift();
+        }
+      }
+
+      if (remainingToClose > eps) {
+        lots.push({
+          side: "SHORT",
+          remaining: remainingToClose,
+          entryPrice: price,
+          entryAt: trade.created_at,
+          entryFeePerUnit: feeEur / quantity,
+        });
       }
     }
   });
