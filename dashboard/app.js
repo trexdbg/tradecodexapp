@@ -160,7 +160,7 @@ function renderMarketTiles() {
     tile.className = "market-tile";
     tile.innerHTML = `
       <p class="asset">${escapeHtml(item.asset)}</p>
-      <p class="price">${formatMoney(item.last_price)}</p>
+      <p class="price">${formatAssetPrice(item.last_price)}</p>
       <p class="delta ${delta >= 0 ? "positive" : "negative"}">${formatPercent(delta / 100)}</p>
     `;
     marketGrid.appendChild(tile);
@@ -1459,6 +1459,24 @@ function compareAgentPerformance(a, b) {
 
 function formatMoney(value) {
   return currency.format(Number(value || 0));
+}
+
+function formatAssetPrice(value) {
+  const amount = Number(value || 0);
+  const abs = Math.abs(amount);
+  if (abs >= 1) {
+    return formatMoney(amount);
+  }
+  if (abs >= 0.01) {
+    return `${amount.toLocaleString("fr-FR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 4,
+    })} €`;
+  }
+  return `${amount.toLocaleString("fr-FR", {
+    minimumFractionDigits: 6,
+    maximumFractionDigits: 8,
+  })} €`;
 }
 
 function formatPercent(value) {
