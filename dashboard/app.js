@@ -227,7 +227,8 @@ function renderAgentDetail() {
   const detailTitle = document.querySelector("#agentDetailTitle");
   const detailMeta = document.querySelector("#agentDetailMeta");
   const detailSummary = document.querySelector("#agentDetailSummary");
-  if (!detailTitle || !detailMeta || !detailSummary) {
+  const detailPhilosophy = document.querySelector("#agentPhilosophy");
+  if (!detailTitle || !detailMeta || !detailSummary || !detailPhilosophy) {
     return;
   }
 
@@ -235,6 +236,8 @@ function renderAgentDetail() {
   if (!selectedAgent) {
     detailTitle.textContent = "Focus Agent";
     detailMeta.textContent = "Clique sur un agent pour ouvrir le detail.";
+    detailPhilosophy.textContent = "Selectionne un agent pour voir sa philosophie.";
+    detailPhilosophy.classList.add("no-data");
     detailSummary.innerHTML = `<p class="no-data">Aucun agent selectionne.</p>`;
     renderOpenTradesTable([]);
     renderHistoryTradesTable([]);
@@ -245,9 +248,13 @@ function renderAgentDetail() {
   const pnl = Number(selectedAgent.pnl_abs || 0);
   const assets = (selectedAgent.assets || []).join(", ") || "-";
   const timeframes = (selectedAgent.timeframes || []).join(", ") || "-";
+  const philosophy = resolveAgentPhilosophy(selectedAgent);
+  const riskProfile = String(selectedAgent.risk_profile || "unknown").toUpperCase();
 
   detailTitle.textContent = `${selectedAgent.name} (${selectedAgent.id})`;
-  detailMeta.textContent = `${selectedAgent.risk_profile.toUpperCase()} | Assets: ${assets} | TF: ${timeframes}`;
+  detailMeta.textContent = `${riskProfile} | Assets: ${assets} | TF: ${timeframes}`;
+  detailPhilosophy.textContent = philosophy;
+  detailPhilosophy.classList.remove("no-data");
   detailSummary.innerHTML = `
     <article class="detail-stat">
       <p>PnL total</p>
@@ -1186,6 +1193,88 @@ function buildClosedTrades(trades) {
   });
 
   return closedTrades;
+}
+
+function resolveAgentPhilosophy(agent) {
+  const explicitPhilosophy = normalizeText(
+    agent?.philosophy || agent?.decision_owner_note || agent?.ownership_note
+  );
+  if (explicitPhilosophy) {
+    return explicitPhilosophy;
+  }
+
+  const latestDecision = getLatestDecisionForAgent(agent?.id);
+  const decisionNote = normalizeText(
+    latestDecision?.rationale?.strategy_profile?.decision_owner_note ||
+      latestDecision?.rationale?.strategy_profile?.ownership_note ||
+      latestDecision?.rationale?.decision_owner_note ||
+      latestDecision?.rationale?.ownership_note
+  );
+  if (decisionNote) {
+    return decisionNote;
+  }
+
+  const riskProfile = String(agent?.risk_profile || "balanced").toLowerCase();
+  const assets = Array.isArray(agent?.assets) ? agent.assets.filter(Boolean) : [];
+  const timeframes = Array.isArray(agent?.timeframes) ? agent.timeframes.filter(Boolean) : [];
+  const assetScope = assets.length ? assets.join(", ") : "multi-assets";
+  const timeframeScope = timeframes.length ? timeframes.join(", ") : "multi-timeframes";
+  const styleByRisk = {
+    aggressive: "Execution rapide et recherche de convexite sur signaux directionnels.",
+    defensive: "Protection du capital prioritaire avec biais de reduction du risque.",
+    balanced: "Equilibre entre capture de tendance et controle de volatilite.",
+  };
+  const style = styleByRisk[riskProfile] || styleByRisk.balanced;
+
+  const strategyScores = latestDecision?.rationale?.strategy_scores || {};
+  const activeStrategies = Object.entries(strategyScores)
+    .filter(([, score]) => Math.abs(Number(score || 0)) > 0.01)
+    .sort((a, b) => Math.abs(Number(b[1] || 0)) - Math.abs(Number(a[1] || 0)))
+    .slice(0, 3)
+    .map(([name]) => name.replace(/_/g, " "));
+  const strategyText = activeStrategies.length
+    ? `Strategies dominantes: ${activeStrategies.join(", ")}.`
+    : "";
+
+  const canShort = resolveAgentShortCapability(agent, latestDecision);
+  const sideText = canShort ? "Mode long/short actif." : "Mode long only.";
+
+  return `Univers ${assetScope} sur ${timeframeScope}. ${style} ${sideText} ${strategyText}`.trim();
+}
+
+function resolveAgentShortCapability(agent, latestDecision) {
+  if (typeof agent?.allow_short === "boolean") {
+    return agent.allow_short;
+  }
+  if (typeof latestDecision?.rationale?.strategy_profile?.allow_short === "boolean") {
+    return latestDecision.rationale.strategy_profile.allow_short;
+  }
+  return false;
+}
+
+function getLatestDecisionForAgent(agentId) {
+  if (!agentId) {
+    return null;
+  }
+  let latest = null;
+  let latestTs = 0;
+  (state.data.recent_decisions || []).forEach((decision) => {
+    if (decision.agent_id !== agentId) {
+      return;
+    }
+    const ts = toTimestamp(decision.created_at);
+    if (ts >= latestTs) {
+      latestTs = ts;
+      latest = decision;
+    }
+  });
+  return latest;
+}
+
+function normalizeText(value) {
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function ensureSelectedAgent() {

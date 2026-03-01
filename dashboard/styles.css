@@ -167,6 +167,30 @@ h2 {
   text-align: right;
 }
 
+.portfolio-panel {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.portfolio-panel > .panel-head {
+  margin-bottom: 0;
+}
+
+.portfolio-agent-details {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.portfolio-agent-details .panel-head {
+  margin-bottom: 0;
+}
+
+.portfolio-agent-details .panel-head p {
+  margin-left: 0;
+  text-align: left;
+}
+
 .market-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -387,6 +411,30 @@ h2 {
   gap: 0.55rem;
 }
 
+.agent-philosophy {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.75rem;
+  background: rgba(9, 18, 25, 0.45);
+}
+
+.agent-philosophy h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.agent-philosophy p {
+  margin: 0;
+  color: #c8dde9;
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
 .detail-stat {
   margin: 0;
   border: 1px solid var(--line);
@@ -414,6 +462,10 @@ h2 {
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.portfolio-agent-details .agent-detail-grid {
+  grid-template-columns: 1fr;
 }
 
 .agent-subpanel {

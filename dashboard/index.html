@@ -80,54 +80,59 @@
             ></svg>
             <div id="portfolioChartTooltip" class="chart-tooltip" hidden></div>
           </div>
+          <div class="portfolio-agent-details">
+            <div class="panel-head">
+              <h2 id="agentDetailTitle">Focus Agent</h2>
+              <p id="agentDetailMeta">Clique sur un agent pour ouvrir le detail.</p>
+            </div>
+
+            <article class="agent-philosophy">
+              <h3>Philosophie</h3>
+              <p id="agentPhilosophy" class="no-data">Selectionne un agent pour voir sa philosophie.</p>
+            </article>
+
+            <div id="agentDetailSummary" class="agent-detail-summary"></div>
+            <div class="agent-detail-grid">
+              <article class="agent-subpanel">
+                <h3>Trades actuels</h3>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Asset</th>
+                        <th>Quantite</th>
+                        <th>Prix moyen</th>
+                        <th>Prix marche</th>
+                        <th>Valeur</th>
+                        <th>PnL latent</th>
+                      </tr>
+                    </thead>
+                    <tbody id="openTradesBody"></tbody>
+                  </table>
+                </div>
+              </article>
+
+              <article class="agent-subpanel">
+                <h3>Historique trades clotures</h3>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Sortie</th>
+                        <th>Asset</th>
+                        <th>Quantite</th>
+                        <th>Entree</th>
+                        <th>Sortie</th>
+                        <th>PnL</th>
+                      </tr>
+                    </thead>
+                    <tbody id="historyTradesBody"></tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </div>
         </article>
-      </section>
-
-      <section class="panel agent-detail-panel">
-        <div class="panel-head">
-          <h2 id="agentDetailTitle">Focus Agent</h2>
-          <p id="agentDetailMeta">Clique sur un agent pour ouvrir le detail.</p>
-        </div>
-        <div id="agentDetailSummary" class="agent-detail-summary"></div>
-        <div class="agent-detail-grid">
-          <article class="agent-subpanel">
-            <h3>Trades actuels</h3>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Asset</th>
-                    <th>Quantite</th>
-                    <th>Prix moyen</th>
-                    <th>Prix marche</th>
-                    <th>Valeur</th>
-                    <th>PnL latent</th>
-                  </tr>
-                </thead>
-                <tbody id="openTradesBody"></tbody>
-              </table>
-            </div>
-          </article>
-
-          <article class="agent-subpanel">
-            <h3>Historique trades clotures</h3>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sortie</th>
-                    <th>Asset</th>
-                    <th>Quantite</th>
-                    <th>Entree</th>
-                    <th>Sortie</th>
-                    <th>PnL</th>
-                  </tr>
-                </thead>
-                <tbody id="historyTradesBody"></tbody>
-              </table>
-            </div>
-          </article>
-        </div>
       </section>
 
       <section class="panel">
