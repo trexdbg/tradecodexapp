@@ -54,6 +54,26 @@
           <p>Actifs monitor es en continu</p>
         </div>
         <div id="marketGrid" class="market-grid"></div>
+        <div id="marketHistoryPanel" class="market-history-panel">
+          <div class="market-history-head">
+            <div>
+              <h3>Evolution des prix</h3>
+              <p>Comparaison journalier / hebdo / mensuel</p>
+            </div>
+            <div class="market-history-tabs" role="tablist">
+              <button class="market-history-tab active" data-timeframe="daily" role="tab" type="button">
+                Journalier
+              </button>
+              <button class="market-history-tab" data-timeframe="weekly" role="tab" type="button">
+                Hebdo
+              </button>
+              <button class="market-history-tab" data-timeframe="monthly" role="tab" type="button">
+                Mensuel
+              </button>
+            </div>
+          </div>
+          <div id="marketHistoryCards" class="market-history-cards"></div>
+        </div>
       </section>
 
       <section class="split">

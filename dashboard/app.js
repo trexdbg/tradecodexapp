@@ -16,6 +16,7 @@ const state = {
   agentFilter: "ALL",
   assetFilter: "ALL",
   selectedAgentId: null,
+  marketHistoryTimeframe: "daily",
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -78,6 +79,7 @@ function renderDashboard() {
   renderHeader();
   renderKpis();
   renderMarketTiles();
+  renderMarketHistoryPanel();
   renderAgents();
   renderAgentDetail();
   renderPortfolioEvolutionChart();
@@ -163,6 +165,105 @@ function renderMarketTiles() {
     `;
     marketGrid.appendChild(tile);
   });
+}
+
+function renderMarketHistoryPanel() {
+  const panel = document.querySelector("#marketHistoryPanel");
+  if (!panel) {
+    return;
+  }
+  if (!panel.dataset.historyBound) {
+    panel.addEventListener("click", (event) => {
+      const tab = event.target.closest(".market-history-tab");
+      if (!tab) {
+        return;
+      }
+      const timeframe = tab.dataset.timeframe;
+      if (!timeframe || timeframe === state.marketHistoryTimeframe) {
+        return;
+      }
+      state.marketHistoryTimeframe = timeframe;
+      renderMarketHistoryPanel();
+    });
+    panel.dataset.historyBound = "1";
+  }
+
+  const cardsContainer = panel.querySelector("#marketHistoryCards");
+  if (!cardsContainer) {
+    return;
+  }
+
+  const timeframe = state.marketHistoryTimeframe || "daily";
+  const timeframeLabels = {
+    daily: "journalier",
+    weekly: "hebdomadaire",
+    monthly: "mensuel",
+  };
+
+  const tabs = panel.querySelectorAll(".market-history-tab");
+  tabs.forEach((tab) => {
+    const isActive = tab.dataset.timeframe === timeframe;
+    tab.classList.toggle("active", isActive);
+  });
+
+  const historyByFrame = state.data.market_history || {};
+  const slice = historyByFrame[timeframe] || [];
+  if (!slice.length) {
+    cardsContainer.innerHTML = `<p class="no-data">Pas assez de données ${timeframeLabels[timeframe] ||
+      ""}</p>`;
+    return;
+  }
+
+  const sorted = [...slice].sort((a, b) => Math.abs(b.change_pct || 0) - Math.abs(a.change_pct || 0));
+  cardsContainer.innerHTML = "";
+  sorted.slice(0, 6).forEach((entry) => {
+    const changePct = Number(entry.change_pct || 0);
+    const sparkline = buildMarketSparkline(entry.series || [], changePct);
+    const card = document.createElement("article");
+    card.className = "market-history-card";
+    card.innerHTML = `
+      <div class="market-history-card-head">
+        <p class="asset">${escapeHtml(entry.asset)}</p>
+        <p class="${changePct >= 0 ? "positive" : "negative"}">${formatPercent(changePct)}</p>
+      </div>
+      <div class="market-history-card-body">
+        <div class="price-row">
+          <span>${formatMoney(entry.start_price || 0)}</span>
+          <span>${formatMoney(entry.end_price || 0)}</span>
+        </div>
+        ${sparkline}
+      </div>
+    `;
+    cardsContainer.appendChild(card);
+  });
+}
+
+function buildMarketSparkline(series, changePct) {
+  if (!series.length) {
+    return `<p class="no-data">Aucune courbe.</p>`;
+  }
+  const width = 220;
+  const height = 54;
+  const margin = 6;
+  const values = series.map((point) => Number(point.price || 0));
+  const minValue = Math.min(...values);
+  const maxValue = Math.max(...values);
+  const span = Math.max(maxValue - minValue, 1e-6);
+
+  const points = values.map((value, index) => {
+    const x =
+      margin +
+      (index / Math.max(series.length - 1, 1)) * (width - margin * 2);
+    const y =
+      height -
+      margin -
+      ((value - minValue) / span) * (height - margin * 2);
+    return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+  });
+  const color = changePct >= 0 ? "rgba(87,199,133,0.95)" : "rgba(255,110,110,0.95)";
+  return `<svg viewBox="0 0 ${width} ${height}" role="presentation" aria-hidden="true">
+    <path d="${points.join(" ")}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>`;
 }
 
 function renderAgents() {

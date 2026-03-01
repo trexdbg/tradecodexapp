@@ -197,6 +197,99 @@ h2 {
   gap: 0.7rem;
 }
 
+.market-history-panel {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.market-history-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.market-history-head h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.market-history-head p {
+  margin: 0.2rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.market-history-tabs {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.market-history-tab {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.3rem 0.9rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.market-history-tab.active {
+  border-color: var(--accent);
+  color: var(--ink);
+  background: var(--accent-soft);
+}
+
+.market-history-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+
+.market-history-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+  background: rgba(9, 18, 25, 0.55);
+}
+
+.market-history-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.market-history-card-head .asset {
+  margin: 0;
+  font-weight: 600;
+}
+
+.market-history-card-body {
+  margin-top: 0.45rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.market-history-card .price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.market-history-card svg {
+  width: 100%;
+  height: 50px;
+}
 .market-tile {
   border: 1px solid var(--line);
   border-radius: 10px;
