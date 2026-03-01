@@ -466,8 +466,9 @@ function renderTradesTable() {
     const realizedPnl = resolveTradeRealizedPnl(trade, realizedPnlByTradeId);
     const realizedClass = realizedPnl == null ? "muted" : realizedPnl >= 0 ? "positive" : "negative";
     const realizedText = realizedPnl == null ? "-" : formatMoney(realizedPnl);
-    const reasonLabel = formatTradeReason(trade.reason);
-    const decisionContext = formatDecisionContext(findDecisionContextForTrade(trade));
+    const decision = findDecisionContextForTrade(trade);
+    const reasonLabel = formatTradeReason(trade, decision);
+    const decisionContext = formatDecisionContext(decision);
     tr.innerHTML = `
       <td>${formatDateTime(trade.created_at)}</td>
       <td>${escapeHtml(trade.agent_id)}</td>
@@ -974,26 +975,17 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function formatTradeReason(reason) {
-  const raw = String(reason || "").trim();
+function formatTradeReason(trade, decision) {
+  const rationale = decision?.rationale || {};
+  const provided = String(rationale.trade_reason_human || "").trim();
+  if (provided) {
+    return provided;
+  }
+  const raw = String(trade?.reason || "").trim();
   if (!raw) {
     return "-";
   }
-
-  const mapped = raw
-    .split("|")
-    .map((part) => part.trim())
-    .filter(Boolean)
-    .map((part) => {
-      const [key, ...rest] = part.split("=");
-      if (!rest.length) {
-        return part.replace(/_/g, " ");
-      }
-      const keyLabel = key.replace(/_/g, " ");
-      const valueLabel = rest.join("=").replace(/_/g, " ");
-      return `${keyLabel}: ${valueLabel}`;
-    });
-  return mapped.join(" | ") || raw.replace(/_/g, " ");
+  return raw;
 }
 
 function findDecisionContextForTrade(trade) {
@@ -1035,6 +1027,10 @@ function findDecisionContextForTrade(trade) {
 function formatDecisionContext(decision) {
   if (!decision) {
     return "-";
+  }
+  const provided = String(decision?.rationale?.signal_context_human || "").trim();
+  if (provided) {
+    return provided;
   }
   const score = Number(decision.score || 0);
   const scoreText = `${score >= 0 ? "+" : ""}${score.toFixed(3)}`;
