@@ -13,7 +13,7 @@ Le systeme fonctionne en **dry-run uniquement** (pas de trading live).
 - Actifs supportes: `BTC`, `ETH`, `SOL`, `BNB`, `XRP`.
 - Decisions et trades stockes en SQLite (`trading-system/database.sqlite`).
 - Export des donnees vers `dashboard/data/dashboard-data.json`.
-- Dashboard consultable localement ou via GitHub Pages.
+- Dashboard consultable localement ou via GitHub Pages (publie a la racine du site).
 - Garde-fous de rentabilite: cooldown par actif, prises de profit/pertes automatiques, limite de concentration.
 - Garde-fous de qualite des donnees: priorite aux sources live, blocage des ordres quand seules des donnees synthetiques sont disponibles.
 
@@ -143,3 +143,9 @@ Template de depart: `trading-system/agent-template.json`.
 3. `paper_trade.py` simule les ordres en base SQLite.
 4. `skills/export_dashboard.py` genere un JSON statique.
 5. `dashboard/app.js` lit ce JSON et rend les KPIs, tables et graphes.
+
+## Deploiement GitHub Pages
+
+- Le workflow `.github/workflows/deploy-pages-dashboard.yml` publie le contenu de `dashboard/` comme racine du site Pages.
+- Dans `Settings > Pages`, choisir `Source: GitHub Actions`.
+- URL finale: `https://<github-user>.github.io/<repo>/`.

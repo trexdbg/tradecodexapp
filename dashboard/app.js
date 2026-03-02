@@ -26,10 +26,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderDashboard();
 });
 
+function withCacheBuster(url) {
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}v=${Date.now()}`;
+}
+
 async function loadDashboardData() {
   for (const url of [DATA_URL, FALLBACK_URL]) {
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(withCacheBuster(url), { cache: "no-store" });
       if (!response.ok) {
         continue;
       }
@@ -399,12 +404,12 @@ function renderOpenTradesTable(openTrades) {
     const unrealized = Number(position.unrealized_pnl_eur || 0);
     const tr = document.createElement("tr");
     tr.innerHTML = `
+      <td>${formatDateTime(position.entry_at || position.updated_at)}</td>
       <td>${escapeHtml(position.asset)}</td>
       <td><span class="trade-type-pill ${type === "SHORT" ? "trade-type-short" : "trade-type-long"}">${typeLabel}</span></td>
       <td>${formatQuantity(position.quantity)}</td>
       <td>${formatMoney(position.avg_price)}</td>
       <td>${formatMoney(position.market_price)}</td>
-      <td>${formatMoney(position.market_value_eur)}</td>
       <td class="${unrealized >= 0 ? "positive" : "negative"}">${formatMoney(unrealized)}</td>
     `;
     body.appendChild(tr);
@@ -1222,17 +1227,20 @@ function computeAgentAnalytics(agentId) {
   const trades = (state.data.recent_trades || [])
     .filter((trade) => trade.agent_id === agentId)
     .sort((a, b) => toTimestamp(a.created_at) - toTimestamp(b.created_at));
+  const openEntryAtByAsset = buildOpenEntryAtByAsset(trades);
 
   const closedTrades = buildClosedTrades(trades).sort(
     (a, b) => toTimestamp(b.exit_at) - toTimestamp(a.exit_at)
   );
   const openTrades = [...(agent?.positions || [])]
     .map((position) => {
+      const asset = String(position.asset || "").toUpperCase();
       const quantity = Number(position.quantity || 0);
       const avgPrice = Number(position.avg_price || 0);
       const marketPrice = Number(position.market_price || 0);
       return {
         ...position,
+        entry_at: openEntryAtByAsset.get(asset) || position.updated_at || null,
         unrealized_pnl_eur: (marketPrice - avgPrice) * quantity,
       };
     })
@@ -1265,6 +1273,80 @@ function computeAgentAnalytics(agentId) {
       netRealizedEur,
     },
   };
+}
+
+function buildOpenEntryAtByAsset(trades) {
+  const lotsByAsset = new Map();
+  const eps = 1e-10;
+
+  trades.forEach((trade) => {
+    const asset = String(trade.asset || "").toUpperCase();
+    const side = String(trade.side || "").toUpperCase();
+    const quantity = Number(trade.quantity || 0);
+    const price = Number(trade.price || 0);
+
+    if (!asset || quantity <= 0 || price <= 0) {
+      return;
+    }
+
+    if (!lotsByAsset.has(asset)) {
+      lotsByAsset.set(asset, []);
+    }
+
+    const lots = lotsByAsset.get(asset);
+    let remainingToClose = quantity;
+
+    if (side === "BUY") {
+      while (remainingToClose > eps && lots.length && lots[0].side === "SHORT") {
+        const lot = lots[0];
+        const matchedQty = Math.min(lot.remaining, remainingToClose);
+        lot.remaining -= matchedQty;
+        remainingToClose -= matchedQty;
+        if (lot.remaining <= eps) {
+          lots.shift();
+        }
+      }
+
+      if (remainingToClose > eps) {
+        lots.push({
+          side: "LONG",
+          remaining: remainingToClose,
+          entryAt: trade.created_at,
+        });
+      }
+      return;
+    }
+
+    if (side === "SELL") {
+      while (remainingToClose > eps && lots.length && lots[0].side === "LONG") {
+        const lot = lots[0];
+        const matchedQty = Math.min(lot.remaining, remainingToClose);
+        lot.remaining -= matchedQty;
+        remainingToClose -= matchedQty;
+        if (lot.remaining <= eps) {
+          lots.shift();
+        }
+      }
+
+      if (remainingToClose > eps) {
+        lots.push({
+          side: "SHORT",
+          remaining: remainingToClose,
+          entryAt: trade.created_at,
+        });
+      }
+    }
+  });
+
+  const entryAtByAsset = new Map();
+  lotsByAsset.forEach((lots, asset) => {
+    if (!lots.length) {
+      return;
+    }
+    const sortedLots = [...lots].sort((a, b) => toTimestamp(a.entryAt) - toTimestamp(b.entryAt));
+    entryAtByAsset.set(asset, sortedLots[0]?.entryAt || null);
+  });
+  return entryAtByAsset;
 }
 
 function buildClosedTrades(trades) {
